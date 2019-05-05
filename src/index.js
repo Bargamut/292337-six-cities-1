@@ -1,10 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MainPage from './components/main/main.jsx';
-
-const App = () => {
-  return <MainPage />;
-};
+import App from './components/app/app.jsx';
 
 const init = () => {
   ReactDOM.render(
