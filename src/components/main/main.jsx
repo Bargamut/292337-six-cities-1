@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import PlaceCard from '../place-card/place-card.jsx';
 
 const MainPage = (props) => {
-  const {placesNames} = props;
+  const {placesNames, onClickHeader} = props;
 
   return (
     <div>
@@ -101,7 +101,7 @@ const MainPage = (props) => {
                 --> */}
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {placesNames.map((it, i) => <PlaceCard key={i} placeName={it} />)}
+                {placesNames.map((it, i) => <PlaceCard key={i} placeName={it} onClickHeader={onClickHeader} />)}
               </div>
             </section>
             <div className="cities__right-section">
@@ -116,7 +116,8 @@ const MainPage = (props) => {
 };
 
 MainPage.propTypes = {
-  placesNames: PropTypes.arrayOf(PropTypes.string)
+  placesNames: PropTypes.arrayOf(PropTypes.string),
+  onClickHeader: PropTypes.func.isRequired
 };
 
 export default MainPage;

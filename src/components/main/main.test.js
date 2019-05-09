@@ -13,6 +13,7 @@ it(`MainPage correctly renders after relaunch`, () => {
   const mainPage = renderer.create(
       <MainPage
         placesNames={placesNames}
+        onClickHeader={jest.fn()}
       />
   ).toJSON();
 

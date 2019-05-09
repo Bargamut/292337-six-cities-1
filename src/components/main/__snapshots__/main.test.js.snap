@@ -341,6 +341,7 @@ exports[`MainPage correctly renders after relaunch 1`] = `
                 </div>
                 <h2
                   className="place-card__name"
+                  onClick={[MockFunction]}
                 >
                   <a
                     href="#"
@@ -435,6 +436,7 @@ exports[`MainPage correctly renders after relaunch 1`] = `
                 </div>
                 <h2
                   className="place-card__name"
+                  onClick={[MockFunction]}
                 >
                   <a
                     href="#"
@@ -529,6 +531,7 @@ exports[`MainPage correctly renders after relaunch 1`] = `
                 </div>
                 <h2
                   className="place-card__name"
+                  onClick={[MockFunction]}
                 >
                   <a
                     href="#"
@@ -623,6 +626,7 @@ exports[`MainPage correctly renders after relaunch 1`] = `
                 </div>
                 <h2
                   className="place-card__name"
+                  onClick={[MockFunction]}
                 >
                   <a
                     href="#"

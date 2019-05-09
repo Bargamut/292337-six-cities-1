@@ -13,6 +13,7 @@ it(`App correctly renders after relaunch`, () => {
   const app = renderer.create(
       <App
         citiesPlaces={citiesPlaces}
+        onClickHeader={jest.fn()}
       />
   )
   .toJSON();
