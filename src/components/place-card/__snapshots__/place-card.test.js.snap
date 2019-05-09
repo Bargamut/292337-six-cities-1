@@ -81,6 +81,7 @@ exports[`PlaceCard correctly renders after relaunch 1`] = `
     </div>
     <h2
       className="place-card__name"
+      onClick={[MockFunction]}
     >
       <a
         href="#"

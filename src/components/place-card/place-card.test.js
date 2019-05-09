@@ -6,6 +6,7 @@ it(`PlaceCard correctly renders after relaunch`, () => {
   const placeCard = renderer.create(
       <PlaceCard
         placeName={`test place`}
+        onClickHeader={jest.fn()}
       />
   )
   .toJSON();
