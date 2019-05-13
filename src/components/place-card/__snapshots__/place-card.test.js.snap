@@ -15,7 +15,7 @@ exports[`PlaceCard WITH MARK correctly renders after relaunch 1`] = `
   </div>
   <div
     className="cities__image-wrapper place-card__image-wrapper"
-    onClick={[MockFunction]}
+    onClick={[Function]}
   >
     <a
       href="#"
@@ -118,7 +118,7 @@ exports[`PlaceCard correctly renders after relaunch 1`] = `
   
   <div
     className="cities__image-wrapper place-card__image-wrapper"
-    onClick={[MockFunction]}
+    onClick={[Function]}
   >
     <a
       href="#"

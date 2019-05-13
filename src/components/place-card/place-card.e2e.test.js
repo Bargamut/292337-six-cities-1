@@ -64,3 +64,32 @@ it(`Click`, () => {
 
   expect(clickHeaderHandler).toHaveBeenCalledTimes(1);
 });
+
+it(`Set card data to callback correctly`, () => {
+  const {
+    places,
+    clickHeaderHandler,
+    clickImageHandler,
+    onActivate,
+    onDeactivate
+  } = mock;
+
+  const placeCard = shallow(
+      <PlaceCard
+        place={places[0]}
+        onClickHeader={clickHeaderHandler}
+        onClickImage={clickImageHandler}
+        onActivate={onActivate}
+        onDeactivate={onDeactivate}
+      />
+  );
+
+  const nodeImgWrapper = placeCard.find(`.place-card__image-wrapper`);
+
+  expect(nodeImgWrapper.length).toEqual(1);
+
+  nodeImgWrapper.simulate(`click`);
+
+  expect(clickImageHandler).toHaveBeenCalledTimes(1);
+  expect(clickImageHandler).toHaveBeenCalledWith(places[0]);
+});

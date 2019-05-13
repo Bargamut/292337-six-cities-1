@@ -27,7 +27,10 @@ const PlaceCard = ({place, onClickHeader, onClickImage, onActivate, onDeactivate
           <span>{mark}</span>
         </div>
       ) : ``}
-      <div className="cities__image-wrapper place-card__image-wrapper" onClick={onClickImage}>
+      <div className="cities__image-wrapper place-card__image-wrapper"
+        onClick={() => {
+          onClickImage(place);
+        }}>
         <a href="#">
           <img className="place-card__image" src={img} width="260" height="200" alt="Place image" />
         </a>
