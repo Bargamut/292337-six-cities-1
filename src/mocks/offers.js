@@ -1,19 +1,21 @@
 const offers = [
   {
-    type: `Private room`,
+    type: `Apartment`,
+    img: `img/apartment-01.jpg`,
+    mark: `Premium`,
     name: `Beautiful &amp; luxurious apartment at great location`,
-    img: `img/room.jpg`,
     price: {
-      value: 80,
+      value: 120,
       currency: `&euro;`,
       text: `&#47;&nbsp;night`
     },
-    rating: `80%`
+    rating: `93%`
   },
   {
     type: `Private room`,
+    img: `img/room.jpg`,
+    mark: null,
     name: `Wood and stone place`,
-    img: `img/room.jpg`,
     price: {
       value: 80,
       currency: `&euro;`,
@@ -22,26 +24,28 @@ const offers = [
     rating: `80%`
   },
   {
-    type: `Private room`,
+    type: `Apartment`,
+    img: `img/apartment-02.jpg`,
+    mark: null,
     name: `Canal View Prinsengracht`,
-    img: `img/room.jpg`,
     price: {
-      value: 80,
+      value: 132,
       currency: `&euro;`,
       text: `&#47;&nbsp;night`
     },
     rating: `80%`
   },
   {
-    type: `Private room`,
+    type: `Apartment`,
+    img: `img/apartment-03.jpg`,
+    mark: `Premium`,
     name: `Nice, cozy, warm big bed apartment`,
-    img: `img/room.jpg`,
     price: {
-      value: 80,
+      value: 180,
       currency: `&euro;`,
       text: `&#47;&nbsp;night`
     },
-    rating: `80%`
+    rating: `100%`
   }
 ];
 
