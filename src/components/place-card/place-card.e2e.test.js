@@ -7,13 +7,46 @@ Enzyme.configure({
   adapter: new Adapter()
 });
 
+const mock = {
+  places: [
+    {
+      type: `Apartment`,
+      img: ``,
+      mark: `Premium`,
+      name: ``,
+      price: {
+        value: 0,
+        currency: `€`
+      },
+      rating: 0
+    },
+    {
+      type: `Private room`,
+      img: ``,
+      name: ``,
+      price: {
+        value: 0,
+        currency: `€`
+      },
+      rating: 0
+    }
+  ],
+  clickHeaderHandler: jest.fn(),
+  clickImageHandler: jest.fn()
+};
+
 it(`Click`, () => {
-  const clickHandler = jest.fn();
+  const {
+    places,
+    clickHeaderHandler,
+    clickImageHandler
+  } = mock;
 
   const placeCard = shallow(
       <PlaceCard
-        placeName={``}
-        onClickHeader={clickHandler}
+        place={places[0]}
+        onClickHeader={clickHeaderHandler}
+        onClickImage={clickImageHandler}
       />
   );
 
@@ -23,5 +56,5 @@ it(`Click`, () => {
 
   nodeHeader.simulate(`click`);
 
-  expect(clickHandler).toHaveBeenCalledTimes(1);
+  expect(clickHeaderHandler).toHaveBeenCalledTimes(1);
 });
