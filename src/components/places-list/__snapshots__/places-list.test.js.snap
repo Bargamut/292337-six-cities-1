@@ -18,7 +18,7 @@ exports[`Places List correctly renders 1`] = `
     </div>
     <div
       className="cities__image-wrapper place-card__image-wrapper"
-      onClick={[MockFunction]}
+      onClick={[Function]}
     >
       <a
         href="#"
@@ -118,7 +118,7 @@ exports[`Places List correctly renders 1`] = `
     
     <div
       className="cities__image-wrapper place-card__image-wrapper"
-      onClick={[MockFunction]}
+      onClick={[Function]}
     >
       <a
         href="#"
@@ -218,7 +218,7 @@ exports[`Places List correctly renders 1`] = `
     
     <div
       className="cities__image-wrapper place-card__image-wrapper"
-      onClick={[MockFunction]}
+      onClick={[Function]}
     >
       <a
         href="#"
@@ -324,7 +324,7 @@ exports[`Places List correctly renders 1`] = `
     </div>
     <div
       className="cities__image-wrapper place-card__image-wrapper"
-      onClick={[MockFunction]}
+      onClick={[Function]}
     >
       <a
         href="#"
