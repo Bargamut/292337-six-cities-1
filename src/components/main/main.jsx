@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PlaceCard from '../place-card/place-card.jsx';
+import PlacesList from '../places-list/places-list.jsx';
 
 const MainPage = ({citiesPlaces, onClickCardHeader, onClickCardImage}) => {
   return (
@@ -98,16 +98,12 @@ const MainPage = ({citiesPlaces, onClickCardHeader, onClickCardImage}) => {
                 </select>
                 --> */}
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                {citiesPlaces.map((place, i) => (
-                  <PlaceCard
-                    key={`place-card-${i}`}
-                    place={place}
-                    onClickHeader={onClickCardHeader}
-                    onClickImage={onClickCardImage}
-                  />
-                ))}
-              </div>
+
+              <PlacesList
+                citiesPlaces={citiesPlaces}
+                onClickCardHeader={onClickCardHeader}
+                onClickCardImage={onClickCardImage}
+              />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>
