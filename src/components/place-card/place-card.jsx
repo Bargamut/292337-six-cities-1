@@ -6,21 +6,40 @@ import PropTypes from 'prop-types';
  * @param {Object} props
  * @return {JSX}
  */
-const PlaceCard = (props) => {
-  const {placeName, onClickHeader} = props;
+const PlaceCard = ({place, onClickHeader, onClickImage, onActivate, onDeactivate}) => {
+  const {
+    type,
+    img,
+    mark,
+    name: placeName,
+    price,
+    rating
+  } = place;
 
   return (
-    <article className="cities__place-card place-card">
-      <div className="cities__image-wrapper place-card__image-wrapper">
+    <article className="cities__place-card place-card" onMouseEnter={() => {
+      onActivate(place);
+    }} onMouseLeave={() => {
+      onDeactivate();
+    }}>
+      {mark ? (
+        <div className="place-card__mark">
+          <span>{mark}</span>
+        </div>
+      ) : ``}
+      <div className="cities__image-wrapper place-card__image-wrapper"
+        onClick={() => {
+          onClickImage(place);
+        }}>
         <a href="#">
-          <img className="place-card__image" src="img/room.jpg" width="260" height="200" alt="Place image" />
+          <img className="place-card__image" src={img} width="260" height="200" alt="Place image" />
         </a>
       </div>
 
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
-            <b className="place-card__price-value">&euro;80</b>
+            <b className="place-card__price-value">{price.currency}{price.value}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
 
@@ -35,7 +54,7 @@ const PlaceCard = (props) => {
 
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `80%`}}></span>
+            <span style={{width: `${rating}%`}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
@@ -44,15 +63,28 @@ const PlaceCard = (props) => {
           <a href="#">{placeName}</a>
         </h2>
 
-        <p className="place-card__type">Private room</p>
+        <p className="place-card__type">{type}</p>
       </div>
     </article>
   );
 };
 
 PlaceCard.propTypes = {
-  placeName: PropTypes.string.isRequired,
-  onClickHeader: PropTypes.func.isRequired
+  place: PropTypes.shape({
+    type: PropTypes.oneOf([`Apartment`, `Private room`]).isRequired,
+    img: PropTypes.string.isRequired,
+    mark: PropTypes.oneOf([`Premium`]),
+    name: PropTypes.string.isRequired,
+    price: PropTypes.shape({
+      value: PropTypes.number.isRequired,
+      currency: PropTypes.oneOf([`€`]).isRequired
+    }),
+    rating: PropTypes.number.isRequired
+  }).isRequired,
+  onClickHeader: PropTypes.func.isRequired,
+  onClickImage: PropTypes.func.isRequired,
+  onActivate: PropTypes.func.isRequired,
+  onDeactivate: PropTypes.func.isRequired
 };
 
 export default PlaceCard;

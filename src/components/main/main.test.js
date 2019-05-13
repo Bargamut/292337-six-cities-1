@@ -2,18 +2,30 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import MainPage from './main.jsx';
 
-const placesNames = [
-  `Beautiful &amp; luxurious apartment at great location`,
-  `Wood and stone place`,
-  `Canal View Prinsengracht`,
-  `Nice, cozy, warm big bed apartment`
-];
+const mock = {
+  places: [
+    {
+      type: `Apartment`,
+      img: ``,
+      mark: `Premium`,
+      name: ``,
+      price: {
+        value: 0,
+        currency: `€`,
+      },
+      rating: 0
+    }
+  ]
+};
 
 it(`MainPage correctly renders after relaunch`, () => {
+  const {places} = mock;
+
   const mainPage = renderer.create(
       <MainPage
-        placesNames={placesNames}
-        onClickHeader={jest.fn()}
+        citiesPlaces={places}
+        onClickCardHeader={jest.fn()}
+        onClickCardImage={jest.fn()}
       />
   ).toJSON();
 

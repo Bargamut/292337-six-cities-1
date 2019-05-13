@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PlaceCard from '../place-card/place-card.jsx';
+import PlacesList from '../places-list/places-list.jsx';
 
-const MainPage = (props) => {
-  const {placesNames, onClickHeader} = props;
-
+const MainPage = ({citiesPlaces, onClickCardHeader, onClickCardImage}) => {
   return (
     <div>
       <div style={{display: `none`}}>
@@ -100,9 +98,12 @@ const MainPage = (props) => {
                 </select>
                 --> */}
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                {placesNames.map((it, i) => <PlaceCard key={i} placeName={it} onClickHeader={onClickHeader} />)}
-              </div>
+
+              <PlacesList
+                citiesPlaces={citiesPlaces}
+                onClickCardHeader={onClickCardHeader}
+                onClickCardImage={onClickCardImage}
+              />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>
@@ -116,8 +117,21 @@ const MainPage = (props) => {
 };
 
 MainPage.propTypes = {
-  placesNames: PropTypes.arrayOf(PropTypes.string),
-  onClickHeader: PropTypes.func.isRequired
+  citiesPlaces: PropTypes.arrayOf(
+      PropTypes.shape({
+        type: PropTypes.oneOf([`Apartment`, `Private room`]).isRequired,
+        img: PropTypes.string.isRequired,
+        mark: PropTypes.oneOf([`Premium`]),
+        name: PropTypes.string.isRequired,
+        price: PropTypes.shape({
+          value: PropTypes.number.isRequired,
+          currency: PropTypes.oneOf([`€`]).isRequired
+        }).isRequired,
+        rating: PropTypes.number.isRequired
+      })
+  ).isRequired,
+  onClickCardHeader: PropTypes.func.isRequired,
+  onClickCardImage: PropTypes.func.isRequired
 };
 
 export default MainPage;
