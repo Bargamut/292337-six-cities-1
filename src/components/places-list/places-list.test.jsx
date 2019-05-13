@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from './app.jsx';
+import PlacesList from './places-list.jsx';
 
 const mock = {
   citiesPlaces: [
@@ -49,17 +49,16 @@ const mock = {
   ]
 };
 
-it(`App correctly renders after relaunch`, () => {
+it(`Places List correctly renders`, () => {
   const {citiesPlaces} = mock;
 
-  const app = renderer.create(
-      <App
+  const placesList = renderer.create(
+      <PlacesList
         citiesPlaces={citiesPlaces}
         onClickCardHeader={jest.fn()}
         onClickCardImage={jest.fn()}
       />
-  )
-  .toJSON();
+  );
 
-  expect(app).toMatchSnapshot();
+  expect(placesList).toMatchSnapshot();
 });

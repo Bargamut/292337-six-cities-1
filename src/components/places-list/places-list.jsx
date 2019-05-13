@@ -7,6 +7,9 @@ class PlacesList extends PureComponent {
   constructor(props) {
     super(props);
 
+    this._activateCard = this._activateCard.bind(this);
+    this._deactivateCard = this._deactivateCard.bind(this);
+
     this.state = {
       activeCard: null
     };
@@ -27,10 +30,33 @@ class PlacesList extends PureComponent {
             place={place}
             onClickHeader={onClickCardHeader}
             onClickImage={onClickCardImage}
+            onActivate={this._activateCard}
+            onDeactivate={this._deactivateCard}
           />
         ))}
       </div>
     );
+  }
+
+  /**
+   * @description Обновить данные об активной карточке
+   * @author Paul "Bargamut" Petrov
+   * @date 2019-05-13
+   * @param {Object} place Данные карточки
+   * @memberof PlacesList
+   */
+  _activateCard(place) {
+    this.setState({activeCard: place});
+  }
+
+  /**
+   * @description Очистить данные о последней активной карточке
+   * @author Paul "Bargamut" Petrov
+   * @date 2019-05-13
+   * @memberof PlacesList
+   */
+  _deactivateCard() {
+    this.setState({activeCard: null});
   }
 }
 

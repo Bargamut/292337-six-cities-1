@@ -32,14 +32,18 @@ const mock = {
     }
   ],
   clickHeaderHandler: jest.fn(),
-  clickImageHandler: jest.fn()
+  clickImageHandler: jest.fn(),
+  onActivate: jest.fn(),
+  onDeactivate: jest.fn()
 };
 
 it(`Click`, () => {
   const {
     places,
     clickHeaderHandler,
-    clickImageHandler
+    clickImageHandler,
+    onActivate,
+    onDeactivate
   } = mock;
 
   const placeCard = shallow(
@@ -47,6 +51,8 @@ it(`Click`, () => {
         place={places[0]}
         onClickHeader={clickHeaderHandler}
         onClickImage={clickImageHandler}
+        onActivate={onActivate}
+        onDeactivate={onDeactivate}
       />
   );
 

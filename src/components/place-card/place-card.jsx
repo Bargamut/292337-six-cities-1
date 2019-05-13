@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
  * @param {Object} props
  * @return {JSX}
  */
-const PlaceCard = ({place, onClickHeader, onClickImage}) => {
+const PlaceCard = ({place, onClickHeader, onClickImage, onActivate, onDeactivate}) => {
   const {
     type,
     img,
@@ -17,7 +17,11 @@ const PlaceCard = ({place, onClickHeader, onClickImage}) => {
   } = place;
 
   return (
-    <article className="cities__place-card place-card">
+    <article className="cities__place-card place-card" onMouseEnter={() => {
+      onActivate(place);
+    }} onMouseLeave={() => {
+      onDeactivate();
+    }}>
       {mark ? (
         <div className="place-card__mark">
           <span>{mark}</span>
@@ -75,7 +79,9 @@ PlaceCard.propTypes = {
     rating: PropTypes.number.isRequired
   }).isRequired,
   onClickHeader: PropTypes.func.isRequired,
-  onClickImage: PropTypes.func.isRequired
+  onClickImage: PropTypes.func.isRequired,
+  onActivate: PropTypes.func.isRequired,
+  onDeactivate: PropTypes.func.isRequired
 };
 
 export default PlaceCard;
