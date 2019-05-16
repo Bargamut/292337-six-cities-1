@@ -8,7 +8,8 @@ const offers = [
       value: 120,
       currency: `€`
     },
-    rating: 93
+    rating: 93,
+    coords: [52.3909553943508, 4.85309666406198]
   },
   {
     type: `Private room`,
@@ -18,7 +19,8 @@ const offers = [
       value: 80,
       currency: `€`
     },
-    rating: 80
+    rating: 80,
+    coords: [52.369553943508, 4.85309666406198]
   },
   {
     type: `Apartment`,
@@ -28,7 +30,8 @@ const offers = [
       value: 132,
       currency: `€`
     },
-    rating: 80
+    rating: 80,
+    coords: [52.3909553943508, 4.929309666406198]
   },
   {
     type: `Apartment`,
@@ -39,7 +42,8 @@ const offers = [
       value: 180,
       currency: `€`
     },
-    rating: 100
+    rating: 100,
+    coords: [52.3809553943508, 4.939309666406198]
   }
 ];
 
