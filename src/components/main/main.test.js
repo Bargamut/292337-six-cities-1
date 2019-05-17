@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer';
 import MainPage from './main.jsx';
 
 const mock = {
+  cityCoords: [0, 0],
   places: [
     {
       type: `Apartment`,
@@ -13,16 +14,18 @@ const mock = {
         value: 0,
         currency: `€`,
       },
-      rating: 0
+      rating: 0,
+      coords: [0, 0]
     }
   ]
 };
 
 it(`MainPage correctly renders after relaunch`, () => {
-  const {places} = mock;
+  const {cityCoords, places} = mock;
 
   const mainPage = renderer.create(
       <MainPage
+        cityCoords={cityCoords}
         citiesPlaces={places}
         onClickCardHeader={jest.fn()}
         onClickCardImage={jest.fn()}
