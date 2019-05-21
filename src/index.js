@@ -8,6 +8,7 @@ import offers from './mocks/offers';
 const init = (citiesPlaces, appSettings) => {
   ReactDOM.render(
       <App
+        cityCoords={appSettings.cityCoords}
         citiesPlaces={citiesPlaces}
         onClickCardHeader={appSettings.onClickCardHeader}
         onClickCardImage={appSettings.onClickCardImage}

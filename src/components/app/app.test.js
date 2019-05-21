@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer';
 import App from './app.jsx';
 
 const mock = {
+  cityCoords: [52.38333, 4.9],
   citiesPlaces: [
     {
       type: `Apartment`,
@@ -13,7 +14,8 @@ const mock = {
         value: 0,
         currency: `€`
       },
-      rating: 0
+      rating: 0,
+      coords: [0, 0]
     },
     {
       type: `Private room`,
@@ -23,7 +25,8 @@ const mock = {
         value: 0,
         currency: `€`
       },
-      rating: 0
+      rating: 0,
+      coords: [0, 0]
     },
     {
       type: `Apartment`,
@@ -33,7 +36,8 @@ const mock = {
         value: 0,
         currency: `€`
       },
-      rating: 0
+      rating: 0,
+      coords: [0, 0]
     },
     {
       type: `Apartment`,
@@ -44,16 +48,18 @@ const mock = {
         value: 0,
         currency: `€`
       },
-      rating: 0
+      rating: 0,
+      coords: [0, 0]
     }
   ]
 };
 
 it(`App correctly renders after relaunch`, () => {
-  const {citiesPlaces} = mock;
+  const {cityCoords, citiesPlaces} = mock;
 
   const app = renderer.create(
       <App
+        cityCoords={cityCoords}
         citiesPlaces={citiesPlaces}
         onClickCardHeader={jest.fn()}
         onClickCardImage={jest.fn()}

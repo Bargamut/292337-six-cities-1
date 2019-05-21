@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PlacesList from '../places-list/places-list.jsx';
+import CitiesMap from '../cities-map/cities-map.jsx';
 
-const MainPage = ({citiesPlaces, onClickCardHeader, onClickCardImage}) => {
+const MainPage = ({cityCoords, citiesPlaces, onClickCardHeader, onClickCardImage}) => {
   return (
     <div>
       <div style={{display: `none`}}>
@@ -105,8 +106,18 @@ const MainPage = ({citiesPlaces, onClickCardHeader, onClickCardImage}) => {
                 onClickCardImage={onClickCardImage}
               />
             </section>
+
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <CitiesMap
+                city={cityCoords}
+                placesCoords={
+                  citiesPlaces.reduce((placesCoords, currentPlace) => {
+                    placesCoords.push(currentPlace.coords);
+
+                    return placesCoords;
+                  }, [])
+                }
+              />
             </div>
           </div>
         </div>
@@ -117,6 +128,7 @@ const MainPage = ({citiesPlaces, onClickCardHeader, onClickCardImage}) => {
 };
 
 MainPage.propTypes = {
+  cityCoords: PropTypes.arrayOf(PropTypes.number).isRequired,
   citiesPlaces: PropTypes.arrayOf(
       PropTypes.shape({
         type: PropTypes.oneOf([`Apartment`, `Private room`]).isRequired,
@@ -127,7 +139,8 @@ MainPage.propTypes = {
           value: PropTypes.number.isRequired,
           currency: PropTypes.oneOf([`€`]).isRequired
         }).isRequired,
-        rating: PropTypes.number.isRequired
+        rating: PropTypes.number.isRequired,
+        coords: PropTypes.arrayOf(PropTypes.number).isRequired
       })
   ).isRequired,
   onClickCardHeader: PropTypes.func.isRequired,

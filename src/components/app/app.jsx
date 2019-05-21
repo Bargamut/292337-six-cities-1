@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import MainPage from '../main/main.jsx';
 
 const App = (props) => {
-  const {citiesPlaces, onClickCardHeader, onClickCardImage} = props;
+  const {cityCoords, citiesPlaces, onClickCardHeader, onClickCardImage} = props;
 
   return <MainPage
+    cityCoords={cityCoords}
     citiesPlaces={citiesPlaces}
     onClickCardHeader={onClickCardHeader}
     onClickCardImage={onClickCardImage}
@@ -13,6 +14,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
+  cityCoords: PropTypes.arrayOf(PropTypes.number).isRequired,
   citiesPlaces: PropTypes.arrayOf(
       PropTypes.shape({
         type: PropTypes.oneOf([`Apartment`, `Private room`]).isRequired,
@@ -23,7 +25,8 @@ App.propTypes = {
           value: PropTypes.number.isRequired,
           currency: PropTypes.oneOf([`€`]).isRequired
         }).isRequired,
-        rating: PropTypes.number.isRequired
+        rating: PropTypes.number.isRequired,
+        coords: PropTypes.arrayOf(PropTypes.number).isRequired
       })
   ).isRequired,
   onClickCardHeader: PropTypes.func.isRequired,
