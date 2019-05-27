@@ -39,7 +39,6 @@ const MainPage = ({city, cities, citiesPlaces, onChangeCity}) => {
         <h1 className="visually-hidden">Cities</h1>
 
         <CitiesList
-          city={city}
           cities={cities}
           onChangeCity={onChangeCity}
         />
@@ -106,7 +105,7 @@ MainPage.propTypes = {
       PropTypes.shape({
         type: PropTypes.oneOf([`Apartment`, `Private room`]).isRequired,
         img: PropTypes.string.isRequired,
-        mark: PropTypes.oneOf([`Premium`]),
+        mark: PropTypes.oneOf([``, `Premium`]),
         name: PropTypes.string.isRequired,
         price: PropTypes.shape({
           value: PropTypes.number.isRequired,

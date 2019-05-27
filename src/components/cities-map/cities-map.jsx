@@ -2,6 +2,8 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import leaflet from 'leaflet';
 
+import CITIES_DATA from '../../mocks/cities';
+
 class CitiesMap extends PureComponent {
   constructor(props) {
     super(props);
@@ -11,6 +13,7 @@ class CitiesMap extends PureComponent {
 
   _initMap() {
     const {city, placesCoords} = this.props;
+    const cityCoords = CITIES_DATA[city];
     const mapSettings = {
       icon: {
         iconUrl: `img/pin.svg`,
@@ -20,13 +23,13 @@ class CitiesMap extends PureComponent {
     };
     const icon = leaflet.icon(mapSettings.icon);
     const map = leaflet.map(this._mapRef.current, {
-      center: city,
+      center: cityCoords,
       zoom: mapSettings.zoom,
       zoomControl: false,
       marker: true
     });
 
-    map.setView(city, mapSettings.zoom);
+    map.setView(cityCoords, mapSettings.zoom);
 
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
@@ -59,7 +62,7 @@ class CitiesMap extends PureComponent {
 }
 
 CitiesMap.propTypes = {
-  city: PropTypes.arrayOf(PropTypes.number).isRequired,
+  city: PropTypes.string.isRequired,
   placesCoords: PropTypes.arrayOf(
       PropTypes.arrayOf(PropTypes.number)
   ).isRequired

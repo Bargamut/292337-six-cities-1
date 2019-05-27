@@ -29,7 +29,7 @@ App.propTypes = {
         coords: PropTypes.arrayOf(PropTypes.number).isRequired,
         type: PropTypes.oneOf([`Apartment`, `Private room`]).isRequired,
         img: PropTypes.string.isRequired,
-        mark: PropTypes.oneOf([`Premium`]),
+        mark: PropTypes.oneOf([``, `Premium`]),
         name: PropTypes.string.isRequired,
         price: PropTypes.shape({
           value: PropTypes.number.isRequired,
