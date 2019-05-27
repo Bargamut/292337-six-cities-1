@@ -31,44 +31,14 @@ const mock = {
       rating: 0
     }
   ],
-  clickHeaderHandler: jest.fn(),
   clickImageHandler: jest.fn(),
   onActivate: jest.fn(),
   onDeactivate: jest.fn()
 };
 
-it(`Click`, () => {
-  const {
-    places,
-    clickHeaderHandler,
-    clickImageHandler,
-    onActivate,
-    onDeactivate
-  } = mock;
-
-  const placeCard = shallow(
-      <PlaceCard
-        place={places[0]}
-        onClickHeader={clickHeaderHandler}
-        onClickImage={clickImageHandler}
-        onActivate={onActivate}
-        onDeactivate={onDeactivate}
-      />
-  );
-
-  const nodeHeader = placeCard.find(`h2.place-card__name`);
-
-  expect(nodeHeader.length).toEqual(1);
-
-  nodeHeader.simulate(`click`);
-
-  expect(clickHeaderHandler).toHaveBeenCalledTimes(1);
-});
-
 it(`Set card data to callback correctly`, () => {
   const {
     places,
-    clickHeaderHandler,
     clickImageHandler,
     onActivate,
     onDeactivate
@@ -77,7 +47,6 @@ it(`Set card data to callback correctly`, () => {
   const placeCard = shallow(
       <PlaceCard
         place={places[0]}
-        onClickHeader={clickHeaderHandler}
         onClickImage={clickImageHandler}
         onActivate={onActivate}
         onDeactivate={onDeactivate}

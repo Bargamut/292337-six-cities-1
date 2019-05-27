@@ -95,7 +95,6 @@ exports[`Places List correctly renders 1`] = `
       </div>
       <h2
         className="place-card__name"
-        onClick={[MockFunction]}
       >
         <a
           href="#"
@@ -195,7 +194,6 @@ exports[`Places List correctly renders 1`] = `
       </div>
       <h2
         className="place-card__name"
-        onClick={[MockFunction]}
       >
         <a
           href="#"
@@ -295,7 +293,6 @@ exports[`Places List correctly renders 1`] = `
       </div>
       <h2
         className="place-card__name"
-        onClick={[MockFunction]}
       >
         <a
           href="#"
@@ -401,7 +398,6 @@ exports[`Places List correctly renders 1`] = `
       </div>
       <h2
         className="place-card__name"
-        onClick={[MockFunction]}
       >
         <a
           href="#"

@@ -55,8 +55,6 @@ it(`Places List correctly renders`, () => {
   const placesList = renderer.create(
       <PlacesList
         citiesPlaces={citiesPlaces}
-        onClickCardHeader={jest.fn()}
-        onClickCardImage={jest.fn()}
       />
   );
 

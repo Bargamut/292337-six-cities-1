@@ -27,8 +27,6 @@ it(`MainPage correctly renders after relaunch`, () => {
       <MainPage
         cityCoords={cityCoords}
         citiesPlaces={places}
-        onClickCardHeader={jest.fn()}
-        onClickCardImage={jest.fn()}
       />
   ).toJSON();
 

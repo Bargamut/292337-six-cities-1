@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from './app.jsx';
+import {App} from './app.jsx';
 
 const mock = {
   cityCoords: [52.38333, 4.9],
@@ -61,8 +61,6 @@ it(`App correctly renders after relaunch`, () => {
       <App
         cityCoords={cityCoords}
         citiesPlaces={citiesPlaces}
-        onClickCardHeader={jest.fn()}
-        onClickCardImage={jest.fn()}
       />
   )
   .toJSON();

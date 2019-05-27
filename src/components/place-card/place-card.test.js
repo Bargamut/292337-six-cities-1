@@ -26,7 +26,6 @@ const mock = {
       rating: 0
     }
   ],
-  clickHeaderHandler: jest.fn(),
   clickImageHandler: jest.fn(),
   onActivate: jest.fn(),
   onDeactivate: jest.fn()
@@ -35,7 +34,6 @@ const mock = {
 it(`PlaceCard correctly renders after relaunch`, () => {
   const {
     places,
-    clickHeaderHandler,
     clickImageHandler,
     onActivate,
     onDeactivate
@@ -44,7 +42,6 @@ it(`PlaceCard correctly renders after relaunch`, () => {
   const placeCard = renderer.create(
       <PlaceCard
         place={places[0]}
-        onClickHeader={clickHeaderHandler}
         onClickImage={clickImageHandler}
         onActivate={onActivate}
         onDeactivate={onDeactivate}
@@ -58,7 +55,6 @@ it(`PlaceCard correctly renders after relaunch`, () => {
 it(`PlaceCard WITH MARK correctly renders after relaunch`, () => {
   const {
     places,
-    clickHeaderHandler,
     clickImageHandler,
     onActivate,
     onDeactivate
@@ -67,7 +63,6 @@ it(`PlaceCard WITH MARK correctly renders after relaunch`, () => {
   const placeCard = renderer.create(
       <PlaceCard
         place={places[1]}
-        onClickHeader={clickHeaderHandler}
         onClickImage={clickImageHandler}
         onActivate={onActivate}
         onDeactivate={onDeactivate}

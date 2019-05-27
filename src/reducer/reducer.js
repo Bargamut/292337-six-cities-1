@@ -50,6 +50,7 @@ const initialState = {
   ]
 };
 
+// eslint-disable-next-line no-unused-vars
 const BusinessLogic = {};
 
 const ActionCreators = {
