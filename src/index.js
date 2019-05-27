@@ -4,27 +4,20 @@ import App from './components/app/app.jsx';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 
-import settings from './mocks/settings';
-import offers from './mocks/offers';
-import {reducer} from '../reducer/reducer.js';
+import {reducer} from './reducer/reducer.js.js';
 
 const store = createStore(
     reducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-const init = (citiesPlaces, appSettings) => {
+const init = () => {
   ReactDOM.render(
       <Provider store={store}>
-        <App
-          cityCoords={appSettings.cityCoords}
-          citiesPlaces={citiesPlaces}
-          onClickCardHeader={appSettings.onClickCardHeader}
-          onClickCardImage={appSettings.onClickCardImage}
-        />
+        <App />
       </Provider>,
       document.querySelector(`#root`)
   );
 };
 
-init(offers, settings);
+init();

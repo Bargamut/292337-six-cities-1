@@ -70,13 +70,19 @@ const reducer = function (state, action) {
   const updatedState = {};
 
   switch (action.type) {
-    case `CHANGE_CITY`: Object.assign(updatedState, state, {
-      cityCoords: action.payload
-    }); break;
-    case `GET_OFFERS`: Object.assign(updatedState, state, {
-      offers: action.payload
-    }); break;
-    default: Object.assign(updatedState, initialState); break;
+    case `CHANGE_CITY`:
+      Object.assign(updatedState, state, {
+        cityCoords: action.payload
+      });
+      break;
+    case `GET_OFFERS`:
+      Object.assign(updatedState, state, {
+        offers: action.payload
+      });
+      break;
+    default:
+      Object.assign(updatedState, initialState);
+      break;
   }
 
   return updatedState;

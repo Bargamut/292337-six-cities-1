@@ -16,11 +16,7 @@ class PlacesList extends PureComponent {
   }
 
   render() {
-    const {
-      citiesPlaces,
-      onClickCardHeader,
-      onClickCardImage
-    } = this.props;
+    const {citiesPlaces} = this.props;
 
     return (
       <div className="cities__places-list places__list tabs__content">
@@ -28,8 +24,6 @@ class PlacesList extends PureComponent {
           <PlaceCard
             key={`place-card-${i}`}
             place={place}
-            onClickHeader={onClickCardHeader}
-            onClickImage={onClickCardImage}
             onActivate={this._activateCard}
             onDeactivate={this._deactivateCard}
           />
@@ -73,9 +67,7 @@ PlacesList.propTypes = {
         }).isRequired,
         rating: PropTypes.number.isRequired
       })
-  ).isRequired,
-  onClickCardHeader: PropTypes.func.isRequired,
-  onClickCardImage: PropTypes.func.isRequired
+  ).isRequired
 };
 
 export default PlacesList;

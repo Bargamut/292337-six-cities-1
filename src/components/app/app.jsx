@@ -1,15 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {ActionCreators} from '../../reducer/reducer';
 import MainPage from '../main/main.jsx';
 
 const App = (props) => {
-  const {cityCoords, citiesPlaces, onClickCardHeader, onClickCardImage} = props;
+  const {
+    cityCoords,
+    citiesPlaces
+  } = props;
 
   return <MainPage
     cityCoords={cityCoords}
     citiesPlaces={citiesPlaces}
-    onClickCardHeader={onClickCardHeader}
-    onClickCardImage={onClickCardImage}
   />;
 };
 
@@ -28,10 +31,28 @@ App.propTypes = {
         rating: PropTypes.number.isRequired,
         coords: PropTypes.arrayOf(PropTypes.number).isRequired
       })
-  ).isRequired,
-  onClickCardHeader: PropTypes.func.isRequired,
-  onClickCardImage: PropTypes.func.isRequired
+  ).isRequired
 };
 
 
-export default App;
+const mapStateToProps = (state, ownProps) => {
+  return Object.assign({}, ownProps, {
+    cityCoords: state.cityCoords,
+    citiesPlaces: state.citiesPlaces
+  });
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onChangeCity: (city) => {
+      dispatch(ActionCreators[`CHANGE_CITY`](city));
+    },
+    onGetPlaces: (city) => {
+      dispatch(ActionCreators[`GET_OFFERS`](city));
+    }
+  };
+};
+
+export {App};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

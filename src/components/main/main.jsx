@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import PlacesList from '../places-list/places-list.jsx';
 import CitiesMap from '../cities-map/cities-map.jsx';
 
-const MainPage = ({cityCoords, citiesPlaces, onClickCardHeader, onClickCardImage}) => {
+const MainPage = ({cityCoords, citiesPlaces}) => {
   return (
     <div>
       <div style={{display: `none`}}>
@@ -102,8 +102,6 @@ const MainPage = ({cityCoords, citiesPlaces, onClickCardHeader, onClickCardImage
 
               <PlacesList
                 citiesPlaces={citiesPlaces}
-                onClickCardHeader={onClickCardHeader}
-                onClickCardImage={onClickCardImage}
               />
             </section>
 
@@ -142,9 +140,7 @@ MainPage.propTypes = {
         rating: PropTypes.number.isRequired,
         coords: PropTypes.arrayOf(PropTypes.number).isRequired
       })
-  ).isRequired,
-  onClickCardHeader: PropTypes.func.isRequired,
-  onClickCardImage: PropTypes.func.isRequired
+  ).isRequired
 };
 
 export default MainPage;
