@@ -39,6 +39,7 @@ const MainPage = ({city, cities, citiesPlaces, onChangeCity}) => {
         <h1 className="visually-hidden">Cities</h1>
 
         <CitiesList
+          city={city}
           cities={cities}
           onChangeCity={onChangeCity}
         />

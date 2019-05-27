@@ -8,6 +8,7 @@ configure({adapter: new Adatper()});
 const mock = {
   places: [
     {
+      city: `Amsterdam`,
       type: `Apartment`,
       img: ``,
       mark: `Premium`,
@@ -28,6 +29,7 @@ it(`SET Places List state active card correctly`, () => {
 
   const placesList = mount(
       <PlacesList
+        city="Amsterdam"
         citiesPlaces={citiesPlaces}
       />
   );
@@ -46,6 +48,7 @@ it(`CLEAR Places List state active card correctly`, () => {
 
   const placesList = mount(
       <PlacesList
+        city="Amsterdam"
         citiesPlaces={citiesPlaces}
       />
   );

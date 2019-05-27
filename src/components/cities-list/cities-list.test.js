@@ -19,6 +19,7 @@ it(`Cities List correctly renders`, () => {
 
   const citiesList = renderer.create(
       <CitiesList
+        city="Amsterdam"
         cities={cities}
         onChangeCity={jest.fn()}
       />

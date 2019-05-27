@@ -1,14 +1,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {App} from './app.jsx';
-import offers from '../../mocks/offers';
-
 
 const mock = {
   city: `Amsterdam`,
   citiesPlaces: [
     {
-      city: `Asterdam`,
+      city: `Amsterdam`,
       type: `Apartment`,
       img: ``,
       mark: `Premium`,
