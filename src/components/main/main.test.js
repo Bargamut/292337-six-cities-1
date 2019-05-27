@@ -3,9 +3,11 @@ import renderer from 'react-test-renderer';
 import MainPage from './main.jsx';
 
 const mock = {
-  cityCoords: [0, 0],
+  city: `Amsterdam`,
+  cities: [`Berlin`, `Amsterdam`],
   places: [
     {
+      city: `Amsterdam`,
       type: `Apartment`,
       img: ``,
       mark: `Premium`,
@@ -21,12 +23,14 @@ const mock = {
 };
 
 it(`MainPage correctly renders after relaunch`, () => {
-  const {cityCoords, places} = mock;
+  const {city, cities, places} = mock;
 
   const mainPage = renderer.create(
       <MainPage
-        cityCoords={cityCoords}
+        city={city}
+        cities={cities}
         citiesPlaces={places}
+        onChangeCity={jest.fn()}
       />
   ).toJSON();
 

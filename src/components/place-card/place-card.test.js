@@ -5,6 +5,7 @@ import PlaceCard from './place-card.jsx';
 const mock = {
   places: [
     {
+      city: `Amsterdam`,
       type: `Apartment`,
       img: ``,
       name: ``,
@@ -15,6 +16,7 @@ const mock = {
       rating: 0
     },
     {
+      city: `Amsterdam`,
       type: `Private room`,
       img: ``,
       mark: `Premium`,

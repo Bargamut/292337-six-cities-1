@@ -26,7 +26,7 @@ it(`Should get empty offers by city`, () => {
     city: `Amsterdam`,
     offers: mockOffers
   }, {
-    type: `GET_OFFERS`,
+    type: `CHANGE_OFFERS`,
     payload: []
   })).toEqual({
     city: `Amsterdam`,

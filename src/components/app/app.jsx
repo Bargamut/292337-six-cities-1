@@ -6,20 +6,27 @@ import MainPage from '../main/main.jsx';
 
 const App = (props) => {
   const {
-    cityCoords,
-    citiesPlaces
+    city,
+    cities,
+    citiesPlaces,
+    onChangeCity
   } = props;
 
   return <MainPage
-    cityCoords={cityCoords}
+    city={city}
+    cities={cities}
     citiesPlaces={citiesPlaces}
+    onChangeCity={onChangeCity}
   />;
 };
 
 App.propTypes = {
-  cityCoords: PropTypes.arrayOf(PropTypes.number).isRequired,
+  city: PropTypes.string.isRequired,
+  cities: PropTypes.arrayOf(PropTypes.string).isRequired,
   citiesPlaces: PropTypes.arrayOf(
       PropTypes.shape({
+        city: PropTypes.string.isRequired,
+        coords: PropTypes.arrayOf(PropTypes.number).isRequired,
         type: PropTypes.oneOf([`Apartment`, `Private room`]).isRequired,
         img: PropTypes.string.isRequired,
         mark: PropTypes.oneOf([`Premium`]),
@@ -28,17 +35,20 @@ App.propTypes = {
           value: PropTypes.number.isRequired,
           currency: PropTypes.oneOf([`€`]).isRequired
         }).isRequired,
-        rating: PropTypes.number.isRequired,
-        coords: PropTypes.arrayOf(PropTypes.number).isRequired
+        rating: PropTypes.number.isRequired
       })
-  ).isRequired
+  ).isRequired,
+  onChangeCity: PropTypes.func.isRequired
 };
 
 
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
-    cityCoords: state.cityCoords,
-    citiesPlaces: state.citiesPlaces
+    city: state.city,
+    cities: [...new Set(state.offers.map((offer) => {
+      return offer.city;
+    }))],
+    offers: state.offers
   });
 };
 
@@ -46,9 +56,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onChangeCity: (city) => {
       dispatch(ActionCreators[`CHANGE_CITY`](city));
-    },
-    onGetPlaces: (city) => {
-      dispatch(ActionCreators[`GET_OFFERS`](city));
     }
   };
 };

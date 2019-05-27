@@ -5,6 +5,7 @@ import PlacesList from './places-list.jsx';
 const mock = {
   citiesPlaces: [
     {
+      city: `Amsterdam`,
       type: `Apartment`,
       img: ``,
       mark: `Premium`,
@@ -16,6 +17,7 @@ const mock = {
       rating: 0
     },
     {
+      city: `Berlin`,
       type: `Private room`,
       img: ``,
       name: ``,
@@ -26,6 +28,7 @@ const mock = {
       rating: 0
     },
     {
+      city: `Sydney`,
       type: `Apartment`,
       img: ``,
       name: ``,
@@ -36,6 +39,7 @@ const mock = {
       rating: 0
     },
     {
+      city: `Saint-Petersburg`,
       type: `Apartment`,
       img: ``,
       mark: `Premium`,
