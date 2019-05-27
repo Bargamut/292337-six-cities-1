@@ -17,7 +17,7 @@ const ActionCreators = {
   },
   'CHANGE_OFFERS': (offers) => {
     return {
-      type: `GET_OFFERS`,
+      type: `CHANGE_OFFERS`,
       payload: offers
     };
   }
@@ -32,7 +32,7 @@ const reducer = function (state, action) {
         city: action.payload
       });
       break;
-    case `GET_OFFERS`:
+    case `CHANGE_OFFERS`:
       Object.assign(updatedState, state, {
         offers: action.payload
       });
