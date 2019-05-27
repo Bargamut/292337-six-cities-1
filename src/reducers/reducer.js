@@ -1,8 +1,8 @@
-import offers from '../mocks/offers.js';
+import mockOffers from '../mocks/offers.js';
 
 const initialState = {
   city: `Amsterdam`,
-  offers
+  offers: mockOffers
 };
 
 // eslint-disable-next-line no-unused-vars
@@ -15,10 +15,10 @@ const ActionCreators = {
       payload: city
     };
   },
-  'GET_OFFERS': (city) => {
+  'CHANGE_OFFERS': (offers) => {
     return {
       type: `GET_OFFERS`,
-      payload: city
+      payload: offers
     };
   }
 };

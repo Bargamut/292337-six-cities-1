@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreators} from '../../reducer/reducer';
+import {ActionCreators} from '../../reducers/reducer';
 import MainPage from '../main/main.jsx';
 
 const App = (props) => {

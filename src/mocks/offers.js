@@ -21,10 +21,10 @@ const offers = [
       currency: `€`
     },
     rating: 80,
-    coords: [52.369553943508, 4.85309666406198]
-  },
-  {,
+    coords: [52.369553943508, 4.85309666406198],
     city: `Amsterdam`
+  },
+  {
     type: `Apartment`,
     img: `img/apartment-02.jpg`,
     name: `Canal View Prinsengracht`,
@@ -33,10 +33,10 @@ const offers = [
       currency: `€`
     },
     rating: 80,
-    coords: [52.3909553943508, 4.929309666406198]
-  },
-  {,
+    coords: [52.3909553943508, 4.929309666406198],
     city: `Amsterdam`
+  },
+  {
     type: `Apartment`,
     img: `img/apartment-03.jpg`,
     mark: `Premium`,
