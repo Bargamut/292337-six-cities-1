@@ -2,7 +2,7 @@ import mockOffers from '../mocks/offers.js';
 
 const initialState = {
   city: `Amsterdam`,
-  offers: mockOffers
+  citiesPlaces: mockOffers
 };
 
 // eslint-disable-next-line no-unused-vars
@@ -34,7 +34,7 @@ const reducer = function (state, action) {
       break;
     case `CHANGE_OFFERS`:
       Object.assign(updatedState, state, {
-        offers: action.payload
+        citiesPlaces: action.payload
       });
       break;
     default:

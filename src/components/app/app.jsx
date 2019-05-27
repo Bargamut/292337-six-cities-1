@@ -45,10 +45,10 @@ App.propTypes = {
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
     city: state.city,
-    cities: [...new Set(state.offers.map((offer) => {
+    cities: [...new Set(state.citiesPlaces.map((offer) => {
       return offer.city;
     }))],
-    offers: state.offers
+    citiesPlaces: state.citiesPlaces
   });
 };
 
