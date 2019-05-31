@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import PlacesList from '../places-list/places-list.jsx';
 import CitiesMap from '../cities-map/cities-map.jsx';
+import CitiesList from '../cities-list/cities-list.jsx';
 
-const MainPage = ({cityCoords, citiesPlaces, onClickCardHeader, onClickCardImage}) => {
+const MainPage = ({city, cities, citiesPlaces, onChangeCity}) => {
   return (
     <div>
       <div style={{display: `none`}}>
@@ -35,47 +37,18 @@ const MainPage = ({cityCoords, citiesPlaces, onClickCardHeader, onClickCardImage
 
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
-        <div className="cities tabs">
-          <section className="locations container">
-            <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Paris</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Cologne</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Brussels</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active">
-                  <span>Amsterdam</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Hamburg</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Dusseldorf</span>
-                </a>
-              </li>
-            </ul>
-          </section>
-        </div>
+
+        <CitiesList
+          city={city}
+          cities={cities}
+          onChangeCity={onChangeCity}
+        />
+
         <div className="cities__places-wrapper">
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">312 places to stay in Amsterdam</b>
+              <b className="places__found">{citiesPlaces.length} {citiesPlaces.length === 1 ? `place` : `places`} to stay in {city}</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">
@@ -101,15 +74,14 @@ const MainPage = ({cityCoords, citiesPlaces, onClickCardHeader, onClickCardImage
               </form>
 
               <PlacesList
+                city={city}
                 citiesPlaces={citiesPlaces}
-                onClickCardHeader={onClickCardHeader}
-                onClickCardImage={onClickCardImage}
               />
             </section>
 
             <div className="cities__right-section">
               <CitiesMap
-                city={cityCoords}
+                city={city}
                 placesCoords={
                   citiesPlaces.reduce((placesCoords, currentPlace) => {
                     placesCoords.push(currentPlace.coords);
@@ -128,12 +100,13 @@ const MainPage = ({cityCoords, citiesPlaces, onClickCardHeader, onClickCardImage
 };
 
 MainPage.propTypes = {
-  cityCoords: PropTypes.arrayOf(PropTypes.number).isRequired,
+  city: PropTypes.string.isRequired,
+  cities: PropTypes.arrayOf(PropTypes.string),
   citiesPlaces: PropTypes.arrayOf(
       PropTypes.shape({
         type: PropTypes.oneOf([`Apartment`, `Private room`]).isRequired,
         img: PropTypes.string.isRequired,
-        mark: PropTypes.oneOf([`Premium`]),
+        mark: PropTypes.oneOf([``, `Premium`]),
         name: PropTypes.string.isRequired,
         price: PropTypes.shape({
           value: PropTypes.number.isRequired,
@@ -143,8 +116,7 @@ MainPage.propTypes = {
         coords: PropTypes.arrayOf(PropTypes.number).isRequired
       })
   ).isRequired,
-  onClickCardHeader: PropTypes.func.isRequired,
-  onClickCardImage: PropTypes.func.isRequired
+  onChangeCity: PropTypes.func
 };
 
 export default MainPage;

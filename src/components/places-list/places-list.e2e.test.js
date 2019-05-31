@@ -8,6 +8,7 @@ configure({adapter: new Adatper()});
 const mock = {
   places: [
     {
+      city: `Amsterdam`,
       type: `Apartment`,
       img: ``,
       mark: `Premium`,
@@ -19,22 +20,17 @@ const mock = {
       rating: 0
     }
   ],
-  onClickCardHeader: jest.fn(),
-  onClickCardImage: jest.fn()
 };
 
 it(`SET Places List state active card correctly`, () => {
   const {
     places: citiesPlaces,
-    onClickCardHeader,
-    onClickCardImage
   } = mock;
 
   const placesList = mount(
       <PlacesList
+        city="Amsterdam"
         citiesPlaces={citiesPlaces}
-        onClickCardHeader={onClickCardHeader}
-        onClickCardImage={onClickCardImage}
       />
   );
 
@@ -48,15 +44,12 @@ it(`SET Places List state active card correctly`, () => {
 it(`CLEAR Places List state active card correctly`, () => {
   const {
     places: citiesPlaces,
-    onClickCardHeader,
-    onClickCardImage
   } = mock;
 
   const placesList = mount(
       <PlacesList
+        city="Amsterdam"
         citiesPlaces={citiesPlaces}
-        onClickCardHeader={onClickCardHeader}
-        onClickCardImage={onClickCardImage}
       />
   );
 

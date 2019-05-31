@@ -1,11 +1,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from './app.jsx';
+import {App} from './app.jsx';
 
 const mock = {
-  cityCoords: [52.38333, 4.9],
+  city: `Amsterdam`,
   citiesPlaces: [
     {
+      city: `Amsterdam`,
       type: `Apartment`,
       img: ``,
       mark: `Premium`,
@@ -18,6 +19,7 @@ const mock = {
       coords: [0, 0]
     },
     {
+      city: `Berlin`,
       type: `Private room`,
       img: ``,
       name: ``,
@@ -29,6 +31,7 @@ const mock = {
       coords: [0, 0]
     },
     {
+      city: `London`,
       type: `Apartment`,
       img: ``,
       name: ``,
@@ -40,6 +43,7 @@ const mock = {
       coords: [0, 0]
     },
     {
+      city: `Saint-Petersburg`,
       type: `Apartment`,
       img: ``,
       mark: `Premium`,
@@ -55,14 +59,18 @@ const mock = {
 };
 
 it(`App correctly renders after relaunch`, () => {
-  const {cityCoords, citiesPlaces} = mock;
+  const {city, citiesPlaces} = mock;
 
   const app = renderer.create(
       <App
-        cityCoords={cityCoords}
+        city={city}
+        cities={[
+          ...new Set(citiesPlaces.map((place) => {
+            return place.city;
+          }))
+        ]}
         citiesPlaces={citiesPlaces}
-        onClickCardHeader={jest.fn()}
-        onClickCardImage={jest.fn()}
+        onChangeCity={jest.fn()}
       />
   )
   .toJSON();

@@ -5,10 +5,11 @@ import PlacesList from './places-list.jsx';
 const mock = {
   citiesPlaces: [
     {
+      city: `Amsterdam`,
       type: `Apartment`,
       img: ``,
       mark: `Premium`,
-      name: ``,
+      name: `Amsterdam Apartment Premium`,
       price: {
         value: 0,
         currency: `€`
@@ -16,9 +17,10 @@ const mock = {
       rating: 0
     },
     {
+      city: `Berlin`,
       type: `Private room`,
       img: ``,
-      name: ``,
+      name: `Berlin Private room`,
       price: {
         value: 0,
         currency: `€`
@@ -26,9 +28,10 @@ const mock = {
       rating: 0
     },
     {
+      city: `Sydney`,
       type: `Apartment`,
       img: ``,
-      name: ``,
+      name: `Sydney Apartment`,
       price: {
         value: 0,
         currency: `€`
@@ -36,10 +39,23 @@ const mock = {
       rating: 0
     },
     {
+      city: `Saint-Petersburg`,
       type: `Apartment`,
       img: ``,
       mark: `Premium`,
-      name: ``,
+      name: `Saint-Petersburg Apartment Premium`,
+      price: {
+        value: 0,
+        currency: `€`
+      },
+      rating: 0
+    },
+    {
+      city: `Amsterdam`,
+      type: `Private room`,
+      img: ``,
+      mark: `Premium`,
+      name: `Amsterdam Private room Premium`,
       price: {
         value: 0,
         currency: `€`
@@ -54,9 +70,8 @@ it(`Places List correctly renders`, () => {
 
   const placesList = renderer.create(
       <PlacesList
+        city="Amsterdam"
         citiesPlaces={citiesPlaces}
-        onClickCardHeader={jest.fn()}
-        onClickCardImage={jest.fn()}
       />
   );
 

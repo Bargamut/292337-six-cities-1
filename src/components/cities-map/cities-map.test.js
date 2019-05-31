@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import CitiesMap from './cities-map.jsx';
 
 const mocks = {
-  city: [52.38333, 4.9],
+  city: `Amsterdam`,
   placesCoords: [
     [0, 0],
     [0, 0],

@@ -1,37 +1,65 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {ActionCreators} from '../../reducers/reducer';
 import MainPage from '../main/main.jsx';
 
 const App = (props) => {
-  const {cityCoords, citiesPlaces, onClickCardHeader, onClickCardImage} = props;
+  const {
+    city,
+    cities,
+    citiesPlaces,
+    onChangeCity
+  } = props;
 
   return <MainPage
-    cityCoords={cityCoords}
+    city={city}
+    cities={cities}
     citiesPlaces={citiesPlaces}
-    onClickCardHeader={onClickCardHeader}
-    onClickCardImage={onClickCardImage}
+    onChangeCity={onChangeCity}
   />;
 };
 
 App.propTypes = {
-  cityCoords: PropTypes.arrayOf(PropTypes.number).isRequired,
+  city: PropTypes.string.isRequired,
+  cities: PropTypes.arrayOf(PropTypes.string).isRequired,
   citiesPlaces: PropTypes.arrayOf(
       PropTypes.shape({
+        city: PropTypes.string.isRequired,
+        coords: PropTypes.arrayOf(PropTypes.number).isRequired,
         type: PropTypes.oneOf([`Apartment`, `Private room`]).isRequired,
         img: PropTypes.string.isRequired,
-        mark: PropTypes.oneOf([`Premium`]),
+        mark: PropTypes.oneOf([``, `Premium`]),
         name: PropTypes.string.isRequired,
         price: PropTypes.shape({
           value: PropTypes.number.isRequired,
           currency: PropTypes.oneOf([`€`]).isRequired
         }).isRequired,
-        rating: PropTypes.number.isRequired,
-        coords: PropTypes.arrayOf(PropTypes.number).isRequired
+        rating: PropTypes.number.isRequired
       })
   ).isRequired,
-  onClickCardHeader: PropTypes.func.isRequired,
-  onClickCardImage: PropTypes.func.isRequired
+  onChangeCity: PropTypes.func.isRequired
 };
 
 
-export default App;
+const mapStateToProps = (state, ownProps) => {
+  return Object.assign({}, ownProps, {
+    city: state.city,
+    cities: [...new Set(state.citiesPlaces.map((offer) => {
+      return offer.city;
+    }))],
+    citiesPlaces: state.citiesPlaces
+  });
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onChangeCity: (city) => {
+      dispatch(ActionCreators[`CHANGE_CITY`](city));
+    }
+  };
+};
+
+export {App};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

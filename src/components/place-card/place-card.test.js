@@ -5,6 +5,7 @@ import PlaceCard from './place-card.jsx';
 const mock = {
   places: [
     {
+      city: `Amsterdam`,
       type: `Apartment`,
       img: ``,
       name: ``,
@@ -15,6 +16,7 @@ const mock = {
       rating: 0
     },
     {
+      city: `Amsterdam`,
       type: `Private room`,
       img: ``,
       mark: `Premium`,
@@ -26,7 +28,6 @@ const mock = {
       rating: 0
     }
   ],
-  clickHeaderHandler: jest.fn(),
   clickImageHandler: jest.fn(),
   onActivate: jest.fn(),
   onDeactivate: jest.fn()
@@ -35,7 +36,6 @@ const mock = {
 it(`PlaceCard correctly renders after relaunch`, () => {
   const {
     places,
-    clickHeaderHandler,
     clickImageHandler,
     onActivate,
     onDeactivate
@@ -44,7 +44,6 @@ it(`PlaceCard correctly renders after relaunch`, () => {
   const placeCard = renderer.create(
       <PlaceCard
         place={places[0]}
-        onClickHeader={clickHeaderHandler}
         onClickImage={clickImageHandler}
         onActivate={onActivate}
         onDeactivate={onDeactivate}
@@ -58,7 +57,6 @@ it(`PlaceCard correctly renders after relaunch`, () => {
 it(`PlaceCard WITH MARK correctly renders after relaunch`, () => {
   const {
     places,
-    clickHeaderHandler,
     clickImageHandler,
     onActivate,
     onDeactivate
@@ -67,7 +65,6 @@ it(`PlaceCard WITH MARK correctly renders after relaunch`, () => {
   const placeCard = renderer.create(
       <PlaceCard
         place={places[1]}
-        onClickHeader={clickHeaderHandler}
         onClickImage={clickImageHandler}
         onActivate={onActivate}
         onDeactivate={onDeactivate}

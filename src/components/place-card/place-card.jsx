@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
  * @param {Object} props
  * @return {JSX}
  */
-const PlaceCard = ({place, onClickHeader, onClickImage, onActivate, onDeactivate}) => {
+const PlaceCard = ({place, onClickImage = () => {}, onActivate, onDeactivate}) => {
   const {
     type,
     img,
@@ -59,7 +59,7 @@ const PlaceCard = ({place, onClickHeader, onClickImage, onActivate, onDeactivate
           </div>
         </div>
 
-        <h2 className="place-card__name" onClick={onClickHeader}>
+        <h2 className="place-card__name">
           <a href="#">{placeName}</a>
         </h2>
 
@@ -73,7 +73,7 @@ PlaceCard.propTypes = {
   place: PropTypes.shape({
     type: PropTypes.oneOf([`Apartment`, `Private room`]).isRequired,
     img: PropTypes.string.isRequired,
-    mark: PropTypes.oneOf([`Premium`]),
+    mark: PropTypes.oneOf([``, `Premium`]),
     name: PropTypes.string.isRequired,
     price: PropTypes.shape({
       value: PropTypes.number.isRequired,
@@ -81,8 +81,7 @@ PlaceCard.propTypes = {
     }),
     rating: PropTypes.number.isRequired
   }).isRequired,
-  onClickHeader: PropTypes.func.isRequired,
-  onClickImage: PropTypes.func.isRequired,
+  onClickImage: PropTypes.func,
   onActivate: PropTypes.func.isRequired,
   onDeactivate: PropTypes.func.isRequired
 };
