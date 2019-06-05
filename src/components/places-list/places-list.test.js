@@ -72,6 +72,8 @@ it(`Places List correctly renders`, () => {
       <PlacesList
         city="Amsterdam"
         citiesPlaces={citiesPlaces}
+        onActivateItem={jest.fn()}
+        onDeactivateItem={jest.fn()}
       />
   );
 

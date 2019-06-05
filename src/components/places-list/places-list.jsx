@@ -4,19 +4,8 @@ import PropTypes from 'prop-types';
 import PlaceCard from '../place-card/place-card.jsx';
 
 class PlacesList extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this._activateCard = this._activateCard.bind(this);
-    this._deactivateCard = this._deactivateCard.bind(this);
-
-    this.state = {
-      activeCard: null
-    };
-  }
-
   render() {
-    const {city, citiesPlaces} = this.props;
+    const {city, citiesPlaces, onActivateItem, onDeactivateItem} = this.props;
 
     return (
       <div className="cities__places-list places__list tabs__content">
@@ -26,35 +15,14 @@ class PlacesList extends PureComponent {
               <PlaceCard
                 key={`place-card-${i}`}
                 place={place}
-                onActivate={this._activateCard}
-                onDeactivate={this._deactivateCard}
+                onActivate={onActivateItem}
+                onDeactivate={onDeactivateItem}
               />
             )
             : null;
         })}
       </div>
     );
-  }
-
-  /**
-   * @description Обновить данные об активной карточке
-   * @author Paul "Bargamut" Petrov
-   * @date 2019-05-13
-   * @param {Object} place Данные карточки
-   * @memberof PlacesList
-   */
-  _activateCard(place) {
-    this.setState({activeCard: place});
-  }
-
-  /**
-   * @description Очистить данные о последней активной карточке
-   * @author Paul "Bargamut" Petrov
-   * @date 2019-05-13
-   * @memberof PlacesList
-   */
-  _deactivateCard() {
-    this.setState({activeCard: null});
   }
 }
 
@@ -72,7 +40,9 @@ PlacesList.propTypes = {
         }).isRequired,
         rating: PropTypes.number.isRequired
       })
-  ).isRequired
+  ).isRequired,
+  onActivateItem: PropTypes.func,
+  onDeactivateItem: PropTypes.func
 };
 
 export default PlacesList;
