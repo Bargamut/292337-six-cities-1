@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CitiesList = ({city, cities, onChangeCity}) => {
+const CitiesList = ({city, cities, onChangeCity, onActivateItem}) => {
   return (
     <div className="cities tabs">
       <section className="locations container">
@@ -15,6 +15,7 @@ const CitiesList = ({city, cities, onChangeCity}) => {
                   onClick={(evt) => {
                     evt.preventDefault();
 
+                    onActivateItem(cityName);
                     onChangeCity(cityName);
                   }}
                 >
@@ -32,7 +33,8 @@ const CitiesList = ({city, cities, onChangeCity}) => {
 CitiesList.propTypes = {
   city: PropTypes.string.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onChangeCity: PropTypes.func
+  onChangeCity: PropTypes.func,
+  onActivateItem: PropTypes.func
 };
 
 export default CitiesList;

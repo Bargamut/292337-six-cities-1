@@ -5,6 +5,11 @@ import PlacesList from '../places-list/places-list.jsx';
 import CitiesMap from '../cities-map/cities-map.jsx';
 import CitiesList from '../cities-list/cities-list.jsx';
 
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
+
+const PlacesListWrapped = withActiveItem(PlacesList);
+const CitiesListWrapped = withActiveItem(CitiesList);
+
 const MainPage = ({city, cities, citiesPlaces, onChangeCity}) => {
   return (
     <div>
@@ -38,7 +43,7 @@ const MainPage = ({city, cities, citiesPlaces, onChangeCity}) => {
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
 
-        <CitiesList
+        <CitiesListWrapped
           city={city}
           cities={cities}
           onChangeCity={onChangeCity}
@@ -73,7 +78,7 @@ const MainPage = ({city, cities, citiesPlaces, onChangeCity}) => {
                 --> */}
               </form>
 
-              <PlacesList
+              <PlacesListWrapped
                 city={city}
                 citiesPlaces={citiesPlaces}
               />
