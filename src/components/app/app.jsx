@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreators} from '../../reducers/reducer';
+import {ActionCreator} from '../../reducer/data/data';
+import {
+  getSelectedPlaces,
+  getCities,
+  getCity
+} from '../../reducer/data/selectors';
 import MainPage from '../main/main.jsx';
 
 const App = (props) => {
@@ -23,39 +28,22 @@ const App = (props) => {
 App.propTypes = {
   city: PropTypes.string.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
-  citiesPlaces: PropTypes.arrayOf(
-      PropTypes.shape({
-        city: PropTypes.string.isRequired,
-        coords: PropTypes.arrayOf(PropTypes.number).isRequired,
-        type: PropTypes.oneOf([`Apartment`, `Private room`]).isRequired,
-        img: PropTypes.string.isRequired,
-        mark: PropTypes.oneOf([``, `Premium`]),
-        name: PropTypes.string.isRequired,
-        price: PropTypes.shape({
-          value: PropTypes.number.isRequired,
-          currency: PropTypes.oneOf([`€`]).isRequired
-        }).isRequired,
-        rating: PropTypes.number.isRequired
-      })
-  ).isRequired,
+  citiesPlaces: PropTypes.array.isRequired,
   onChangeCity: PropTypes.func.isRequired
 };
 
-
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
-    city: state.city,
-    cities: [...new Set(state.citiesPlaces.map((offer) => {
-      return offer.city;
-    }))],
-    citiesPlaces: state.citiesPlaces
+    city: getCity(state),
+    cities: getCities(state),
+    citiesPlaces: getSelectedPlaces(state)
   });
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onChangeCity: (city) => {
-      dispatch(ActionCreators[`CHANGE_CITY`](city));
+      dispatch(ActionCreator.changeCity(city));
     }
   };
 };

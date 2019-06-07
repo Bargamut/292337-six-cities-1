@@ -79,7 +79,6 @@ const MainPage = ({city, cities, citiesPlaces, onChangeCity}) => {
               </form>
 
               <PlacesListWrapped
-                city={city}
                 citiesPlaces={citiesPlaces}
               />
             </section>
@@ -89,7 +88,12 @@ const MainPage = ({city, cities, citiesPlaces, onChangeCity}) => {
                 city={city}
                 placesCoords={
                   citiesPlaces.reduce((placesCoords, currentPlace) => {
-                    placesCoords.push(currentPlace.coords);
+                    const coords = [
+                      currentPlace.location.latitude,
+                      currentPlace.location.longitude
+                    ];
+
+                    placesCoords.push(coords);
 
                     return placesCoords;
                   }, [])
@@ -107,20 +111,7 @@ const MainPage = ({city, cities, citiesPlaces, onChangeCity}) => {
 MainPage.propTypes = {
   city: PropTypes.string.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string),
-  citiesPlaces: PropTypes.arrayOf(
-      PropTypes.shape({
-        type: PropTypes.oneOf([`Apartment`, `Private room`]).isRequired,
-        img: PropTypes.string.isRequired,
-        mark: PropTypes.oneOf([``, `Premium`]),
-        name: PropTypes.string.isRequired,
-        price: PropTypes.shape({
-          value: PropTypes.number.isRequired,
-          currency: PropTypes.oneOf([`€`]).isRequired
-        }).isRequired,
-        rating: PropTypes.number.isRequired,
-        coords: PropTypes.arrayOf(PropTypes.number).isRequired
-      })
-  ).isRequired,
+  citiesPlaces: PropTypes.arrayOf(PropTypes.object).isRequired,
   onChangeCity: PropTypes.func
 };
 

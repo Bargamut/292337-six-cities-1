@@ -2,22 +2,30 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import MainPage from './main.jsx';
 
+/* eslint-disable camelcase */
+
 const mock = {
   city: `Amsterdam`,
   cities: [`Berlin`, `Amsterdam`],
   places: [
     {
-      city: `Amsterdam`,
-      type: `Apartment`,
-      img: ``,
-      mark: `Premium`,
-      name: ``,
-      price: {
-        value: 0,
-        currency: `€`,
+      city: {
+        name: `Amsterdam`,
+        location: {
+          latitude: 0,
+          longitude: 0
+        }
       },
+      type: `Apartment`,
+      preview_image: ``,
+      is_premium: true,
+      title: ``,
+      price: 0,
       rating: 0,
-      coords: [0, 0]
+      location: {
+        latitude: 0,
+        longitude: 0
+      }
     }
   ]
 };

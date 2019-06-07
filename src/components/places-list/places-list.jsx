@@ -5,21 +5,19 @@ import PlaceCard from '../place-card/place-card.jsx';
 
 class PlacesList extends PureComponent {
   render() {
-    const {city, citiesPlaces, onActivateItem, onDeactivateItem} = this.props;
+    const {citiesPlaces, onActivateItem, onDeactivateItem} = this.props;
 
     return (
       <div className="cities__places-list places__list tabs__content">
         {citiesPlaces.map((place, i) => {
-          return (place.city === city)
-            ? (
-              <PlaceCard
-                key={`place-card-${i}`}
-                place={place}
-                onActivate={onActivateItem}
-                onDeactivate={onDeactivateItem}
-              />
-            )
-            : null;
+          return (
+            <PlaceCard
+              key={`place-card-${i}`}
+              place={place}
+              onActivate={onActivateItem}
+              onDeactivate={onDeactivateItem}
+            />
+          );
         })}
       </div>
     );
@@ -27,20 +25,7 @@ class PlacesList extends PureComponent {
 }
 
 PlacesList.propTypes = {
-  city: PropTypes.string.isRequired,
-  citiesPlaces: PropTypes.arrayOf(
-      PropTypes.shape({
-        type: PropTypes.oneOf([`Apartment`, `Private room`]).isRequired,
-        img: PropTypes.string.isRequired,
-        mark: PropTypes.oneOf([``, `Premium`]),
-        name: PropTypes.string.isRequired,
-        price: PropTypes.shape({
-          value: PropTypes.number.isRequired,
-          currency: PropTypes.oneOf([`€`]).isRequired
-        }).isRequired,
-        rating: PropTypes.number.isRequired
-      })
-  ).isRequired,
+  citiesPlaces: PropTypes.array.isRequired,
   onActivateItem: PropTypes.func,
   onDeactivateItem: PropTypes.func
 };
