@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {ActionCreator} from './reducers/reducer';
 
-export const createAPI = (dispatch) => {
+export const configureAPI = (dispatch) => {
   const api = axios.create({
     baseURL: `https://es31-server.appspot.com/six-cities`,
     timeout: 5000,
