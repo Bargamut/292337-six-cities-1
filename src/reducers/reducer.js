@@ -1,5 +1,3 @@
-import mockOffers from '../mocks/offers.js';
-
 const initialState = {
   city: `Amsterdam`,
   citiesPlaces: mockOffers
@@ -8,7 +6,7 @@ const initialState = {
 // eslint-disable-next-line no-unused-vars
 const BusinessLogic = {};
 
-const ActionCreators = {
+const ActionCreator = {
   'CHANGE_CITY': (city) => {
     return {
       type: `CHANGE_CITY`,
@@ -45,4 +43,4 @@ const reducer = function (state, action) {
   return updatedState;
 };
 
-export {reducer, ActionCreators};
+export {reducer, ActionCreator};

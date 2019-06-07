@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreators} from '../../reducers/reducer';
+import {ActionCreator} from '../../reducers/reducer';
 import MainPage from '../main/main.jsx';
 
 const App = (props) => {
@@ -55,7 +55,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onChangeCity: (city) => {
-      dispatch(ActionCreators[`CHANGE_CITY`](city));
+      dispatch(ActionCreator[`CHANGE_CITY`](city));
     }
   };
 };
