@@ -2,7 +2,6 @@ import MockAdapter from 'axios-mock-adapter';
 import {configureAPI} from '../../api';
 import {
   ActionType,
-  ActionCreator,
   reducer,
   Operation
 } from './data';
