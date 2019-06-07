@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducers/reducer';
+import {ActionCreator} from '../../reducer/reducer';
 import MainPage from '../main/main.jsx';
 
 const App = (props) => {
@@ -20,33 +20,20 @@ const App = (props) => {
   />;
 };
 
+/* eslint-disable camelcase */
 App.propTypes = {
   city: PropTypes.string.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
-  citiesPlaces: PropTypes.arrayOf(
-      PropTypes.shape({
-        city: PropTypes.string.isRequired,
-        coords: PropTypes.arrayOf(PropTypes.number).isRequired,
-        type: PropTypes.oneOf([`Apartment`, `Private room`]).isRequired,
-        img: PropTypes.string.isRequired,
-        mark: PropTypes.oneOf([``, `Premium`]),
-        name: PropTypes.string.isRequired,
-        price: PropTypes.shape({
-          value: PropTypes.number.isRequired,
-          currency: PropTypes.oneOf([`€`]).isRequired
-        }).isRequired,
-        rating: PropTypes.number.isRequired
-      })
-  ).isRequired,
+  citiesPlaces: PropTypes.array.isRequired,
   onChangeCity: PropTypes.func.isRequired
 };
-
+/* eslint-enable */
 
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
     city: state.city,
     cities: [...new Set(state.citiesPlaces.map((offer) => {
-      return offer.city;
+      return offer.city.name;
     }))],
     citiesPlaces: state.citiesPlaces
   });
@@ -55,7 +42,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onChangeCity: (city) => {
-      dispatch(ActionCreator[`CHANGE_CITY`](city));
+      dispatch(ActionCreator.changeCity(city));
     }
   };
 };

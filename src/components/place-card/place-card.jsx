@@ -9,9 +9,9 @@ import PropTypes from 'prop-types';
 const PlaceCard = ({place, onClickImage = () => {}, onActivate, onDeactivate}) => {
   const {
     type,
-    img,
-    mark,
-    name: placeName,
+    preview_image,
+    is_premium,
+    title,
     price,
     rating
   } = place;
@@ -22,9 +22,9 @@ const PlaceCard = ({place, onClickImage = () => {}, onActivate, onDeactivate}) =
     }} onMouseLeave={() => {
       onDeactivate();
     }}>
-      {mark ? (
+      {is_premium ? (
         <div className="place-card__mark">
-          <span>{mark}</span>
+          <span>Premium</span>
         </div>
       ) : ``}
       <div className="cities__image-wrapper place-card__image-wrapper"
@@ -32,14 +32,14 @@ const PlaceCard = ({place, onClickImage = () => {}, onActivate, onDeactivate}) =
           onClickImage(place);
         }}>
         <a href="#">
-          <img className="place-card__image" src={img} width="260" height="200" alt="Place image" />
+          <img className="place-card__image" src={preview_image} width="260" height="200" alt="Place image" />
         </a>
       </div>
 
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
-            <b className="place-card__price-value">{price.currency}{price.value}</b>
+            <b className="place-card__price-value">&euro; {price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
 
@@ -60,7 +60,7 @@ const PlaceCard = ({place, onClickImage = () => {}, onActivate, onDeactivate}) =
         </div>
 
         <h2 className="place-card__name">
-          <a href="#">{placeName}</a>
+          <a href="#">{title}</a>
         </h2>
 
         <p className="place-card__type">{type}</p>
@@ -70,17 +70,7 @@ const PlaceCard = ({place, onClickImage = () => {}, onActivate, onDeactivate}) =
 };
 
 PlaceCard.propTypes = {
-  place: PropTypes.shape({
-    type: PropTypes.oneOf([`Apartment`, `Private room`]).isRequired,
-    img: PropTypes.string.isRequired,
-    mark: PropTypes.oneOf([``, `Premium`]),
-    name: PropTypes.string.isRequired,
-    price: PropTypes.shape({
-      value: PropTypes.number.isRequired,
-      currency: PropTypes.oneOf([`€`]).isRequired
-    }),
-    rating: PropTypes.number.isRequired
-  }).isRequired,
+  place: PropTypes.object.isRequired,
   onClickImage: PropTypes.func,
   onActivate: PropTypes.func.isRequired,
   onDeactivate: PropTypes.func.isRequired

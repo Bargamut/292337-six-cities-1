@@ -7,7 +7,7 @@ import thunk from 'redux-thunk';
 import {compose} from 'recompose';
 import {configureAPI} from './api';
 
-import {reducer, Operation} from './reducers/reducer.js';
+import {reducer, Operation} from './reducer/reducer';
 
 const init = () => {
   const api = configureAPI((...args) => {

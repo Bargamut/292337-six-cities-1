@@ -10,7 +10,7 @@ class PlacesList extends PureComponent {
     return (
       <div className="cities__places-list places__list tabs__content">
         {citiesPlaces.map((place, i) => {
-          return (place.city === city)
+          return (place.city.name === city)
             ? (
               <PlaceCard
                 key={`place-card-${i}`}
@@ -28,19 +28,7 @@ class PlacesList extends PureComponent {
 
 PlacesList.propTypes = {
   city: PropTypes.string.isRequired,
-  citiesPlaces: PropTypes.arrayOf(
-      PropTypes.shape({
-        type: PropTypes.oneOf([`Apartment`, `Private room`]).isRequired,
-        img: PropTypes.string.isRequired,
-        mark: PropTypes.oneOf([``, `Premium`]),
-        name: PropTypes.string.isRequired,
-        price: PropTypes.shape({
-          value: PropTypes.number.isRequired,
-          currency: PropTypes.oneOf([`€`]).isRequired
-        }).isRequired,
-        rating: PropTypes.number.isRequired
-      })
-  ).isRequired,
+  citiesPlaces: PropTypes.array.isRequired,
   onActivateItem: PropTypes.func,
   onDeactivateItem: PropTypes.func
 };

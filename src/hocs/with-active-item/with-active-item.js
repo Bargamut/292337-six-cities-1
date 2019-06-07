@@ -30,7 +30,7 @@ const withActiveItem = (Component) => {
      * @description Обновить данные об активной карточке
      * @author Paul "Bargamut" Petrov
      * @date 2019-05-13
-     * @param {Object} place Данные карточки
+     * @param {Object} item Данные элемента
      * @memberof PlacesList
      */
     _handleActivateItem(item) {
