@@ -1,6 +1,6 @@
 const initialState = {
   city: `Amsterdam`,
-  citiesPlaces: mockOffers
+  citiesPlaces: []
 };
 
 // eslint-disable-next-line no-unused-vars
