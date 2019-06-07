@@ -20,14 +20,12 @@ const App = (props) => {
   />;
 };
 
-/* eslint-disable camelcase */
 App.propTypes = {
   city: PropTypes.string.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
   citiesPlaces: PropTypes.array.isRequired,
   onChangeCity: PropTypes.func.isRequired
 };
-/* eslint-enable */
 
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
