@@ -2,6 +2,7 @@ import MockAdapter from 'axios-mock-adapter';
 import {configureAPI} from '../../api';
 import {
   ActionType,
+  ActionCreator,
   reducer,
   Operation
 } from './data';
@@ -15,13 +16,13 @@ describe(`Data reducers`, () => {
   });
 
   it(`Should change city`, () => {
-    expect(reducer({
-      city: `Amsterdam`,
-      citiesPlaces: []
-    }, {
-      type: ActionType.CHANGE_CITY,
-      payload: `Berlin`
-    })).toEqual({
+    expect(reducer(
+        {
+          city: `Amsterdam`,
+          citiesPlaces: []
+        },
+        ActionCreator.changeCity(`Berlin`)
+    )).toEqual({
       city: `Berlin`,
       citiesPlaces: []
     });
