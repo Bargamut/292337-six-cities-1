@@ -2,65 +2,102 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import PlacesList from './places-list.jsx';
 
+/* eslint-disable camelcase */
+
 const mock = {
   citiesPlaces: [
     {
-      city: `Amsterdam`,
-      type: `Apartment`,
-      img: ``,
-      mark: `Premium`,
-      name: `Amsterdam Apartment Premium`,
-      price: {
-        value: 0,
-        currency: `€`
+      city: {
+        name: `Amsterdam`,
+        location: {
+          latitude: 0,
+          longitude: 0
+        }
       },
-      rating: 0
+      type: `Apartment`,
+      preview_image: ``,
+      is_premium: true,
+      title: `Amsterdam Apartment Premium`,
+      price: 0,
+      rating: 0,
+      location: {
+        latitude: 0,
+        longitude: 0
+      }
     },
     {
-      city: `Berlin`,
+      city: {
+        name: `Berlin`,
+        location: {
+          latitude: 0,
+          longitude: 0
+        }
+      },
       type: `Private room`,
-      img: ``,
-      name: `Berlin Private room`,
-      price: {
-        value: 0,
-        currency: `€`
-      },
-      rating: 0
+      preview_image: ``,
+      title: `Berlin Private room`,
+      price: 0,
+      rating: 0,
+      location: {
+        latitude: 0,
+        longitude: 0
+      }
     },
     {
-      city: `Sydney`,
+      city: {
+        name: `Sydney`,
+        location: {
+          latitude: 0,
+          longitude: 0
+        }
+      },
       type: `Apartment`,
-      img: ``,
-      name: `Sydney Apartment`,
-      price: {
-        value: 0,
-        currency: `€`
-      },
-      rating: 0
+      preview_image: ``,
+      title: `Sydney Apartment`,
+      price: 0,
+      rating: 0,
+      location: {
+        latitude: 0,
+        longitude: 0
+      }
     },
     {
-      city: `Saint-Petersburg`,
+      city: {
+        name: `Saint-Petersburg`,
+        location: {
+          latitude: 0,
+          longitude: 0
+        }
+      },
       type: `Apartment`,
-      img: ``,
-      mark: `Premium`,
-      name: `Saint-Petersburg Apartment Premium`,
-      price: {
-        value: 0,
-        currency: `€`
-      },
-      rating: 0
+      preview_image: ``,
+      is_premium: true,
+      title: `Saint-Petersburg Apartment Premium`,
+      price: 0,
+      rating: 0,
+      location: {
+        latitude: 0,
+        longitude: 0
+      }
     },
     {
-      city: `Amsterdam`,
+      city: {
+        name: `Amsterdam`,
+        location: {
+          latitude: 0,
+          longitude: 0
+        }
+      },
       type: `Private room`,
-      img: ``,
-      mark: `Premium`,
-      name: `Amsterdam Private room Premium`,
-      price: {
-        value: 0,
-        currency: `€`
-      },
-      rating: 0
+      preview_image: ``,
+      is_premium: true,
+      title: `Amsterdam Private room Premium`,
+      price: 0,
+      rating: 0,
+      location: {
+        latitude: 0,
+        longitude: 0
+      }
     }
   ]
 };

@@ -3,6 +3,8 @@ import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import PlaceCard from './place-card.jsx';
 
+/* eslint-disable camelcase */
+
 Enzyme.configure({
   adapter: new Adapter()
 });
@@ -10,25 +12,41 @@ Enzyme.configure({
 const mock = {
   places: [
     {
-      type: `Apartment`,
-      img: ``,
-      mark: `Premium`,
-      name: ``,
-      price: {
-        value: 0,
-        currency: `€`
+      city: {
+        name: `Amsterdam`,
+        location: {
+          latitude: 0,
+          longitude: 0
+        }
       },
-      rating: 0
+      type: `Apartment`,
+      preview_image: ``,
+      title: ``,
+      price: 0,
+      rating: 0,
+      location: {
+        latitude: 0,
+        longitude: 0
+      }
     },
     {
-      type: `Private room`,
-      img: ``,
-      name: ``,
-      price: {
-        value: 0,
-        currency: `€`
+      city: {
+        name: `Amsterdam`,
+        location: {
+          latitude: 0,
+          longitude: 0
+        }
       },
-      rating: 0
+      type: `Private room`,
+      preview_image: ``,
+      is_premium: true,
+      title: `Amsterdam Apartment Premium`,
+      price: 0,
+      rating: 0,
+      location: {
+        latitude: 0,
+        longitude: 0
+      }
     }
   ],
   clickImageHandler: jest.fn(),

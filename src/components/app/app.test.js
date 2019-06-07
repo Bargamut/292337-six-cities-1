@@ -2,58 +2,84 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import {App} from './app.jsx';
 
+/* eslint-disable camelcase */
+
 const mock = {
   city: `Amsterdam`,
   citiesPlaces: [
     {
-      city: `Amsterdam`,
-      type: `Apartment`,
-      img: ``,
-      mark: `Premium`,
-      name: ``,
-      price: {
-        value: 0,
-        currency: `€`
+      city: {
+        name: `Amsterdam`,
+        location: {
+          latitude: 0,
+          longitude: 0
+        }
       },
+      type: `Apartment`,
+      preview_image: ``,
+      is_premium: true,
+      title: ``,
+      price: 0,
       rating: 0,
-      coords: [0, 0]
+      location: {
+        latitude: 0,
+        longitude: 0
+      }
     },
     {
-      city: `Berlin`,
+      city: {
+        name: `Berlin`,
+        location: {
+          latitude: 0,
+          longitude: 0
+        }
+      },
       type: `Private room`,
-      img: ``,
-      name: ``,
-      price: {
-        value: 0,
-        currency: `€`
-      },
+      preview_image: ``,
+      title: ``,
+      price: 0,
       rating: 0,
-      coords: [0, 0]
+      location: {
+        latitude: 0,
+        longitude: 0
+      }
     },
     {
-      city: `London`,
-      type: `Apartment`,
-      img: ``,
-      name: ``,
-      price: {
-        value: 0,
-        currency: `€`
+      city: {
+        name: `London`,
+        location: {
+          latitude: 0,
+          longitude: 0
+        }
       },
+      type: `Apartment`,
+      preview_image: ``,
+      title: ``,
+      price: 0,
       rating: 0,
-      coords: [0, 0]
+      location: {
+        latitude: 0,
+        longitude: 0
+      }
     },
     {
-      city: `Saint-Petersburg`,
-      type: `Apartment`,
-      img: ``,
-      mark: `Premium`,
-      name: ``,
-      price: {
-        value: 0,
-        currency: `€`
+      city: {
+        name: `Saint-Petersburg`,
+        location: {
+          latitude: 0,
+          longitude: 0
+        }
       },
+      type: `Apartment`,
+      preview_image: ``,
+      is_premium: true,
+      title: ``,
+      price: 0,
       rating: 0,
-      coords: [0, 0]
+      location: {
+        latitude: 0,
+        longitude: 0
+      }
     }
   ]
 };
@@ -65,8 +91,8 @@ it(`App correctly renders after relaunch`, () => {
       <App
         city={city}
         cities={[
-          ...new Set(citiesPlaces.map((place) => {
-            return place.city;
+          ...new Set(citiesPlaces.map((offer) => {
+            return offer.city.name;
           }))
         ]}
         citiesPlaces={citiesPlaces}
