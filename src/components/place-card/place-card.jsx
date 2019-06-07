@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-/* eslint-disable camelcase */
-
 /**
  * @description Компонент карточки объекта недвижимости
  * @param {Object} props
@@ -11,8 +9,6 @@ import PropTypes from 'prop-types';
 const PlaceCard = ({place, onClickImage = () => {}, onActivate, onDeactivate}) => {
   const {
     type,
-    preview_image,
-    is_premium,
     title,
     price,
     rating
@@ -24,7 +20,7 @@ const PlaceCard = ({place, onClickImage = () => {}, onActivate, onDeactivate}) =
     }} onMouseLeave={() => {
       onDeactivate();
     }}>
-      {is_premium ? (
+      {place.is_premium ? (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
@@ -34,7 +30,7 @@ const PlaceCard = ({place, onClickImage = () => {}, onActivate, onDeactivate}) =
           onClickImage(place);
         }}>
         <a href="#">
-          <img className="place-card__image" src={preview_image} width="260" height="200" alt="Place image" />
+          <img className="place-card__image" src={place.preview_image} width="260" height="200" alt="Place image" />
         </a>
       </div>
 
