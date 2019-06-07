@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer/reducer';
+import {ActionCreator} from '../../reducer/data/data';
+import {
+  getPlaces,
+  getCities,
+  getCity
+} from '../../reducer/data/selectors';
 import MainPage from '../main/main.jsx';
 
 const App = (props) => {
@@ -29,11 +34,9 @@ App.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
-    city: state.city,
-    cities: [...new Set(state.citiesPlaces.map((offer) => {
-      return offer.city.name;
-    }))],
-    citiesPlaces: state.citiesPlaces
+    city: getCity(state),
+    cities: getCities(state),
+    citiesPlaces: getPlaces(state)
   });
 };
 
