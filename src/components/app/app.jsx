@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../reducer/data/data';
 import {
-  getPlaces,
+  getSelectedPlaces,
   getCities,
   getCity
 } from '../../reducer/data/selectors';
@@ -36,7 +36,7 @@ const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
     city: getCity(state),
     cities: getCities(state),
-    citiesPlaces: getPlaces(state)
+    citiesPlaces: getSelectedPlaces(state)
   });
 };
 

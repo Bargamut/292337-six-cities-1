@@ -79,7 +79,6 @@ const MainPage = ({city, cities, citiesPlaces, onChangeCity}) => {
               </form>
 
               <PlacesListWrapped
-                city={city}
                 citiesPlaces={citiesPlaces}
               />
             </section>
