@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {App} from './app.jsx';
+import App from './app.jsx';
 
 /* eslint-disable camelcase */
 
@@ -97,6 +97,7 @@ it(`App correctly renders after relaunch`, () => {
         ]}
         citiesPlaces={citiesPlaces}
         onChangeCity={jest.fn()}
+        renderScreen={jest.fn()}
       />
   )
   .toJSON();
