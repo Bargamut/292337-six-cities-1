@@ -1,7 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 
-const App = (props) => {
+interface Props {
+  renderScreen: () => React.ReactElement
+}
+
+const App:React.FunctionComponent<Props> = (props) => {
   const {renderScreen} = props;
 
   return (
@@ -9,10 +12,6 @@ const App = (props) => {
       {renderScreen()}
     </div>
   );
-};
-
-App.propTypes = {
-  renderScreen: PropTypes.func.isRequired
 };
 
 export default App;
