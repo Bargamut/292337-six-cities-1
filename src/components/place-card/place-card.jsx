@@ -20,7 +20,7 @@ const PlaceCard = ({place, onClickImage = () => {}, onActivate, onDeactivate}) =
     }} onMouseLeave={() => {
       onDeactivate();
     }}>
-      {place.is_premium ? (
+      {place.isPremium ? (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
@@ -30,7 +30,7 @@ const PlaceCard = ({place, onClickImage = () => {}, onActivate, onDeactivate}) =
           onClickImage(place);
         }}>
         <a href="#">
-          <img className="place-card__image" src={place.preview_image} width="260" height="200" alt="Place image" />
+          <img className="place-card__image" src={place.previewImage} width="260" height="200" alt="Place image" />
         </a>
       </div>
 
