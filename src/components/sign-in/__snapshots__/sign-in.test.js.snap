@@ -54,6 +54,7 @@ exports[`SignIn correctly renders after relaunch 1`] = `
       </div>
       <button
         className="login__submit form__submit button"
+        disabled={true}
         type="submit"
       >
         Sign in

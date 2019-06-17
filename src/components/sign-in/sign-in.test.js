@@ -7,8 +7,9 @@ it(`SignIn correctly renders after relaunch`, () => {
 
   const signIn = renderer.create(
       <SignIn
-        onSubmitForm={jest.fn()}
-        onChangeInput={jest.fn()}
+        isSubmitDisabled={true}
+        onFormSubmit={jest.fn()}
+        onInputChange={jest.fn()}
       />
   )
   .toJSON();
