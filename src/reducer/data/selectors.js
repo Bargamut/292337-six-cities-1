@@ -1,6 +1,8 @@
 import {createSelector} from 'reselect';
 import NameSpace from '../namespaces';
 
+import {normalizeKeys} from '../../helpers';
+
 const NAME_SPACE = NameSpace.DATA;
 
 export const getPlaces = (state) => state[NAME_SPACE].citiesPlaces;
@@ -12,6 +14,7 @@ export const getSelectedPlaces = createSelector(
     getCity,
     (citiesPlaces, city) =>
       citiesPlaces
+        .map((place) => normalizeKeys(place))
         .filter((place) => place.city.name === city)
 );
 
