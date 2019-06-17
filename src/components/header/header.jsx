@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Header = ({isAuthorizationRequired, onClickSignIn}) => {
+const BASE_URL = `https://es31-server.appspot.com/six-cities`;
+
+const Header = ({isAuthorizationRequired, user, onClickSignIn}) => {
   return (
     <header className="header">
       <div className="container">
@@ -28,8 +30,8 @@ const Header = ({isAuthorizationRequired, onClickSignIn}) => {
                   )
                   : (
                     <a className="header__nav-link header__nav-link--profile" href="#">
-                      <div className="header__avatar-wrapper user__avatar-wrapper" />
-                      <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
+                      <div className="header__avatar-wrapper user__avatar-wrapper" style={{backgroundImage: `url(${BASE_URL}${user.avatarUrl})`}}/>
+                      <span className="header__user-name user__name">{user.email}</span>
                     </a>
                   )
                 }
@@ -44,6 +46,13 @@ const Header = ({isAuthorizationRequired, onClickSignIn}) => {
 
 Header.propTypes = {
   isAuthorizationRequired: PropTypes.bool,
+  user: PropTypes.shape({
+    id: PropTypes.number,
+    email: PropTypes.string,
+    name: PropTypes.string,
+    avatarUrl: PropTypes.string,
+    isPro: PropTypes.bool
+  }),
   onClickSignIn: PropTypes.func
 };
 

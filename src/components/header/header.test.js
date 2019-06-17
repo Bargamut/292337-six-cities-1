@@ -3,9 +3,44 @@ import renderer from 'react-test-renderer';
 
 import Header from './header.jsx';
 
-it(`SignIn correctly renders after relaunch`, () => {
+const mock = {
+  user: {
+    id: 1,
+    email: `test@email.ru`,
+    name: `Name Surname`,
+    avatarUrl: ``,
+    isPro: false
+  },
+  onClickSignIn: jest.fn()
+};
 
-  const header = renderer.create(<Header />).toJSON();
+describe(`SignIn renders`, () => {
+  it(`SignIn correctly renders with authorization required`, () => {
+    const {
+      onClickSignIn
+    } = mock;
 
-  expect(header).toMatchSnapshot();
+    const header = renderer.create(<Header
+      isAuthorizationRequired={true}
+      user={{}}
+      onClickSignIn={onClickSignIn}
+    />).toJSON();
+
+    expect(header).toMatchSnapshot();
+  });
+
+  it(`SignIn correctly renders without authorization required`, () => {
+    const {
+      user,
+      onClickSignIn
+    } = mock;
+
+    const header = renderer.create(<Header
+      isAuthorizationRequired={false}
+      user={user}
+      onClickSignIn={onClickSignIn}
+    />).toJSON();
+
+    expect(header).toMatchSnapshot();
+  });
 });

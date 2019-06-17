@@ -5,7 +5,7 @@ import {compose} from 'recompose';
 import {connect} from 'react-redux';
 
 import {ActionCreator} from '../../reducer/user/user';
-import {checkAuthorization} from '../../reducer/user/selectors';
+import {checkAuthorization, getUserInfo} from '../../reducer/user/selectors';
 
 const withUserNavigation = (Component) => {
   class WithUserNavigation extends PureComponent {
@@ -26,7 +26,8 @@ const withUserNavigation = (Component) => {
         <Component
           {...this.props}
           onClickSignIn={this._handleClickSignIn}
-          isAuthorizationRequired={this.props.isAuthorizationRequired}
+          // isAuthorizationRequired={this.props.isAuthorizationRequired}
+          // user={user}
         />
       );
     }
@@ -34,7 +35,14 @@ const withUserNavigation = (Component) => {
 
   WithUserNavigation.propTypes = {
     isAuthorizationRequired: PropTypes.bool,
-    signIn: PropTypes.func
+    signIn: PropTypes.func,
+    user: PropTypes.shape({
+      id: PropTypes.number,
+      email: PropTypes.string,
+      name: PropTypes.string,
+      avatarUrl: PropTypes.string,
+      isPro: PropTypes.bool
+    })
   };
 
   return WithUserNavigation;
@@ -42,7 +50,8 @@ const withUserNavigation = (Component) => {
 
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
-    isAuthorizationRequired: checkAuthorization(state)
+    isAuthorizationRequired: checkAuthorization(state),
+    user: getUserInfo(state)
   });
 };
 
