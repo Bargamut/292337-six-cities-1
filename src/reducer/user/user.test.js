@@ -6,28 +6,33 @@ import {
 describe(`USER reducers`, () => {
   it(`Should return initial state by defalut`, () => {
     expect(reducer(undefined, {})).toEqual({
-      isAuthorizationRequired: false
+      isAuthorizationRequired: false,
+      user: {}
     });
   });
 
   it(`Should require authorization`, () => {
     expect(reducer(
         {
-          isAuthorizationRequired: false
+          isAuthorizationRequired: false,
+          user: {}
         },
         ActionCreator.requireAuthorization(true)
     )).toEqual({
-      isAuthorizationRequired: true
+      isAuthorizationRequired: true,
+      user: {}
     });
   });
 
   it(`Should reset require authorization`, () => {
     expect(reducer(
         {
-          isAuthorizationRequired: true
+          isAuthorizationRequired: true,
+          user: {}
         }, ActionCreator.requireAuthorization(false)
     )).toEqual({
-      isAuthorizationRequired: false
+      isAuthorizationRequired: false,
+      user: {}
     });
   });
 });

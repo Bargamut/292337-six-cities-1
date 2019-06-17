@@ -4,7 +4,9 @@ const initialState = {
 };
 
 const ActionType = {
-  REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`
+  REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
+  LOGIN: `LOGIN`,
+  LOGOUT: `LOGOUT`
 };
 
 const ActionCreator = {
