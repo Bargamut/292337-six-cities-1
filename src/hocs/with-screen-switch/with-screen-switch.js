@@ -12,8 +12,12 @@ import {
 } from '../../reducer/data/selectors';
 import {checkAuthorization} from '../../reducer/user/selectors';
 
+import withAuthorization from '../with-authorization/with-authorization';
+
 import SignIn from '../../components/sign-in/sign-in.jsx';
 import MainPage from '../../components/main/main.jsx';
+
+const SignInWrapped = withAuthorization(SignIn);
 
 const withScreenSwitch = (Component) => {
   class WithScreenSwitch extends PureComponent {
@@ -41,7 +45,7 @@ const withScreenSwitch = (Component) => {
       } = this.props;
 
       if (this.props.isAuthorizationRequired) {
-        return <SignIn />;
+        return <SignInWrapped />;
       }
 
       return (

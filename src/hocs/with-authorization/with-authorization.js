@@ -40,7 +40,7 @@ const withAuthorization = (Component) => {
           {...this.props}
           onInputChange={this._handleInputChange}
           onFormSubmit={this._handleFormSubmit}
-          isSumbitDisabled={~this.state.email || !this.state.password}
+          isSubmitDisabled={!this.state.email || !this.state.password}
         />
       );
     }
@@ -60,7 +60,7 @@ const mapDispatchToProps = (dispatch) => ({
       .catch(() => {
         dispatch(ActionCreator.requireAuthorization(true));
       })
-      .the((response) => {
+      .then((response) => {
         dispatch(ActionCreator.login(response.data));
         dispatch(ActionCreator.requireAuthorization(false));
       });

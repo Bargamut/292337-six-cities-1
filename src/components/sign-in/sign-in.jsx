@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 
 const SignIn = (props) => {
   const {
-    onSubmitForm,
-    onChangeInput
+    isSubmitDisabled,
+    onFormSubmit,
+    onInputChange
   } = props;
 
   return (
@@ -12,7 +13,7 @@ const SignIn = (props) => {
       <section className="login">
         <h1 className="login__title">Sign in</h1>
 
-        <form className="login__form form" action="#" method="post" onSubmit={onSubmitForm}>
+        <form className="login__form form" action="#" method="post" onSubmit={onFormSubmit}>
           <div className="login__input-wrapper form__input-wrapper">
             <label className="visually-hidden">E-mail</label>
             <input
@@ -21,7 +22,7 @@ const SignIn = (props) => {
               name="email"
               placeholder="Email"
               required=""
-              onChange={() => onChangeInput()}
+              onChange={(evt) => onInputChange(evt, `email`)}
             />
           </div>
 
@@ -33,11 +34,11 @@ const SignIn = (props) => {
               name="password"
               placeholder="Password"
               required=""
-              onChange={() => onChangeInput()}
+              onChange={(evt) => onInputChange(evt, `password`)}
             />
           </div>
 
-          <button className="login__submit form__submit button" type="submit">Sign in</button>
+          <button className="login__submit form__submit button" type="submit" disabled={isSubmitDisabled}>Sign in</button>
         </form>
       </section>
 
@@ -53,8 +54,9 @@ const SignIn = (props) => {
 };
 
 SignIn.propTypes = {
-  onSubmitForm: PropTypes.func,
-  onChangeInput: PropTypes.func
+  isSubmitDisabled: PropTypes.bool,
+  onFormSubmit: PropTypes.func,
+  onInputChange: PropTypes.func
 };
 
 export default SignIn;
