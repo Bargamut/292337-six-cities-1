@@ -10,6 +10,10 @@ import {configureAPI} from './api';
 import reducer from './reducer/reducer';
 import {Operation} from './reducer/data/data';
 
+import withScreenSwitch from './hocs/with-screen-switch/with-screen-switch';
+
+const AppWrapped = withScreenSwitch(App);
+
 const init = () => {
   const api = configureAPI((...args) => {
     return store.dispatch(...args);
@@ -27,7 +31,7 @@ const init = () => {
 
   ReactDOM.render(
       <Provider store={store}>
-        <App />
+        <AppWrapped />
       </Provider>,
       document.querySelector(`#root`)
   );
