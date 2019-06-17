@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 
 import PlacesList from '../places-list/places-list.jsx';
 import CitiesMap from '../cities-map/cities-map.jsx';

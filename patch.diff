@@ -14,7 +14,7 @@ index e798bbc..a2e8d21 100644
 @@ -3,16 +3,4 @@ env:
    browser: true
    commonjs: true
- 
+
 -extends: [ 'htmlacademy/es6', 'plugin:react/recommended' ]
 -
 -parserOptions:
@@ -34,7 +34,7 @@ index 3193c33..69b6e0f 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -13,5 +13,3 @@ node_modules/
- 
+
  # Папка с собранными файлами проекта
  build/
 -public/bundle.js
@@ -7930,7 +7930,7 @@ index 0ff0766..5120150 100755
 --- a/public/index.html
 +++ b/public/index.html
 @@ -10,6 +10,5 @@
- 
+
  <body class="page page--gray page--main">
    <div id="root"></div>
 -  <script src="bundle.js"></script>
@@ -7942,7 +7942,7 @@ index 0000000..152e783
 --- /dev/null
 +++ b/src/components/main/main.jsx
 @@ -0,0 +1,277 @@
-+import React from 'react';
++import * as React from 'react';
 +
 +const MainPage = () => {
 +  return (
@@ -8225,7 +8225,7 @@ index 8b13789..1eae17f 100644
 +++ b/src/index.js
 @@ -1 +1,14 @@
 +import MainPage from './components/main/main.jsx';
- 
+
 +const App = () => {
 +  return <MainPage />;
 +};

@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 
 const BASE_URL = `https://es31-server.appspot.com/six-cities`;
 
