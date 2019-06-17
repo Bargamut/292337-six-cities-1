@@ -7,6 +7,9 @@ import thunk from 'redux-thunk';
 import {compose} from 'recompose';
 import {configureAPI} from './api';
 
+import history from './history';
+import {Router} from 'react-router-dom';
+
 import reducer from './reducer/reducer';
 import {Operation} from './reducer/data/data';
 
@@ -22,15 +25,17 @@ const HeaderWrapped = withUserNavigation(Header);
 const AppWrapped = withScreenSwitch(App);
 
 const init = () => {
-  const api = configureAPI((...args) => {
-    return store.dispatch(...args);
-  });
+  const api = configureAPI(
+      () => history.push(`/login`)
+  );
 
   const store = createStore(
       reducer,
       compose(
           applyMiddleware(thunk.withExtraArgument(api)),
-          window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+          window.__REDUX_DEVTOOLS_EXTENSION__
+            ? window.__REDUX_DEVTOOLS_EXTENSION__()
+            : (a) => a
       )
   );
 
@@ -38,11 +43,13 @@ const init = () => {
 
   ReactDOM.render(
       <Provider store={store}>
-        <SvgSprite />
+        <Router history={history}>
+          <SvgSprite />
 
-        <HeaderWrapped />
+          <HeaderWrapped />
 
-        <AppWrapped />
+          <AppWrapped />
+        </Router>
       </Provider>,
       document.querySelector(`#root`)
   );
