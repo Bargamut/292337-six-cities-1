@@ -6,6 +6,8 @@ import {connect} from 'react-redux';
 import {configureAPI} from '../../api';
 import {ActionCreator} from '../../reducer/user/user';
 
+import history from '../../history';
+
 const withAuthorization = (Component) => {
   class WithAuthorization extends PureComponent {
     constructor(props) {
@@ -63,6 +65,8 @@ const mapDispatchToProps = (dispatch) => ({
       .then((response) => {
         dispatch(ActionCreator.login(response.data));
         dispatch(ActionCreator.requireAuthorization(false));
+
+        history.push(`/`);
       });
   }
 });
