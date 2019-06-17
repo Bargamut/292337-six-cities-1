@@ -16,6 +16,7 @@ import {checkAuthorization} from '../../reducer/user/selectors';
 
 import withAuthorization from '../with-authorization/with-authorization';
 
+import Favorites from '../../components/favorites/favorites.jsx';
 import SignIn from '../../components/sign-in/sign-in.jsx';
 import MainPage from '../../components/main/main.jsx';
 
@@ -34,6 +35,10 @@ const withScreenSwitch = (Component) => {
         <Switch>
           <Route path="/login" render={() => (
             <SignInWrapped />
+          )} />
+
+          <Route path="/favorites" render={() => (
+            <Favorites />
           )} />
 
           <Route path="/" exact render={() => (
