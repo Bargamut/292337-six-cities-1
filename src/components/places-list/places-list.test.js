@@ -15,8 +15,8 @@ const mock = {
         }
       },
       type: `Apartment`,
-      preview_image: ``,
-      is_premium: true,
+      previewImage: ``,
+      isPremium: true,
       title: `Amsterdam Apartment Premium`,
       price: 0,
       rating: 0,
@@ -34,7 +34,7 @@ const mock = {
         }
       },
       type: `Private room`,
-      preview_image: ``,
+      previewImage: ``,
       title: `Berlin Private room`,
       price: 0,
       rating: 0,
@@ -52,7 +52,7 @@ const mock = {
         }
       },
       type: `Apartment`,
-      preview_image: ``,
+      previewImage: ``,
       title: `Sydney Apartment`,
       price: 0,
       rating: 0,
@@ -70,8 +70,8 @@ const mock = {
         }
       },
       type: `Apartment`,
-      preview_image: ``,
-      is_premium: true,
+      previewImage: ``,
+      isPremium: true,
       title: `Saint-Petersburg Apartment Premium`,
       price: 0,
       rating: 0,
@@ -89,8 +89,8 @@ const mock = {
         }
       },
       type: `Private room`,
-      preview_image: ``,
-      is_premium: true,
+      previewImage: ``,
+      isPremium: true,
       title: `Amsterdam Private room Premium`,
       price: 0,
       rating: 0,
