@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import * as React from 'react';
 
 import {compose} from 'recompose';
 import {connect} from 'react-redux';
@@ -22,7 +22,7 @@ import MainPage from '../../components/main/main.jsx';
 const SignInWrapped = withAuthorization(SignIn);
 
 const withScreenSwitch = (Component) => {
-  class WithScreenSwitch extends PureComponent {
+  class WithScreenSwitch extends React.PureComponent {
     constructor(props) {
       super(props);
 

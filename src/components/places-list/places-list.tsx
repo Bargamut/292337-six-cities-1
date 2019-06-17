@@ -1,8 +1,8 @@
-import React, {PureComponent} from 'react';
+import * as React from 'react';
 
 import PlaceCard from '../place-card/place-card.jsx';
 
-class PlacesList extends PureComponent {
+class PlacesList extends React.PureComponent {
   render() {
     const {citiesPlaces, onActivateItem, onDeactivateItem} = this.props;
 

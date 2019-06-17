@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom';
 
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
@@ -20,6 +20,8 @@ import App from './components/app/app.jsx';
 import SvgSprite from './components/svg-sprite/svg-sprite.jsx';
 import Header from './components/header/header.jsx';
 
+declare const __REDUX_DEVTOOLS_EXTENSION__: () => any;
+
 const HeaderWrapped = withUserNavigation(Header);
 
 const AppWrapped = withScreenSwitch(App);
@@ -33,8 +35,8 @@ const init = () => {
       reducer,
       compose(
           applyMiddleware(thunk.withExtraArgument(api)),
-          window.__REDUX_DEVTOOLS_EXTENSION__
-            ? window.__REDUX_DEVTOOLS_EXTENSION__()
+          __REDUX_DEVTOOLS_EXTENSION__
+            ? __REDUX_DEVTOOLS_EXTENSION__()
             : (a) => a
       )
   );

@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import * as React from 'react';
 
 import {compose} from 'recompose';
 import {connect} from 'react-redux';
@@ -8,7 +8,7 @@ import {ActionCreator} from '../../reducer/user/user';
 import history from '../../history';
 
 const withAuthorization = (Component) => {
-  class WithAuthorization extends PureComponent {
+  class WithAuthorization extends React.PureComponent {
     constructor(props) {
       super(props);
 

@@ -1,5 +1,5 @@
-import React, {PureComponent} from 'react';
-import leaflet from 'leaflet';
+import * as React from 'react';
+import * as leaflet from 'leaflet';
 
 import CITIES_DATA from '../../mocks/cities';
 
@@ -11,7 +11,7 @@ const MAP_SETTINGS = {
   zoom: 12
 };
 
-class CitiesMap extends PureComponent {
+class CitiesMap extends React.PureComponent {
   constructor(props) {
     super(props);
 
