@@ -1,7 +1,6 @@
 import axios from 'axios';
-import {ActionCreator} from './reducer/user/user';
 
-export const configureAPI = (dispatch) => {
+export const configureAPI = (onLoginFail) => {
   const api = axios.create({
     baseURL: `https://es31-server.appspot.com/six-cities`,
     timeout: 5000,
@@ -14,10 +13,12 @@ export const configureAPI = (dispatch) => {
 
   const onFail = (err) => {
     if ([400, 403].indexOf(err.response.status) > -1) {
-      dispatch(ActionCreator.requireAuthorization(true));
+      onLoginFail();
+
+      return;
     }
 
-    return err;
+    throw err;
   };
 
   api.interceptors.response.use(onSuccess, onFail);

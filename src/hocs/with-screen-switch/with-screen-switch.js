@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import {compose} from 'recompose';
 import {connect} from 'react-redux';
 
+import {Switch, Route, Redirect} from 'react-router-dom';
+
 import {ActionCreator as DataActionCreator} from '../../reducer/data/data';
 import {
   getSelectedPlaces,
@@ -14,6 +16,7 @@ import {checkAuthorization} from '../../reducer/user/selectors';
 
 import withAuthorization from '../with-authorization/with-authorization';
 
+import Favorites from '../../components/favorites/favorites.jsx';
 import SignIn from '../../components/sign-in/sign-in.jsx';
 import MainPage from '../../components/main/main.jsx';
 
@@ -29,10 +32,22 @@ const withScreenSwitch = (Component) => {
 
     render() {
       return (
-        <Component
-          {...this.props}
-          renderScreen={this._getScreen}
-        />
+        <Switch>
+          <Route path="/login" render={() => (
+            <SignInWrapped />
+          )} />
+
+          <Route path="/favorites" render={() => (
+            <Favorites />
+          )} />
+
+          <Route path="/" exact render={() => (
+            <Component
+              {...this.props}
+              renderScreen={this._getScreen}
+            />
+          )} />
+        </Switch>
       );
     }
 
@@ -45,7 +60,7 @@ const withScreenSwitch = (Component) => {
       } = this.props;
 
       if (this.props.isAuthorizationRequired) {
-        return <SignInWrapped />;
+        return <Redirect to="/login" />;
       }
 
       return (

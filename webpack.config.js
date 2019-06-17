@@ -11,7 +11,8 @@ module.exports = {
     // eslint-disable-next-line no-undef
     contentBase: path.join(__dirname, `public`),
     compress: false,
-    port: 1337
+    port: 1337,
+    historyApiFallback: true
   },
   module: {
     rules: [
@@ -24,5 +25,6 @@ module.exports = {
       }
     ]
   },
-  devtool: `source-map`
+  devtool: `source-map`,
+  stats: `errors-only`
 };
