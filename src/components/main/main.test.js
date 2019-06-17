@@ -17,8 +17,8 @@ const mock = {
         }
       },
       type: `Apartment`,
-      preview_image: ``,
-      is_premium: true,
+      previewImage: ``,
+      isPremium: true,
       title: ``,
       price: 0,
       rating: 0,

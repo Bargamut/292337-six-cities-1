@@ -1,9 +1,12 @@
 const initialState = {
-  isAuthorizationReauired: false
+  isAuthorizationRequired: false,
+  user: {}
 };
 
 const ActionType = {
-  REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`
+  REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
+  LOGIN: `LOGIN`,
+  LOGOUT: `LOGOUT`
 };
 
 const ActionCreator = {
@@ -12,6 +15,19 @@ const ActionCreator = {
       type: ActionType.REQUIRED_AUTHORIZATION,
       payload: status
     };
+  },
+
+  login: (user) => {
+    return {
+      type: ActionType.LOGIN,
+      payload: user
+    };
+  },
+
+  logout: () => {
+    return {
+      type: ActionType.LOGOUT
+    };
   }
 };
 
@@ -19,7 +35,17 @@ const reducer = function (state = initialState, action) {
   switch (action.type) {
     case ActionType.REQUIRED_AUTHORIZATION:
       return Object.assign({}, state, {
-        isAuthorizationReauired: action.payload
+        isAuthorizationRequired: action.payload
+      });
+
+    case ActionType.LOGIN:
+      return Object.assign({}, state, {
+        user: action.payload
+      });
+
+    case ActionType.LOGOUT:
+      return Object.assign({}, state, {
+        user: {}
       });
   }
 

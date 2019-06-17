@@ -1,8 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {App} from './app.jsx';
-
-/* eslint-disable camelcase */
+import App from './app.jsx';
 
 const mock = {
   city: `Amsterdam`,
@@ -16,8 +14,8 @@ const mock = {
         }
       },
       type: `Apartment`,
-      preview_image: ``,
-      is_premium: true,
+      previewImage: ``,
+      isPremium: true,
       title: ``,
       price: 0,
       rating: 0,
@@ -35,7 +33,7 @@ const mock = {
         }
       },
       type: `Private room`,
-      preview_image: ``,
+      previewImage: ``,
       title: ``,
       price: 0,
       rating: 0,
@@ -53,7 +51,7 @@ const mock = {
         }
       },
       type: `Apartment`,
-      preview_image: ``,
+      previewImage: ``,
       title: ``,
       price: 0,
       rating: 0,
@@ -71,8 +69,8 @@ const mock = {
         }
       },
       type: `Apartment`,
-      preview_image: ``,
-      is_premium: true,
+      previewImage: ``,
+      isPremium: true,
       title: ``,
       price: 0,
       rating: 0,
@@ -97,6 +95,7 @@ it(`App correctly renders after relaunch`, () => {
         ]}
         citiesPlaces={citiesPlaces}
         onChangeCity={jest.fn()}
+        renderScreen={jest.fn()}
       />
   )
   .toJSON();
