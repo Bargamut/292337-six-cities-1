@@ -17,7 +17,7 @@ export const configureAPI = (dispatch) => {
       dispatch(ActionCreator.requireAuthorization(true));
     }
 
-    return err;
+    throw err;
   };
 
   api.interceptors.response.use(onSuccess, onFail);
