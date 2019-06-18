@@ -22,6 +22,11 @@ import Header from './components/header/header.jsx';
 
 declare const __REDUX_DEVTOOLS_EXTENSION__: () => any;
 
+/*
+  TODO:
+  Замените во всём проекте валидацию props, выполненную с помощью пакета prop-types, на необходимые интерфейсы с помощью TypeScript. Действуйте по порядку: сначала компоненты, затем HoC (включая типизацию state) и в последнюю очередь index.tsx. Не забудьте проверить работоспособность внесённых изменений и исправить ошибки компилятора.
+*/
+
 const HeaderWrapped = withUserNavigation(Header);
 
 const AppWrapped = withScreenSwitch(App);
