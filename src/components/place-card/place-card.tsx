@@ -1,11 +1,14 @@
 import * as React from 'react';
+import {Offer} from '../../types';
 
-/**
- * @description Компонент карточки объекта недвижимости
- * @param {Object} props
- * @return {JSX}
- */
-const PlaceCard = ({place, onClickImage = () => {}, onActivate, onDeactivate}) => {
+interface Props {
+  place: Offer,
+  onClickImage: (place: Offer) => void,
+  onActivate: (place: Offer) => void,
+  onDeactivate: () => void
+};
+
+const PlaceCard:React.FunctionComponent<Props> = ({place, onClickImage, onActivate, onDeactivate}) => {
   const {
     type,
     title,
@@ -64,13 +67,6 @@ const PlaceCard = ({place, onClickImage = () => {}, onActivate, onDeactivate}) =
       </div>
     </article>
   );
-};
-
-PlaceCard.propTypes = {
-  place: PropTypes.object.isRequired,
-  onClickImage: PropTypes.func,
-  onActivate: PropTypes.func.isRequired,
-  onDeactivate: PropTypes.func.isRequired
 };
 
 export default PlaceCard;

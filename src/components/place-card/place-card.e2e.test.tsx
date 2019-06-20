@@ -1,9 +1,8 @@
 import * as React from 'react';
-import Enzyme, {shallow} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import PlaceCard from './place-card.jsx';
+import * as Enzyme from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
 
-/* eslint-disable camelcase */
+import PlaceCard from './place-card';
 
 Enzyme.configure({
   adapter: new Adapter()
@@ -12,40 +11,49 @@ Enzyme.configure({
 const mock = {
   places: [
     {
+      id: 0,
       city: {
         name: `Amsterdam`,
         location: {
           latitude: 0,
-          longitude: 0
+          longitude: 0,
+          zoom: 13
         }
       },
       type: `Apartment`,
       previewImage: ``,
+      isFavorite: false,
+      isPremium: false,
       title: ``,
       price: 0,
       rating: 0,
       location: {
         latitude: 0,
-        longitude: 0
+        longitude: 0,
+        zoom: 13
       }
     },
     {
+      id: 1,
       city: {
         name: `Amsterdam`,
         location: {
           latitude: 0,
-          longitude: 0
+          longitude: 0,
+          zoom: 13
         }
       },
       type: `Private room`,
       previewImage: ``,
+      isFavorite: false,
       isPremium: true,
       title: `Amsterdam Apartment Premium`,
       price: 0,
       rating: 0,
       location: {
         latitude: 0,
-        longitude: 0
+        longitude: 0,
+        zoom: 13
       }
     }
   ],
@@ -62,7 +70,7 @@ it(`Set card data to callback correctly`, () => {
     onDeactivate
   } = mock;
 
-  const placeCard = shallow(
+  const placeCard = Enzyme.shallow(
       <PlaceCard
         place={places[0]}
         onClickImage={clickImageHandler}
