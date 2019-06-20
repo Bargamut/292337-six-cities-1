@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {Offer} from '../../types';
 
-import PlacesList from '../places-list/places-list.jsx';
-import CitiesMap from '../cities-map/cities-map.jsx';
-import CitiesList from '../cities-list/cities-list.jsx';
+import PlacesList from '../places-list/places-list';
+import CitiesMap from '../cities-map/cities-map';
+import CitiesList from '../cities-list/cities-list';
 
 import withActiveItem from '../../hocs/with-active-item/with-active-item';
 
