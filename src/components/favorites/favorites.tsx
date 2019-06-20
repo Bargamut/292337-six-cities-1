@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const Favorites = () => {
+const Favorites:React.FunctionComponent = () => {
   return (
     <main className="page__main page__main--favorites">
       <div className="page__favorites-container container">
@@ -42,7 +42,7 @@ const Favorites = () => {
 
                     <div className="place-card__rating rating">
                       <div className="place-card__stars rating__stars">
-                        <span style="width: 100%"></span>
+                        <span style={{width: `100%`}}></span>
                         <span className="visually-hidden">Rating</span>
                       </div>
                     </div>
@@ -79,7 +79,7 @@ const Favorites = () => {
 
                     <div className="place-card__rating rating">
                       <div className="place-card__stars rating__stars">
-                        <span style="width: 80%"></span>
+                        <span style={{width: `80%`}}></span>
                         <span className="visually-hidden">Rating</span>
                       </div>
                     </div>
@@ -128,7 +128,7 @@ const Favorites = () => {
 
                     <div className="place-card__rating rating">
                       <div className="place-card__stars rating__stars">
-                        <span style="width: 100%"></span>
+                        <span style={{width: `100%`}}></span>
                         <span className="visually-hidden">Rating</span>
                       </div>
                     </div>

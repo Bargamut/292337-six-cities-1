@@ -1,6 +1,7 @@
 import * as React from 'react';
-import renderer from 'react-test-renderer';
-import CitiesMap from './cities-map.jsx';
+import * as renderer from 'react-test-renderer';
+
+import CitiesMap from './cities-map';
 
 const mocks = {
   city: `Amsterdam`,
@@ -23,7 +24,7 @@ it(`CitiesMap renders correctly`, () => {
 
   const citiesMap = renderer.create(
       <CitiesMap
-        leaflet={leaflet}
+        // leaflet={leaflet}
         city={city}
         placesCoords={placesCoords}
       />

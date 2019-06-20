@@ -1,6 +1,7 @@
 import * as React from 'react';
-import renderer from 'react-test-renderer';
-import CitiesList from './cities-list.jsx';
+import * as renderer from 'react-test-renderer';
+
+import CitiesList from './cities-list';
 
 const mock = {
   cities: [
@@ -22,6 +23,7 @@ it(`Cities List correctly renders`, () => {
         city="Amsterdam"
         cities={cities}
         onChangeCity={jest.fn()}
+        onActivateItem={jest.fn()}
       />
   )
   .toJSON();
