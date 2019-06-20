@@ -11,7 +11,15 @@ const MAP_SETTINGS = {
   zoom: 12
 };
 
-class CitiesMap extends React.PureComponent {
+interface Props {
+  city: string,
+  placesCoords: number[][]
+};
+
+class CitiesMap extends React.PureComponent<Props> {
+  private map: any;
+  private _mapRef : React.RefObject<any>;
+
   constructor(props) {
     super(props);
 
@@ -74,12 +82,5 @@ class CitiesMap extends React.PureComponent {
     this._setPins();
   }
 }
-
-CitiesMap.propTypes = {
-  city: PropTypes.string.isRequired,
-  placesCoords: PropTypes.arrayOf(
-      PropTypes.arrayOf(PropTypes.number)
-  ).isRequired
-};
 
 export default CitiesMap;
