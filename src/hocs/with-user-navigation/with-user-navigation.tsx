@@ -5,9 +5,25 @@ import {connect} from 'react-redux';
 
 import {ActionCreator} from '../../reducer/user/user';
 import {checkAuthorization, getUserInfo} from '../../reducer/user/selectors';
+import {User} from '../../types';
+import { Subtract } from 'utility-types';
+
+interface Props {
+  isAuthorizationRequired: boolean,
+  signIn: () => void,
+  user: User
+}
+
+interface InjectedProps {
+  onClickSignIn: (evt: React.MouseEvent) => void
+}
 
 const withUserNavigation = (Component) => {
-  class WithUserNavigation extends React.PureComponent {
+  type P = Props & React.ComponentProps<typeof Component>;
+
+  type T = Subtract<P, InjectedProps>;
+
+  class WithUserNavigation extends React.PureComponent<T> {
     constructor(props) {
       super(props);
 
@@ -31,18 +47,6 @@ const withUserNavigation = (Component) => {
       );
     }
   }
-
-  WithUserNavigation.propTypes = {
-    isAuthorizationRequired: PropTypes.bool,
-    signIn: PropTypes.func,
-    user: PropTypes.shape({
-      id: PropTypes.number,
-      email: PropTypes.string,
-      name: PropTypes.string,
-      avatarUrl: PropTypes.string,
-      isPro: PropTypes.bool
-    })
-  };
 
   return WithUserNavigation;
 };
