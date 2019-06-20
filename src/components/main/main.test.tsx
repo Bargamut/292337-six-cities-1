@@ -1,6 +1,7 @@
 import * as React from 'react';
-import renderer from 'react-test-renderer';
-import MainPage from './main.jsx';
+import * as renderer from 'react-test-renderer';
+
+import MainPage from './main';
 
 /* eslint-disable camelcase */
 
