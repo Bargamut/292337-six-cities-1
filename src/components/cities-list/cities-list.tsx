@@ -1,6 +1,13 @@
 import * as React from 'react';
 
-const CitiesList = ({city, cities, onChangeCity, onActivateItem}) => {
+interface Props {
+  city: string,
+  cities: string[],
+  onChangeCity: (cityName: string) => void,
+  onActivateItem: (cityName: string) => void
+}
+
+const CitiesList:React.FunctionComponent<Props> = ({city, cities, onChangeCity, onActivateItem}) => {
   return (
     <div className="cities tabs">
       <section className="locations container">
@@ -27,13 +34,6 @@ const CitiesList = ({city, cities, onChangeCity, onActivateItem}) => {
       </section>
     </div>
   );
-};
-
-CitiesList.propTypes = {
-  city: PropTypes.string.isRequired,
-  cities: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onChangeCity: PropTypes.func,
-  onActivateItem: PropTypes.func
 };
 
 export default CitiesList;
