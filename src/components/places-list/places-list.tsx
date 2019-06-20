@@ -1,10 +1,18 @@
 import * as React from 'react';
+import {Offer} from '../../types';
 
-import PlaceCard from '../place-card/place-card.jsx';
+import PlaceCard from '../place-card/place-card';
 
-class PlacesList extends React.PureComponent {
+interface Props {
+  citiesPlaces: Offer[],
+  onClickImageItem: (place: Offer) => void,
+  onActivateItem: (place: Offer) => void,
+  onDeactivateItem: () => void
+};
+
+class PlacesList extends React.PureComponent<Props> {
   render() {
-    const {citiesPlaces, onActivateItem, onDeactivateItem} = this.props;
+    const {citiesPlaces, onClickImageItem, onActivateItem, onDeactivateItem} = this.props;
 
     return (
       <div className="cities__places-list places__list tabs__content">
@@ -13,6 +21,7 @@ class PlacesList extends React.PureComponent {
             <PlaceCard
               key={`place-card-${i}`}
               place={place}
+              onClickImage={onClickImageItem}
               onActivate={onActivateItem}
               onDeactivate={onDeactivateItem}
             />
@@ -22,11 +31,5 @@ class PlacesList extends React.PureComponent {
     );
   }
 }
-
-PlacesList.propTypes = {
-  citiesPlaces: PropTypes.array.isRequired,
-  onActivateItem: PropTypes.func,
-  onDeactivateItem: PropTypes.func
-};
 
 export default PlacesList;
