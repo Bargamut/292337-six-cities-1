@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Offer} from '../../types';
 
 import {compose} from 'recompose';
 import {connect} from 'react-redux';
@@ -18,11 +19,28 @@ import withAuthorization from '../with-authorization/with-authorization';
 import Favorites from '../../components/favorites/favorites.jsx';
 import SignIn from '../../components/sign-in/sign-in.jsx';
 import MainPage from '../../components/main/main.jsx';
+import { Subtract } from 'utility-types';
 
 const SignInWrapped = withAuthorization(SignIn);
 
+interface Props {
+  city: string,
+  cities: string[],
+  citiesPlaces: Offer[],
+  onChangeCity: (cityName: string) => void,
+  isAuthorizationRequired: boolean
+};
+
+interface InjectedProps {
+  renderScreen: () => React.ReactNode
+}
+
 const withScreenSwitch = (Component) => {
-  class WithScreenSwitch extends React.PureComponent {
+  type P = Props & React.ComponentProps<typeof Component>;
+
+  type T = Subtract<P, InjectedProps>;
+
+  class WithScreenSwitch extends React.PureComponent<P> {
     constructor(props) {
       super(props);
 
@@ -72,14 +90,6 @@ const withScreenSwitch = (Component) => {
       );
     }
   }
-
-  WithScreenSwitch.propTypes = {
-    city: PropTypes.string.isRequired,
-    cities: PropTypes.arrayOf(PropTypes.string).isRequired,
-    citiesPlaces: PropTypes.array.isRequired,
-    onChangeCity: PropTypes.func.isRequired,
-    isAuthorizationRequired: PropTypes.bool
-  };
 
   return WithScreenSwitch;
 };
