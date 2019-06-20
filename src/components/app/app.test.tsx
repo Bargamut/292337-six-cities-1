@@ -88,14 +88,14 @@ it(`App correctly renders after relaunch`, () => {
 
   const app = renderer.create(
       <App
-        city={city}
-        cities={[
-          ...new Set(citiesPlaces.map((offer) => {
-            return offer.city.name;
-          }))
-        ]}
-        citiesPlaces={citiesPlaces}
-        onChangeCity={jest.fn()}
+        // city={city}
+        // cities={[
+        //   ...new Set(citiesPlaces.map((offer) => {
+        //     return offer.city.name;
+        //   }))
+        // ]}
+        // citiesPlaces={citiesPlaces}
+        // onChangeCity={jest.fn()}
         renderScreen={jest.fn()}
       />
   )
