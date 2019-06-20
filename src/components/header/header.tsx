@@ -1,14 +1,7 @@
 import * as React from 'react';
+import {User} from '../../types';
 
 const BASE_URL = `https://es31-server.appspot.com/six-cities`;
-
-type User = {
-  id?: number,
-  email?: string,
-  name?: string,
-  avatarUrl?: string,
-  isPro?: boolean
-};
 
 interface Props {
   isAuthorizationRequired: boolean,
