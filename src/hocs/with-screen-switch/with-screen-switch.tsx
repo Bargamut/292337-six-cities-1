@@ -16,9 +16,9 @@ import {checkAuthorization} from '../../reducer/user/selectors';
 
 import withAuthorization from '../with-authorization/with-authorization';
 
-import Favorites from '../../components/favorites/favorites.jsx';
-import SignIn from '../../components/sign-in/sign-in.jsx';
-import MainPage from '../../components/main/main.jsx';
+import Favorites from '../../components/favorites/favorites';
+import SignIn from '../../components/sign-in/sign-in';
+import MainPage from '../../components/main/main';
 import { Subtract } from 'utility-types';
 
 const SignInWrapped = withAuthorization(SignIn);
