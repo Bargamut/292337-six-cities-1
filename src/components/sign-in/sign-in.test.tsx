@@ -1,7 +1,7 @@
 import * as React from 'react';
-import renderer from 'react-test-renderer';
+import * as renderer from 'react-test-renderer';
 
-import SignIn from './sign-in.jsx';
+import SignIn from './sign-in';
 
 it(`SignIn correctly renders after relaunch`, () => {
 

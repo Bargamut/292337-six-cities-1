@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-const SignIn = (props) => {
-  const {
-    isSubmitDisabled,
-    onFormSubmit,
-    onInputChange
-  } = props;
+interface Props {
+  isSubmitDisabled: boolean,
+  onFormSubmit: () => void,
+  onInputChange: (evt: React.ChangeEvent, type: string) => void
+};
 
+const SignIn:React.FunctionComponent<Props> = ({isSubmitDisabled, onFormSubmit, onInputChange}) => {
   return (
     <main className="page__main page__main--login">
       <div className="page__login-container container">
@@ -21,7 +21,7 @@ const SignIn = (props) => {
                 type="email"
                 name="email"
                 placeholder="Email"
-                required=""
+                required={true}
                 onChange={(evt) => onInputChange(evt, `email`)}
               />
             </div>
@@ -33,7 +33,7 @@ const SignIn = (props) => {
                 type="password"
                 name="password"
                 placeholder="Password"
-                required=""
+                required={true}
                 onChange={(evt) => onInputChange(evt, `password`)}
               />
             </div>
@@ -52,12 +52,6 @@ const SignIn = (props) => {
       </div>
     </main>
   );
-};
-
-SignIn.propTypes = {
-  isSubmitDisabled: PropTypes.bool,
-  onFormSubmit: PropTypes.func,
-  onInputChange: PropTypes.func
 };
 
 export default SignIn;
