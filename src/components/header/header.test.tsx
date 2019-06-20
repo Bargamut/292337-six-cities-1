@@ -1,7 +1,7 @@
 import * as React from 'react';
-import renderer from 'react-test-renderer';
+import * as renderer from 'react-test-renderer';
 
-import Header from './header.jsx';
+import Header from './header';
 
 const mock = {
   user: {
@@ -15,7 +15,7 @@ const mock = {
 };
 
 describe(`SignIn renders`, () => {
-  it(`SignIn correctly renders with authorization required`, () => {
+  it(`SignIn correctly renders without authorization required`, () => {
     const {
       onClickSignIn
     } = mock;
@@ -29,7 +29,7 @@ describe(`SignIn renders`, () => {
     expect(header).toMatchSnapshot();
   });
 
-  it(`SignIn correctly renders without authorization required`, () => {
+  it(`SignIn correctly renders with authorization required`, () => {
     const {
       user,
       onClickSignIn

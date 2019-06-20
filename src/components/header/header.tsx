@@ -2,7 +2,21 @@ import * as React from 'react';
 
 const BASE_URL = `https://es31-server.appspot.com/six-cities`;
 
-const Header = ({isAuthorizationRequired, user, onClickSignIn}) => {
+type User = {
+  id?: number,
+  email?: string,
+  name?: string,
+  avatarUrl?: string,
+  isPro?: boolean
+};
+
+interface Props {
+  isAuthorizationRequired: boolean,
+  user: User,
+  onClickSignIn: (evt: React.MouseEvent) => void
+};
+
+const Header:React.FunctionComponent<Props> = ({isAuthorizationRequired, user, onClickSignIn}) => {
   return (
     <header className="header">
       <div className="container">
@@ -41,18 +55,6 @@ const Header = ({isAuthorizationRequired, user, onClickSignIn}) => {
       </div>
     </header>
   );
-};
-
-Header.propTypes = {
-  isAuthorizationRequired: PropTypes.bool,
-  user: PropTypes.shape({
-    id: PropTypes.number,
-    email: PropTypes.string,
-    name: PropTypes.string,
-    avatarUrl: PropTypes.string,
-    isPro: PropTypes.bool
-  }),
-  onClickSignIn: PropTypes.func
 };
 
 export default Header;
