@@ -3,7 +3,7 @@ import * as React from 'react';
 interface Props {
   isSubmitDisabled: boolean,
   onFormSubmit: () => void,
-  onInputChange: (evt: React.ChangeEvent, type: string) => void
+  onInputChange: (evt: React.ChangeEvent, keyName: string) => void
 };
 
 const SignIn:React.FunctionComponent<Props> = ({isSubmitDisabled, onFormSubmit, onInputChange}) => {
