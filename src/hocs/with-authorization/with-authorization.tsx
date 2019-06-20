@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Subtract} from 'utility-types';
 
 import {compose} from 'recompose';
 import {connect} from 'react-redux';
@@ -7,8 +8,32 @@ import {ActionCreator} from '../../reducer/user/user';
 
 import history from '../../history';
 
+type FormData = {
+  email: string,
+  password: string
+};
+
+interface Props {
+  login: (state: FormData) => void
+}
+
+interface InjectedProps {
+  onInputChange: (evt: React.ChangeEvent, keyName: string) => void,
+  onFormSubmit: () => void,
+  isSubmitDisabled: boolean
+}
+
+interface State {
+  email: string,
+  password: string
+}
+
 const withAuthorization = (Component) => {
-  class WithAuthorization extends React.PureComponent {
+  type P = Props & React.ComponentProps<typeof Component>;
+
+  type T = Subtract<P, InjectedProps>;
+
+  class WithAuthorization extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 
@@ -46,10 +71,6 @@ const withAuthorization = (Component) => {
       );
     }
   }
-
-  WithAuthorization.propTypes = {
-    login: PropTypes.func
-  };
 
   return WithAuthorization;
 };
