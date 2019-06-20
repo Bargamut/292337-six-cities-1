@@ -40,7 +40,7 @@ const withScreenSwitch = (Component) => {
 
   type T = Subtract<P, InjectedProps>;
 
-  class WithScreenSwitch extends React.PureComponent<P> {
+  class WithScreenSwitch extends React.PureComponent<T> {
     constructor(props) {
       super(props);
 

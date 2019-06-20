@@ -41,8 +41,6 @@ const withUserNavigation = (Component) => {
         <Component
           {...this.props}
           onClickSignIn={this._handleClickSignIn}
-          // isAuthorizationRequired={this.props.isAuthorizationRequired}
-          // user={user}
         />
       );
     }
