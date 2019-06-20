@@ -17,7 +17,7 @@ interface Props {
 const PlacesListWrapped = withActiveItem(PlacesList);
 const CitiesListWrapped = withActiveItem(CitiesList);
 
-const MainPage = ({city, cities, citiesPlaces, onChangeCity}) => {
+const MainPage:React.FunctionComponent<Props> = ({city, cities, citiesPlaces, onChangeCity}) => {
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
