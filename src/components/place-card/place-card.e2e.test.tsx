@@ -1,10 +1,10 @@
 import * as React from 'react';
-import * as Enzyme from 'enzyme';
+import {configure, shallow} from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
 
 import PlaceCard from './place-card';
 
-Enzyme.configure({
+configure({
   adapter: new Adapter()
 });
 
@@ -70,7 +70,7 @@ it(`Set card data to callback correctly`, () => {
     onDeactivate
   } = mock;
 
-  const placeCard = Enzyme.shallow(
+  const placeCard = shallow(
       <PlaceCard
         place={places[0]}
         onClickImage={clickImageHandler}
