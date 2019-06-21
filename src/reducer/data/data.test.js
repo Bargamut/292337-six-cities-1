@@ -19,7 +19,8 @@ describe(`Data reducers`, () => {
     expect(reducer(
         {
           city: `Amsterdam`,
-          citiesPlaces: []
+          citiesPlaces: [],
+          offer: null
         },
         ActionCreator.changeCity(`Berlin`)
     )).toEqual({
