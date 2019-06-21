@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import {MemoryRouter as Router} from 'react-router-dom';
 
 import MainPage from './main';
 
@@ -37,12 +38,14 @@ it(`MainPage correctly renders after relaunch`, () => {
   const {city, cities, places} = mock;
 
   const mainPage = renderer.create(
+    <Router>
       <MainPage
         city={city}
         cities={cities}
         citiesPlaces={places}
         onChangeCity={jest.fn()}
       />
+    </Router>
   ).toJSON();
 
   expect(mainPage).toMatchSnapshot();

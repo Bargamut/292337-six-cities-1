@@ -220,7 +220,8 @@ exports[`MainPage correctly renders after relaunch 1`] = `
                 className="place-card__name"
               >
                 <a
-                  href="#"
+                  href="/offer/0"
+                  onClick={[Function]}
                 >
                   
                 </a>
