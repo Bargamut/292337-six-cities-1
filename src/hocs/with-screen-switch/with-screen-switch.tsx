@@ -16,7 +16,7 @@ import {checkAuthorization} from '../../reducer/user/selectors';
 
 import withAuthorization from '../with-authorization/with-authorization';
 
-import Favorites from '../../components/favorites/favorites';
+import Favorites from '../../components/favorites-page/favorites-page';
 import SignIn from '../../components/sign-in/sign-in';
 import MainPage from '../../components/main/main';
 import { Subtract } from 'utility-types';
