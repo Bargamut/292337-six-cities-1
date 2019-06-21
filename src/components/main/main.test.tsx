@@ -20,6 +20,17 @@ const mock = {
       },
       type: `Apartment`,
       previewImage: ``,
+      images: [`1.jpg`, `2.jpg`, `3.jpg`],
+      bedrooms: 1,
+      maxAdults: 2,
+      goods: [ `Towels`, `Dishwasher`, `Breakfast` ],
+      host: {
+        id: 25,
+        name: `Angelina`,
+        isPro: true,
+        avatarUrl: `img/avatar-angelina.jpg`
+      },
+      description: ``,
       isPremium: true,
       isFavorite: false,
       title: ``,
