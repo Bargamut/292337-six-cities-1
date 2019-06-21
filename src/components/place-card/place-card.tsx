@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {Offer} from '../../types';
+import {Link} from 'react-router-dom';
 
 interface Props {
   place: Offer,
@@ -8,7 +9,14 @@ interface Props {
   onDeactivate: () => void
 };
 
-const PlaceCard:React.FunctionComponent<Props> = ({place, onClickImage, onActivate, onDeactivate}) => {
+const PlaceCard:React.FunctionComponent<Props> = (props) => {
+  const {
+    place,
+    onClickImage,
+    onActivate,
+    onDeactivate
+  } = props;
+
   const {
     type,
     title,
@@ -60,7 +68,7 @@ const PlaceCard:React.FunctionComponent<Props> = ({place, onClickImage, onActiva
         </div>
 
         <h2 className="place-card__name">
-          <a href="#">{title}</a>
+          <Link to={`/offer/${place.id}`}>{title}</Link>
         </h2>
 
         <p className="place-card__type">{type}</p>

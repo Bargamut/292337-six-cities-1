@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import {MemoryRouter as Router} from 'react-router-dom';
 
 import PlaceCard from './place-card';
 
@@ -60,12 +61,14 @@ it(`PlaceCard correctly renders after relaunch`, () => {
   } = mock;
 
   const placeCard = renderer.create(
+    <Router>
       <PlaceCard
         place={places[0]}
         onClickImage={jest.fn()}
         onActivate={jest.fn()}
         onDeactivate={jest.fn()}
       />
+    </Router>
   )
   .toJSON();
 
@@ -78,12 +81,14 @@ it(`PlaceCard WITH MARK correctly renders after relaunch`, () => {
   } = mock;
 
   const placeCard = renderer.create(
+    <Router>
       <PlaceCard
         place={places[1]}
         onClickImage={jest.fn()}
         onActivate={jest.fn()}
         onDeactivate={jest.fn()}
       />
+    </Router>
   )
   .toJSON();
 
