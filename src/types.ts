@@ -9,11 +9,24 @@ type City = {
   location: Location
 };
 
+type Host = {
+  id: number,
+  avatarUrl: string,
+  isPro: boolean,
+  name: string
+};
+
 type Offer = {
   id: number,
   title: string,
+  bedrooms: number,
+  goods: string[],
+  host: Host,
+  maxAdults: number,
+  description: string,
   price: number,
   type: string,
+  images: string[],
   isFavorite: boolean,
   isPremium: boolean,
   rating: number,

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {Offer} from '../../types';
+import {Subtract} from 'utility-types';
 
 import {compose} from 'recompose';
 import {connect} from 'react-redux';
@@ -12,14 +13,15 @@ import {
   getCities,
   getCity
 } from '../../reducer/data/selectors';
-import {checkAuthorization} from '../../reducer/user/selectors';
+import {checkAuthorizationRequired} from '../../reducer/user/selectors';
 
 import withAuthorization from '../with-authorization/with-authorization';
 
-import Favorites from '../../components/favorites/favorites';
+import Favorites from '../../components/favorites-page/favorites-page';
 import SignIn from '../../components/sign-in/sign-in';
 import MainPage from '../../components/main/main';
-import { Subtract } from 'utility-types';
+import Property from '../../components/property/property';
+import { withGuardRoute } from '../with-guard-route/with-guard-route';
 
 const SignInWrapped = withAuthorization(SignIn);
 
@@ -50,13 +52,9 @@ const withScreenSwitch = (Component) => {
     render() {
       return (
         <Switch>
-          <Route path="/login" render={() => (
-            <SignInWrapped />
-          )} />
-
-          <Route path="/favorites" render={() => (
-            <Favorites />
-          )} />
+          <Route path="/login" component={withGuardRoute(SignInWrapped, `anonymous`)} />
+          <Route path="/favorites" component={withGuardRoute(Favorites, `user`)} />
+          <Route path="/offer/:id" component={Property} />
 
           <Route path="/" exact render={() => (
             <Component
@@ -99,7 +97,7 @@ const mapStateToProps = (state, ownProps) => {
     city: getCity(state),
     cities: getCities(state),
     citiesPlaces: getSelectedPlaces(state),
-    isAuthorizationRequired: checkAuthorization(state)
+    isAuthorizationRequired: checkAuthorizationRequired(state)
   });
 };
 

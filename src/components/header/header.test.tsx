@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import { MemoryRouter as Router } from 'react-router-dom';
 
 import Header from './header';
 
@@ -20,11 +21,15 @@ describe(`SignIn renders`, () => {
       onClickSignIn
     } = mock;
 
-    const header = renderer.create(<Header
-      isAuthorizationRequired={true}
-      user={{}}
-      onClickSignIn={onClickSignIn}
-    />).toJSON();
+    const header = renderer.create(
+      <Router>
+        <Header
+          isAuthorizationRequired={true}
+          user={{}}
+          onClickSignIn={onClickSignIn}
+        />
+      </Router>
+    ).toJSON();
 
     expect(header).toMatchSnapshot();
   });
@@ -35,11 +40,15 @@ describe(`SignIn renders`, () => {
       onClickSignIn
     } = mock;
 
-    const header = renderer.create(<Header
-      isAuthorizationRequired={false}
-      user={user}
-      onClickSignIn={onClickSignIn}
-    />).toJSON();
+    const header = renderer.create(
+      <Router>
+        <Header
+          isAuthorizationRequired={false}
+          user={user}
+          onClickSignIn={onClickSignIn}
+        />
+      </Router>
+    ).toJSON();
 
     expect(header).toMatchSnapshot();
   });

@@ -4,7 +4,7 @@ import {compose} from 'recompose';
 import {connect} from 'react-redux';
 
 import {ActionCreator} from '../../reducer/user/user';
-import {checkAuthorization, getUserInfo} from '../../reducer/user/selectors';
+import {checkAuthorizationRequired, getUserInfo} from '../../reducer/user/selectors';
 import {User} from '../../types';
 import { Subtract } from 'utility-types';
 
@@ -51,7 +51,7 @@ const withUserNavigation = (Component) => {
 
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
-    isAuthorizationRequired: checkAuthorization(state),
+    isAuthorizationRequired: checkAuthorizationRequired(state),
     user: getUserInfo(state)
   });
 };

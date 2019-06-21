@@ -15,6 +15,8 @@ exports[`SignIn renders SignIn correctly renders with authorization required 1`]
       >
         <a
           className="header__logo-link header__logo-link--active"
+          href="/"
+          onClick={[Function]}
         >
           <img
             alt="6 cities logo"
@@ -75,6 +77,8 @@ exports[`SignIn renders SignIn correctly renders without authorization required 
       >
         <a
           className="header__logo-link header__logo-link--active"
+          href="/"
+          onClick={[Function]}
         >
           <img
             alt="6 cities logo"

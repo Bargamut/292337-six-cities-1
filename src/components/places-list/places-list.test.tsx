@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import {MemoryRouter as Router} from 'react-router-dom';
 
 import PlacesList from './places-list';
 
@@ -17,6 +18,17 @@ const mock = {
       },
       type: `Apartment`,
       previewImage: ``,
+      images: [`1.jpg`, `2.jpg`, `3.jpg`],
+      bedrooms: 1,
+      maxAdults: 2,
+      goods: [ `Towels`, `Dishwasher`, `Breakfast` ],
+      host: {
+        id: 25,
+        name: `Angelina`,
+        isPro: true,
+        avatarUrl: `img/avatar-angelina.jpg`
+      },
+      description: ``,
       isPremium: true,
       isFavorite: false,
       title: `Amsterdam Apartment Premium`,
@@ -40,6 +52,17 @@ const mock = {
       },
       type: `Private room`,
       previewImage: ``,
+      images: [`1.jpg`, `2.jpg`, `3.jpg`],
+      bedrooms: 1,
+      maxAdults: 2,
+      goods: [ `Towels`, `Dishwasher`, `Breakfast` ],
+      host: {
+        id: 25,
+        name: `Angelina`,
+        isPro: true,
+        avatarUrl: `img/avatar-angelina.jpg`
+      },
+      description: ``,
       isPremium: false,
       isFavorite: false,
       title: `Berlin Private room`,
@@ -63,6 +86,17 @@ const mock = {
       },
       type: `Apartment`,
       previewImage: ``,
+      images: [`1.jpg`, `2.jpg`, `3.jpg`],
+      bedrooms: 1,
+      maxAdults: 2,
+      goods: [ `Towels`, `Dishwasher`, `Breakfast` ],
+      host: {
+        id: 25,
+        name: `Angelina`,
+        isPro: true,
+        avatarUrl: `img/avatar-angelina.jpg`
+      },
+      description: ``,
       isPremium: false,
       isFavorite: false,
       title: `Sydney Apartment`,
@@ -86,6 +120,17 @@ const mock = {
       },
       type: `Apartment`,
       previewImage: ``,
+      images: [`1.jpg`, `2.jpg`, `3.jpg`],
+      bedrooms: 1,
+      maxAdults: 2,
+      goods: [ `Towels`, `Dishwasher`, `Breakfast` ],
+      host: {
+        id: 25,
+        name: `Angelina`,
+        isPro: true,
+        avatarUrl: `img/avatar-angelina.jpg`
+      },
+      description: ``,
       isPremium: true,
       isFavorite: false,
       title: `Saint-Petersburg Apartment Premium`,
@@ -109,6 +154,17 @@ const mock = {
       },
       type: `Private room`,
       previewImage: ``,
+      images: [`1.jpg`, `2.jpg`, `3.jpg`],
+      bedrooms: 1,
+      maxAdults: 2,
+      goods: [ `Towels`, `Dishwasher`, `Breakfast` ],
+      host: {
+        id: 25,
+        name: `Angelina`,
+        isPro: true,
+        avatarUrl: `img/avatar-angelina.jpg`
+      },
+      description: ``,
       isPremium: true,
       isFavorite: false,
       title: `Amsterdam Private room Premium`,
@@ -127,6 +183,7 @@ it(`Places List correctly renders`, () => {
   const {citiesPlaces} = mock;
 
   const placesList = renderer.create(
+    <Router>
       <PlacesList
         // city="Amsterdam"
         citiesPlaces={citiesPlaces}
@@ -134,6 +191,7 @@ it(`Places List correctly renders`, () => {
         onActivateItem={jest.fn()}
         onDeactivateItem={jest.fn()}
       />
+    </Router>
   );
 
   expect(placesList).toMatchSnapshot();

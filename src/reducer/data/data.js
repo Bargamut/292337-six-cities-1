@@ -5,7 +5,8 @@ const initialState = {
 
 const ActionType = {
   CHANGE_CITY: `CHANGE_CITY`,
-  LOAD_OFFERS: `LOAD_OFFERS`
+  LOAD_OFFERS: `LOAD_OFFERS`,
+  LOAD_OFFER_DATA: `LOAD_OFFER_DATA`
 };
 
 const ActionCreator = {
