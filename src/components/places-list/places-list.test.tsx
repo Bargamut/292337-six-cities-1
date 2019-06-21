@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import {MemoryRouter as Router} from 'react-router-dom';
 
 import PlacesList from './places-list';
 
@@ -127,6 +128,7 @@ it(`Places List correctly renders`, () => {
   const {citiesPlaces} = mock;
 
   const placesList = renderer.create(
+    <Router>
       <PlacesList
         // city="Amsterdam"
         citiesPlaces={citiesPlaces}
@@ -134,6 +136,7 @@ it(`Places List correctly renders`, () => {
         onActivateItem={jest.fn()}
         onDeactivateItem={jest.fn()}
       />
+    </Router>
   );
 
   expect(placesList).toMatchSnapshot();

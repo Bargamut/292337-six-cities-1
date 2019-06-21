@@ -97,7 +97,8 @@ exports[`Places List correctly renders 1`] = `
         className="place-card__name"
       >
         <a
-          href="#"
+          href="/offer/0"
+          onClick={[Function]}
         >
           Amsterdam Apartment Premium
         </a>
@@ -196,7 +197,8 @@ exports[`Places List correctly renders 1`] = `
         className="place-card__name"
       >
         <a
-          href="#"
+          href="/offer/1"
+          onClick={[Function]}
         >
           Berlin Private room
         </a>
@@ -295,7 +297,8 @@ exports[`Places List correctly renders 1`] = `
         className="place-card__name"
       >
         <a
-          href="#"
+          href="/offer/2"
+          onClick={[Function]}
         >
           Sydney Apartment
         </a>
@@ -400,7 +403,8 @@ exports[`Places List correctly renders 1`] = `
         className="place-card__name"
       >
         <a
-          href="#"
+          href="/offer/3"
+          onClick={[Function]}
         >
           Saint-Petersburg Apartment Premium
         </a>
@@ -505,7 +509,8 @@ exports[`Places List correctly renders 1`] = `
         className="place-card__name"
       >
         <a
-          href="#"
+          href="/offer/4"
+          onClick={[Function]}
         >
           Amsterdam Private room Premium
         </a>
