@@ -30,3 +30,5 @@ export const getCities = createSelector(
 export const getOfferById = (id, state) => {
   return getPlaces(state).filter((place) => place.id === id)[0];
 };
+
+export const getComments = (state) => normalizeKeys(state[NAME_SPACE].comments);
