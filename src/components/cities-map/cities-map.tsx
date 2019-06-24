@@ -1,19 +1,25 @@
 import * as React from 'react';
 import * as leaflet from 'leaflet';
 
-import CITIES_DATA from '../../mocks/cities';
+import {Location} from '../../types';
 
 const MAP_SETTINGS = {
   icon: {
     iconUrl: `img/pin.svg`,
     iconSize: [30, 30]
   },
+  activeIcon: {
+    iconUrl: `img/pin-active.svg`,
+    iconSize: [30, 30]
+  },
   zoom: 12
 };
 
 interface Props {
-  city: string,
-  placesCoords: number[][]
+  location: Location,
+  placesCoords: Location[],
+  hasActivePoint?: boolean,
+  className?: string
 };
 
 class CitiesMap extends React.PureComponent<Props> {
@@ -28,21 +34,25 @@ class CitiesMap extends React.PureComponent<Props> {
   }
 
   _initMap() {
-    const {city} = this.props;
-    const cityCoords = CITIES_DATA[city];
+    const {
+      location: {latitude, longitude}
+    } = this.props;
 
     this.map = leaflet.map(this._mapRef.current, {
-      center: cityCoords,
+      center: [latitude, longitude],
       zoom: MAP_SETTINGS.zoom,
       zoomControl: false,
       marker: true
     });
 
-    this.map.setView(cityCoords, MAP_SETTINGS.zoom);
+    this.map.setView([latitude, longitude], MAP_SETTINGS.zoom);
   }
 
   _setPins() {
-    const {placesCoords} = this.props;
+    const {
+      placesCoords,
+      location: {latitude, longitude}
+    } = this.props;
     const icon = leaflet.icon(MAP_SETTINGS.icon);
 
     leaflet
@@ -53,14 +63,22 @@ class CitiesMap extends React.PureComponent<Props> {
 
     placesCoords.forEach((coords) => {
       leaflet
-        .marker(coords, {icon})
+        .marker([coords.latitude, coords.longitude], {icon})
         .addTo(this.map);
     });
+
+    if (this.props.hasActivePoint) {
+      leaflet
+        .marker([latitude, longitude], {icon: MAP_SETTINGS.activeIcon})
+        .addTo(this.map);
+    }
   }
 
   render() {
+    const {className} = this.props;
+
     return (
-      <section className="cities__map map" id="map" ref={this._mapRef}></section>
+      <section className={`${className ? className : `cities__map`} map`} id="map" ref={this._mapRef}></section>
     );
   }
 
@@ -74,12 +92,17 @@ class CitiesMap extends React.PureComponent<Props> {
   }
 
   componentDidUpdate() {
-    const {city} = this.props;
-    const cityCoords = CITIES_DATA[city];
+    const {location: {
+      latitude, longitude
+    }} = this.props;
 
-    this.map.setView(cityCoords, MAP_SETTINGS.zoom);
+    this.map.setView([latitude, longitude], MAP_SETTINGS.zoom);
 
     this._setPins();
+  }
+
+  componentWillUnmount(): void {
+    this.map.remove();
   }
 }
 
