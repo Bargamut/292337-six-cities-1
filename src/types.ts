@@ -43,9 +43,18 @@ type User = {
   isPro?: boolean
 };
 
+type ReviewItem = {
+  id: number,
+  user: User,
+  rating: number,
+  comment: string,
+  date: string
+}
+
 export {
   Location,
   City,
   Offer,
-  User
+  User,
+  ReviewItem
 };
