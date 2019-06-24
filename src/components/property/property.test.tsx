@@ -43,7 +43,11 @@ const mocks = {
 it(`Property correctly renders after relaunch`, () => {
   const {offer} = mocks;
 
-  const property = renderer.create(<Property offer={offer} />).toJSON();
+  const property = renderer.create(<Property
+    offer={offer}
+    comments={[]}
+    loadComments={jest.fn()}
+  />).toJSON();
 
   expect(property).toMatchSnapshot();
 });
