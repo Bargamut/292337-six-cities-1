@@ -1,15 +1,17 @@
 import * as React from 'react';
-import {Offer, ReviewItem} from '../../types';
+import {Location, Offer, ReviewItem} from '../../types';
 
 import {connect} from 'react-redux';
 import {configureAPI} from '../../api';
 
 import {ActionCreator as dataActionCreator} from '../../reducer/data/data';
-import {getOfferById, getComments} from '../../reducer/data/selectors';
+import {getOfferById, getSelectedPlaces, getComments} from '../../reducer/data/selectors';
 import ReviewsList from '../reviews-list/reviews-list';
+import CitiesMap from '../cities-map/cities-map';
 
 interface Props {
   offer: Offer,
+  offers: Offer[],
   comments: ReviewItem[],
   loadComments: () => ReviewItem[]
 }
@@ -22,8 +24,15 @@ class Property extends React.PureComponent<Props> {
   render() {
     const {
       offer,
+      offers,
       comments
     } = this.props;
+
+    if (!offer) {
+      return null;
+    }
+
+    const placesCoords: Location[] = offers.map((offer) => offer.location);
 
     return (
       <main className="page__main page__main--property">
@@ -121,7 +130,12 @@ class Property extends React.PureComponent<Props> {
             </div>
           </div>
 
-          <section className="property__map map"></section>
+          <CitiesMap
+            location={offer.location}
+            placesCoords={placesCoords}
+            hasActivePoint={false}
+            className="property__map"
+          />
         </section>
 
         <div className="container">
@@ -247,6 +261,9 @@ const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
     id: id,
     offer: getOfferById(id, state),
+    offers: getSelectedPlaces(state)
+      .filter((offer) => parseInt(offer.id) !== id)
+      .slice(0, 3),
     comments: getComments(state)
   });
 };

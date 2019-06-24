@@ -45,6 +45,7 @@ it(`Property correctly renders after relaunch`, () => {
 
   const property = renderer.create(<Property
     offer={offer}
+    offers={[]}
     comments={[]}
     loadComments={jest.fn()}
   />).toJSON();

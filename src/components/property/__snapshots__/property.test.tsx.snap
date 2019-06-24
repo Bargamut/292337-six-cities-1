@@ -397,6 +397,7 @@ exports[`Property correctly renders after relaunch 1`] = `
     </div>
     <section
       className="property__map map"
+      id="map"
     />
   </section>
   <div
