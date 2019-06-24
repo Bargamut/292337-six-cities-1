@@ -1,5 +1,7 @@
 import * as React from 'react';
-import {Offer} from '../../types';
+import {Offer, Location} from '../../types';
+
+import CITIES_DATA from '../../mocks/cities';
 
 import PlacesList from '../places-list/places-list';
 import CitiesMap from '../cities-map/cities-map';
@@ -18,6 +20,8 @@ const PlacesListWrapped = withActiveItem(PlacesList);
 const CitiesListWrapped = withActiveItem(CitiesList);
 
 const MainPage:React.FunctionComponent<Props> = ({city, cities, citiesPlaces, onChangeCity}) => {
+  const placesCoords: Location[] = citiesPlaces.map((offer) => offer.location);
+
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
@@ -70,19 +74,9 @@ const MainPage:React.FunctionComponent<Props> = ({city, cities, citiesPlaces, on
 
           <div className="cities__right-section">
             <CitiesMap
-              city={city}
-              placesCoords={
-                citiesPlaces.reduce((placesCoords, currentPlace) => {
-                  const coords = [
-                    currentPlace.location.latitude,
-                    currentPlace.location.longitude
-                  ];
-
-                  placesCoords.push(coords);
-
-                  return placesCoords;
-                }, [])
-              }
+              location={CITIES_DATA[city]}
+              hasActivePoint={false}
+              placesCoords={placesCoords}
             />
           </div>
         </div>
