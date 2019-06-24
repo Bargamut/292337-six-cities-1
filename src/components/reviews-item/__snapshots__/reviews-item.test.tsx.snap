@@ -36,7 +36,7 @@ exports[`Property correctly renders after relaunch 1`] = `
         <span
           style={
             Object {
-              "width": 40,
+              "width": "40%",
             }
           }
         />

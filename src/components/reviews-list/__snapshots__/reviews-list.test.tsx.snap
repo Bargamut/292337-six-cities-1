@@ -52,7 +52,7 @@ exports[`Property correctly renders after relaunch 1`] = `
             <span
               style={
                 Object {
-                  "width": 40,
+                  "width": "40%",
                 }
               }
             />
@@ -111,7 +111,7 @@ exports[`Property correctly renders after relaunch 1`] = `
             <span
               style={
                 Object {
-                  "width": 100,
+                  "width": "100%",
                 }
               }
             />
