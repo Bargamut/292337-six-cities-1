@@ -11,7 +11,8 @@ describe(`Data reducers`, () => {
   it(`Should return initial state by defalut`, () => {
     expect(reducer(undefined, {})).toEqual({
       city: `Amsterdam`,
-      citiesPlaces: []
+      citiesPlaces: [],
+      comments: []
     });
   });
 
@@ -19,12 +20,14 @@ describe(`Data reducers`, () => {
     expect(reducer(
         {
           city: `Amsterdam`,
-          citiesPlaces: []
+          citiesPlaces: [],
+          comments: []
         },
         ActionCreator.changeCity(`Berlin`)
     )).toEqual({
       city: `Berlin`,
-      citiesPlaces: []
+      citiesPlaces: [],
+      comments: []
     });
   });
 

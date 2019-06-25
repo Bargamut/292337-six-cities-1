@@ -4,12 +4,19 @@ import * as renderer from 'react-test-renderer';
 import CitiesMap from './cities-map';
 
 const mocks = {
-  city: `Amsterdam`,
+  city: {
+    name: `Amsterdam`,
+    location: {
+      latitude: 52.38333,
+      longitude: 4.9,
+      zoom: 12
+    }
+  },
   placesCoords: [
-    [0, 0],
-    [0, 0],
-    [0, 0],
-    [0, 0]
+    { latitude: 0, longitude: 0, zoom: 12 },
+    { latitude: 0, longitude: 0, zoom: 12 },
+    { latitude: 0, longitude: 0, zoom: 12 },
+    { latitude: 0, longitude: 0, zoom: 12 }
   ],
   leaflet: {
     icon: () => {},
@@ -20,12 +27,11 @@ const mocks = {
 };
 
 it(`CitiesMap renders correctly`, () => {
-  const {city, placesCoords, leaflet} = mocks;
+  const {city: { location }, placesCoords} = mocks;
 
   const citiesMap = renderer.create(
       <CitiesMap
-        // leaflet={leaflet}
-        city={city}
+        location={location}
         placesCoords={placesCoords}
       />
   );

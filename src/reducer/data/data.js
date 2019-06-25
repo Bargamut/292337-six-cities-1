@@ -1,12 +1,13 @@
 const initialState = {
   city: `Amsterdam`,
-  citiesPlaces: []
+  citiesPlaces: [],
+  comments: []
 };
 
 const ActionType = {
   CHANGE_CITY: `CHANGE_CITY`,
   LOAD_OFFERS: `LOAD_OFFERS`,
-  LOAD_OFFER_DATA: `LOAD_OFFER_DATA`
+  LOAD_COMMENTS: `LOAD_COMMENTS`
 };
 
 const ActionCreator = {
@@ -21,6 +22,13 @@ const ActionCreator = {
     return {
       type: ActionType.LOAD_OFFERS,
       payload: citiesPlaces
+    };
+  },
+
+  loadComments: (comments) => {
+    return {
+      type: ActionType.LOAD_COMMENTS,
+      payload: comments
     };
   }
 };
@@ -46,6 +54,11 @@ const reducer = function (state = initialState, action) {
     case ActionType.LOAD_OFFERS:
       return Object.assign({}, state, {
         citiesPlaces: action.payload
+      });
+
+    case ActionType.LOAD_COMMENTS:
+      return Object.assign({}, state, {
+        comments: action.payload
       });
   }
 
