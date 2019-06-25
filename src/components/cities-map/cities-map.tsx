@@ -5,11 +5,11 @@ import {Location} from '../../types';
 
 const MAP_SETTINGS = {
   icon: {
-    iconUrl: `img/pin.svg`,
+    iconUrl: `/img/pin.svg`,
     iconSize: [30, 30]
   },
   activeIcon: {
-    iconUrl: `img/pin-active.svg`,
+    iconUrl: `/img/pin-active.svg`,
     iconSize: [30, 30]
   },
   zoom: 12
@@ -25,12 +25,14 @@ interface Props {
 class CitiesMap extends React.PureComponent<Props> {
   private map: any;
   private _mapRef : React.RefObject<any>;
+  private _markersGroup: any;
 
   constructor(props) {
     super(props);
 
     this.map = null;
     this._mapRef = React.createRef();
+    this._markersGroup = null;
   }
 
   _initMap() {
@@ -54,6 +56,9 @@ class CitiesMap extends React.PureComponent<Props> {
       location: {latitude, longitude}
     } = this.props;
     const icon = leaflet.icon(MAP_SETTINGS.icon);
+    const activeIcon = leaflet.icon(MAP_SETTINGS.activeIcon);
+
+    this._markersGroup = leaflet.layerGroup().addTo(this.map);
 
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
@@ -64,13 +69,16 @@ class CitiesMap extends React.PureComponent<Props> {
     placesCoords.forEach((coords) => {
       leaflet
         .marker([coords.latitude, coords.longitude], {icon})
-        .addTo(this.map);
+        .addTo(this._markersGroup);
     });
 
     if (this.props.hasActivePoint) {
       leaflet
-        .marker([latitude, longitude], {icon: MAP_SETTINGS.activeIcon})
-        .addTo(this.map);
+        .marker([latitude, longitude], {
+          iconUrl: `/img/pin-active.svg`,
+          iconSize: [30, 30]
+        })
+        .addTo(this._markersGroup);
     }
   }
 
@@ -98,6 +106,7 @@ class CitiesMap extends React.PureComponent<Props> {
 
     this.map.setView([latitude, longitude], MAP_SETTINGS.zoom);
 
+    this._markersGroup.clearLayers();
     this._setPins();
   }
 
