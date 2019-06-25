@@ -7,15 +7,18 @@ interface Props {
   citiesPlaces: Offer[],
   onClickImageItem: (place: Offer) => void,
   onActivateItem: (place: Offer) => void,
-  onDeactivateItem: () => void
+  onDeactivateItem: () => void,
+  className?: string
 };
 
 class PlacesList extends React.PureComponent<Props> {
   render() {
     const {citiesPlaces, onClickImageItem, onActivateItem, onDeactivateItem} = this.props;
 
+    const className = this.props.className || `cities__places-list`;
+
     return (
-      <div className="cities__places-list places__list tabs__content">
+      <div className={`${className} places__list tabs__content`}>
         {citiesPlaces.map((place, i) => {
           return (
             <PlaceCard
