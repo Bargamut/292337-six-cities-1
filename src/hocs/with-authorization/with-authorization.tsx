@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Subtract} from 'utility-types';
+import {Subtract, PromiseType} from 'utility-types';
 
 import {compose} from 'recompose';
 import {connect} from 'react-redux';
@@ -7,6 +7,8 @@ import {configureAPI} from '../../api';
 import {ActionCreator} from '../../reducer/user/user';
 
 import history from '../../history';
+import { ResolveOptions } from 'dns';
+import { AxiosPromise, AxiosResponse } from 'axios';
 
 type FormData = {
   email: string,
@@ -82,7 +84,7 @@ const mapDispatchToProps = (dispatch) => ({
       .catch(() => {
         dispatch(ActionCreator.requireAuthorization(true));
       })
-      .then((response) => {
+      .then((response: AxiosResponse) => {
         dispatch(ActionCreator.login(response.data));
         dispatch(ActionCreator.requireAuthorization(false));
 
