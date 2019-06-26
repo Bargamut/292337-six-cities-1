@@ -1,10 +1,11 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
-import {MemoryRouter as Router} from 'react-router-dom';
+import * as ShallowRenderer from 'react-test-renderer/shallow';
 
-import PlacesList from './places-list';
+import Places from './places';
 
-const mock = {
+const renderer = new ShallowRenderer();
+
+const mocks = {
   citiesPlaces: [
     {
       id: 0,
@@ -176,20 +177,29 @@ const mock = {
         zoom: 13
       }
     }
-  ]
+  ],
+  city: {
+    name: `Amsterdam`,
+    location: {
+      latitude: 51.23,
+      longitude: 51.24,
+      zoom: 13
+    }
+  }
 };
 
-it(`Places List correctly renders`, () => {
-  const {citiesPlaces} = mock;
+it(`Places correctly renders`, () => {
+  const {citiesPlaces, city} = mocks;
 
-  const placesList = renderer.create(
-    <Router>
-      <PlacesList
-        citiesPlaces={citiesPlaces}
-        onClickImageItem={jest.fn()}
-      />
-    </Router>
+  const places = renderer.render(
+    <Places
+      citiesPlaces={citiesPlaces}
+      city={city}
+      activeItem={citiesPlaces[0]}
+      onChangeOffersFilter={jest.fn()}
+      onSetActiveItem={jest.fn()}
+    />
   );
 
-  expect(placesList).toMatchSnapshot();
+  expect(places).toMatchSnapshot();
 });

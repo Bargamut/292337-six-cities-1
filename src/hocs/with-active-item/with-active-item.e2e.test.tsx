@@ -12,22 +12,8 @@ const MockComponentWrapped = withActiveItem(MockComponent);
 it(`Should to be NULL of activeItem`, () => {
   const wrapper = shallow(<MockComponentWrapped />);
 
-  expect(wrapper.state().activeItem).toBeNull();
-});
+  expect(wrapper.state().activeItem).toBeUndefined();
 
-it(`Should contain a value of activeItem`, () => {
-  const wrapper = shallow(<MockComponentWrapped />);
-
-  wrapper.props().onActivateItem(`value`);
-
-  expect(wrapper.state().activeItem).toEqual(`value`);
-});
-
-it(`Should CLEAR state value of activeItem`, () => {
-  const wrapper = shallow(<MockComponentWrapped />);
-
-  wrapper.setState({activeItem: `value`});
-  wrapper.props().onDeactivateItem();
-
-  expect(wrapper.state().activeItem).toBeNull();
+  wrapper.props().onSetActiveItem(7);
+  expect(wrapper.props().activeItem).toEqual(7);
 });

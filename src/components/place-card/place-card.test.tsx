@@ -87,8 +87,6 @@ it(`PlaceCard correctly renders after relaunch`, () => {
       <PlaceCard
         place={places[0]}
         onClickImage={jest.fn()}
-        onActivate={jest.fn()}
-        onDeactivate={jest.fn()}
       />
     </Router>
   )
@@ -107,8 +105,6 @@ it(`PlaceCard WITH MARK correctly renders after relaunch`, () => {
       <PlaceCard
         place={places[1]}
         onClickImage={jest.fn()}
-        onActivate={jest.fn()}
-        onDeactivate={jest.fn()}
       />
     </Router>
   )

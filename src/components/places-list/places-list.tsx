@@ -5,15 +5,14 @@ import PlaceCard from '../place-card/place-card';
 
 interface Props {
   citiesPlaces: Offer[],
-  onClickImageItem: (place: Offer) => void,
-  onActivateItem: (place: Offer) => void,
-  onDeactivateItem: () => void,
+  onClickImageItem?: (place: Offer) => void
   className?: string
+  current?: number,
 };
 
 class PlacesList extends React.PureComponent<Props> {
   render() {
-    const {citiesPlaces, onClickImageItem, onActivateItem, onDeactivateItem} = this.props;
+    const {citiesPlaces, current, onClickImageItem} = this.props;
 
     const className = this.props.className || `cities__places-list`;
 
@@ -24,9 +23,8 @@ class PlacesList extends React.PureComponent<Props> {
             <PlaceCard
               key={`place-card-${i}`}
               place={place}
+              current={current === i ? current : null}
               onClickImage={onClickImageItem}
-              onActivate={onActivateItem}
-              onDeactivate={onDeactivateItem}
             />
           );
         })}

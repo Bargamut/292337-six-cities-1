@@ -4,17 +4,16 @@ import {Link} from 'react-router-dom';
 
 interface Props {
   place: Offer,
+  current?: number,
   onClickImage: (place: Offer) => void,
-  onActivate: (place: Offer) => void,
-  onDeactivate: () => void
+  className?: string
 };
 
-const PlaceCard:React.FunctionComponent<Props> = (props) => {
+const PlaceCard = (props: Props) => {
   const {
     place,
-    onClickImage,
-    onActivate,
-    onDeactivate
+    current,
+    onClickImage
   } = props;
 
   const {
@@ -24,22 +23,27 @@ const PlaceCard:React.FunctionComponent<Props> = (props) => {
     rating
   } = place;
 
+  let className = props.className || 'cities__place-card';
+
+  if (current >= 0) {
+    className = `${className} ${className}--active`;
+  }
+
+  const handleClickImage = (evt) => {
+    evt.preventDefault();
+
+    onClickImage(place);
+  };
+
   return (
-    <article className="cities__place-card place-card" onMouseEnter={() => {
-      onActivate(place);
-    }} onMouseLeave={() => {
-      onDeactivate();
-    }}>
+    <article className={`${className} place-card`}>
       {place.isPremium ? (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       ) : ``}
-      <div className="cities__image-wrapper place-card__image-wrapper"
-        onClick={() => {
-          onClickImage(place);
-        }}>
-        <a href="#">
+      <div className="cities__image-wrapper place-card__image-wrapper">
+        <a href="#" onClick={handleClickImage}>
           <img className="place-card__image" src={place.previewImage} width="260" height="200" alt="Place image" />
         </a>
       </div>
@@ -62,7 +66,7 @@ const PlaceCard:React.FunctionComponent<Props> = (props) => {
 
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `${rating}%`}}></span>
+            <span style={{width: `${rating * 20}%`}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
