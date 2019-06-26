@@ -1,0 +1,319 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Places correctly renders 1`] = `
+<div
+  className="cities__places-container container"
+>
+  <section
+    className="cities__places places"
+  >
+    <h2
+      className="visually-hidden"
+    >
+      Places
+    </h2>
+    <b
+      className="places__found"
+    >
+      5
+       
+      places
+       to stay in 
+      Object {
+        "location": Object {
+          "latitude": 51.23,
+          "longitude": 51.24,
+          "zoom": 13,
+        },
+        "name": "Amsterdam",
+      }
+    </b>
+    <PlacesSorting
+      onChangeOffersFilter={[MockFunction]}
+      sortItems={
+        Array [
+          Object {
+            "caption": "Popular",
+            "value": "popular",
+          },
+          Object {
+            "caption": "Price: low to high",
+            "order": "ASC",
+            "value": "price",
+          },
+          Object {
+            "caption": "Price: high to low",
+            "order": "DESC",
+            "value": "price",
+          },
+          Object {
+            "caption": "Top rated first",
+            "order": "DESC",
+            "value": "rating",
+          },
+        ]
+      }
+    />
+    <PlacesList
+      citiesPlaces={
+        Array [
+          Object {
+            "bedrooms": 1,
+            "city": Object {
+              "location": Object {
+                "latitude": 0,
+                "longitude": 0,
+                "zoom": 13,
+              },
+              "name": "Amsterdam",
+            },
+            "description": "",
+            "goods": Array [
+              "Towels",
+              "Dishwasher",
+              "Breakfast",
+            ],
+            "host": Object {
+              "avatarUrl": "img/avatar-angelina.jpg",
+              "id": 25,
+              "isPro": true,
+              "name": "Angelina",
+            },
+            "id": 0,
+            "images": Array [
+              "1.jpg",
+              "2.jpg",
+              "3.jpg",
+            ],
+            "isFavorite": false,
+            "isPremium": true,
+            "location": Object {
+              "latitude": 0,
+              "longitude": 0,
+              "zoom": 13,
+            },
+            "maxAdults": 2,
+            "previewImage": "",
+            "price": 0,
+            "rating": 0,
+            "title": "Amsterdam Apartment Premium",
+            "type": "Apartment",
+          },
+          Object {
+            "bedrooms": 1,
+            "city": Object {
+              "location": Object {
+                "latitude": 0,
+                "longitude": 0,
+                "zoom": 13,
+              },
+              "name": "Berlin",
+            },
+            "description": "",
+            "goods": Array [
+              "Towels",
+              "Dishwasher",
+              "Breakfast",
+            ],
+            "host": Object {
+              "avatarUrl": "img/avatar-angelina.jpg",
+              "id": 25,
+              "isPro": true,
+              "name": "Angelina",
+            },
+            "id": 1,
+            "images": Array [
+              "1.jpg",
+              "2.jpg",
+              "3.jpg",
+            ],
+            "isFavorite": false,
+            "isPremium": false,
+            "location": Object {
+              "latitude": 0,
+              "longitude": 0,
+              "zoom": 13,
+            },
+            "maxAdults": 2,
+            "previewImage": "",
+            "price": 0,
+            "rating": 0,
+            "title": "Berlin Private room",
+            "type": "Private room",
+          },
+          Object {
+            "bedrooms": 1,
+            "city": Object {
+              "location": Object {
+                "latitude": 0,
+                "longitude": 0,
+                "zoom": 13,
+              },
+              "name": "Sydney",
+            },
+            "description": "",
+            "goods": Array [
+              "Towels",
+              "Dishwasher",
+              "Breakfast",
+            ],
+            "host": Object {
+              "avatarUrl": "img/avatar-angelina.jpg",
+              "id": 25,
+              "isPro": true,
+              "name": "Angelina",
+            },
+            "id": 2,
+            "images": Array [
+              "1.jpg",
+              "2.jpg",
+              "3.jpg",
+            ],
+            "isFavorite": false,
+            "isPremium": false,
+            "location": Object {
+              "latitude": 0,
+              "longitude": 0,
+              "zoom": 13,
+            },
+            "maxAdults": 2,
+            "previewImage": "",
+            "price": 0,
+            "rating": 0,
+            "title": "Sydney Apartment",
+            "type": "Apartment",
+          },
+          Object {
+            "bedrooms": 1,
+            "city": Object {
+              "location": Object {
+                "latitude": 0,
+                "longitude": 0,
+                "zoom": 13,
+              },
+              "name": "Saint-Petersburg",
+            },
+            "description": "",
+            "goods": Array [
+              "Towels",
+              "Dishwasher",
+              "Breakfast",
+            ],
+            "host": Object {
+              "avatarUrl": "img/avatar-angelina.jpg",
+              "id": 25,
+              "isPro": true,
+              "name": "Angelina",
+            },
+            "id": 3,
+            "images": Array [
+              "1.jpg",
+              "2.jpg",
+              "3.jpg",
+            ],
+            "isFavorite": false,
+            "isPremium": true,
+            "location": Object {
+              "latitude": 0,
+              "longitude": 0,
+              "zoom": 13,
+            },
+            "maxAdults": 2,
+            "previewImage": "",
+            "price": 0,
+            "rating": 0,
+            "title": "Saint-Petersburg Apartment Premium",
+            "type": "Apartment",
+          },
+          Object {
+            "bedrooms": 1,
+            "city": Object {
+              "location": Object {
+                "latitude": 0,
+                "longitude": 0,
+                "zoom": 13,
+              },
+              "name": "Amsterdam",
+            },
+            "description": "",
+            "goods": Array [
+              "Towels",
+              "Dishwasher",
+              "Breakfast",
+            ],
+            "host": Object {
+              "avatarUrl": "img/avatar-angelina.jpg",
+              "id": 25,
+              "isPro": true,
+              "name": "Angelina",
+            },
+            "id": 4,
+            "images": Array [
+              "1.jpg",
+              "2.jpg",
+              "3.jpg",
+            ],
+            "isFavorite": false,
+            "isPremium": true,
+            "location": Object {
+              "latitude": 0,
+              "longitude": 0,
+              "zoom": 13,
+            },
+            "maxAdults": 2,
+            "previewImage": "",
+            "price": 0,
+            "rating": 0,
+            "title": "Amsterdam Private room Premium",
+            "type": "Private room",
+          },
+        ]
+      }
+      onClickImageItem={[MockFunction]}
+    />
+  </section>
+  <div
+    className="cities__right-section"
+  >
+    <CitiesMap
+      hasActivePoint={true}
+      location={
+        Object {
+          "latitude": 0,
+          "longitude": 0,
+          "zoom": 13,
+        }
+      }
+      placesCoords={
+        Array [
+          Object {
+            "latitude": 0,
+            "longitude": 0,
+            "zoom": 13,
+          },
+          Object {
+            "latitude": 0,
+            "longitude": 0,
+            "zoom": 13,
+          },
+          Object {
+            "latitude": 0,
+            "longitude": 0,
+            "zoom": 13,
+          },
+          Object {
+            "latitude": 0,
+            "longitude": 0,
+            "zoom": 13,
+          },
+          Object {
+            "latitude": 0,
+            "longitude": 0,
+            "zoom": 13,
+          },
+        ]
+      }
+    />
+  </div>
+</div>
+`;

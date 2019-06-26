@@ -1,3 +1,9 @@
+type SelectItem = {
+  caption: string,
+  value: string,
+  orderBy?: string
+}
+
 type Location = {
   latitude: number,
   longitude: number,
@@ -52,6 +58,7 @@ type ReviewItem = {
 }
 
 export {
+  SelectItem,
   Location,
   City,
   Offer,

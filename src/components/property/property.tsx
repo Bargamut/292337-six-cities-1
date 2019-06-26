@@ -10,14 +10,11 @@ import ReviewsList from '../reviews-list/reviews-list';
 import PlacesList from '../places-list/places-list';
 import CitiesMap from '../cities-map/cities-map';
 
-import withActiveItem from '../../hocs/with-active-item/with-active-item';
-
-const PlacesListWrapped = withActiveItem(PlacesList);
-
 interface Props {
   offer: Offer,
   nearOffers: Offer[],
   comments: ReviewItem[],
+  history?: any[],
   loadComments: () => ReviewItem[]
 }
 
@@ -38,6 +35,7 @@ class Property extends React.PureComponent<Props> {
     }
 
     const nearPlacesCoords: Location[] = nearOffers.map((offer) => offer.location);
+    const redirectToOffer = (offer: Offer) => this.props.history.push(`/offer/${offer.id}`);
 
     return (
       <main className="page__main page__main--property">
@@ -147,9 +145,10 @@ class Property extends React.PureComponent<Props> {
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
 
-            <PlacesListWrapped
+            <PlacesList
               citiesPlaces={nearOffers}
               className="near-places__list"
+              onClickImageItem={redirectToOffer}
             />
           </section>
         </div>

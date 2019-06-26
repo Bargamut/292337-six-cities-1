@@ -20,6 +20,14 @@ const normalizeKeys = (obj) => {
   return obj;
 };
 
+export const sortByOrder = (arr, value, order) => {
+  switch (order) {
+    case `ASC`: return arr.sort((a, b) => a[value] - b[value]);
+    case `DESC`: return arr.sort((a, b) => b[value] - a[value]);
+    default: return arr;
+  }
+};
+
 export {
   getRandomNumber,
   normalizeKeys

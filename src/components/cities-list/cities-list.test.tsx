@@ -20,10 +20,9 @@ it(`Cities List correctly renders`, () => {
 
   const citiesList = renderer.create(
       <CitiesList
-        city="Amsterdam"
+        cityName="Amsterdam"
         cities={cities}
         onChangeCity={jest.fn()}
-        onActivateItem={jest.fn()}
       />
   )
   .toJSON();

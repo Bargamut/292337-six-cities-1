@@ -1,31 +1,30 @@
 import * as React from 'react';
+import { City } from '../../types';
 
 interface Props {
-  city: string,
+  cityName: string,
   cities: string[],
-  onChangeCity: (cityName: string) => void,
-  onActivateItem: (cityName: string) => void
+  onChangeCity: (cityName: string) => void
 }
 
-const CitiesList:React.FunctionComponent<Props> = ({city, cities, onChangeCity, onActivateItem}) => {
+const CitiesList = ({cityName, cities, onChangeCity}: Props) => {
   return (
     <div className="cities tabs">
       <section className="locations container">
         <ul className="locations__list tabs__list">
-          {cities.map((cityName, i) => {
+          {cities.map((currentCityName, i) => {
             return (
               <li className="locations__item" key={`location-${i}`}>
                 <a
-                  className={`locations__item-link tabs__item ${city === cityName ? `tabs__item--active` : ``}`}
+                  className={`locations__item-link tabs__item ${cityName === currentCityName ? `tabs__item--active` : ``}`}
                   href="#"
                   onClick={(evt) => {
                     evt.preventDefault();
 
-                    onActivateItem(cityName);
-                    onChangeCity(cityName);
+                    onChangeCity(currentCityName);
                   }}
                 >
-                  <span>{cityName}</span>
+                  <span>{currentCityName}</span>
                 </a>
               </li>
             );
