@@ -35,7 +35,7 @@ function withSorting <T extends InjectedProps>(WrappedComponent: React.Component
       return (
         <WrappedComponent
           {...this.props as T}
-          items={this.state.list}
+          citiesPlaces={this.state.list}
           onChangeOffersFilter={this._sortOffersByOrder} />
       );
     }
