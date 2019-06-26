@@ -74,10 +74,7 @@ class CitiesMap extends React.PureComponent<Props> {
 
     if (this.props.hasActivePoint) {
       leaflet
-        .marker([latitude, longitude], {
-          iconUrl: `/img/pin-active.svg`,
-          iconSize: [30, 30]
-        })
+        .marker([latitude, longitude], {icon: activeIcon})
         .addTo(this._markersGroup);
     }
   }
