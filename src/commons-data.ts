@@ -5,10 +5,12 @@ export const SORTING_OPTIONS = [
   {caption: `Top rated first`, value: `rating`, order: `DESC`}
 ];
 
- export const RATING_WORDS = [
+ export const RATING_ITEMS = [
   {value: 5, title: 'perfect'},
   {value: 4, title: 'good'},
   {value: 3, title: 'not bad'},
   {value: 2, title: 'badly'},
   {value: 1, title: 'terribly'},
 ];
+
+export const MIN_REVIEW_CHARS = 50;

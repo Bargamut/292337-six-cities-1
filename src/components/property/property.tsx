@@ -128,6 +128,7 @@ class Property extends React.PureComponent<Props> {
               </div>
 
               <ReviewsList
+                id={offer.id}
                 comments={comments}
               />
             </div>

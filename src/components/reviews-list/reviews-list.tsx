@@ -4,12 +4,17 @@ import {ReviewItem} from '../../types';
 import ReviewsItem from '../reviews-item/reviews-item';
 import ReviewsForm from '../reviews-form/reviews-form';
 
+import withForm from '../../hocs/with-form/with-form';
+
+const ReviewsFormWrapped = withForm(ReviewsForm);
+
 interface Props {
+  id: number
   comments: ReviewItem[]
 }
 
 const ReviewsList = (props: Props) => {
-  const {comments} = props;
+  const {id, comments} = props;
 
   return (
     <section className="property__reviews reviews">
@@ -35,7 +40,11 @@ const ReviewsList = (props: Props) => {
         })}
       </ul>
 
-      <ReviewsForm />
+      {
+        isLoggedIn
+          ? <ReviewsFormWrapped id={id} />
+          : null
+      }
     </section>
   );
 };
