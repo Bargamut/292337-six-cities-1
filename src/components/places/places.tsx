@@ -7,11 +7,11 @@ import PlacesList from '../places-list/places-list';
 import PlacesSorting from '../places-sorting/places-sorting';
 import CitiesMap from '../cities-map/cities-map';
 
-import { Offer, Location, City } from '../../types';
+import { Offer, Location } from '../../types';
 
 interface Props {
   citiesPlaces: Offer[],
-  city: City,
+  city: string,
   activeItem: Offer,
   onChangeOffersFilter: () => void,
   onSetActiveItem: () => void

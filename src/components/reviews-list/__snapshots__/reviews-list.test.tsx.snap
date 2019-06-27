@@ -72,7 +72,7 @@ exports[`Property correctly renders after relaunch 1`] = `
           className="reviews__time"
           dateTime="2019-06-20T16:39:57.287Z"
         >
-          2019-6-20
+          June 2019
         </time>
       </div>
     </li>
@@ -131,7 +131,7 @@ exports[`Property correctly renders after relaunch 1`] = `
           className="reviews__time"
           dateTime="2019-06-21T17:39:57.287Z"
         >
-          2019-6-21
+          June 2019
         </time>
       </div>
     </li>

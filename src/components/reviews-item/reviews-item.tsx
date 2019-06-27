@@ -40,7 +40,7 @@ const ReviewItems = (props: Props) => {
         </p>
 
         <time className="reviews__time" dateTime={item.date}>
-          {new Date(item.date).toLocaleDateString()}
+          {new Date(item.date).toLocaleDateString('en-US', { year: `numeric`, month: `long` })}
         </time>
       </div>
     </li>

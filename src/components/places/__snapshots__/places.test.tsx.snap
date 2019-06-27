@@ -19,14 +19,7 @@ exports[`Places correctly renders 1`] = `
        
       places
        to stay in 
-      Object {
-        "location": Object {
-          "latitude": 51.23,
-          "longitude": 51.24,
-          "zoom": 13,
-        },
-        "name": "Amsterdam",
-      }
+      Amsterdam
     </b>
     <PlacesSorting
       onChangeOffersFilter={[MockFunction]}
