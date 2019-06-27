@@ -178,14 +178,7 @@ const mocks = {
       }
     }
   ],
-  city: {
-    name: `Amsterdam`,
-    location: {
-      latitude: 51.23,
-      longitude: 51.24,
-      zoom: 13
-    }
-  }
+  city: `Amsterdam`
 };
 
 it(`Places correctly renders`, () => {
