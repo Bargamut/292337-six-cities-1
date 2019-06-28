@@ -4,13 +4,12 @@ import {compose} from 'recompose';
 import {connect} from 'react-redux';
 
 import {ActionCreator} from '../../reducer/user/user';
-import {checkAuthorizationRequired, getUserInfo} from '../../reducer/user/selectors';
+import {checkAuthorization, getUserInfo} from '../../reducer/user/selectors';
 import {User} from '../../types';
 import { Subtract } from 'utility-types';
 
 interface Props {
-  isAuthorizationRequired: boolean,
-  signIn: () => void,
+  isLoggedIn: boolean,
   user: User
 }
 
@@ -40,7 +39,6 @@ const withUserNavigation = (Component) => {
       return (
         <Component
           {...this.props}
-          onClickSignIn={this._handleClickSignIn}
         />
       );
     }
@@ -51,7 +49,7 @@ const withUserNavigation = (Component) => {
 
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
-    isAuthorizationRequired: checkAuthorizationRequired(state),
+    isLoggedIn: checkAuthorization(state),
     user: getUserInfo(state)
   });
 };

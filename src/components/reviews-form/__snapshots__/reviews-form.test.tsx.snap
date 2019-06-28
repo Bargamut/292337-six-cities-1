@@ -5,6 +5,8 @@ exports[`Reviews Form correctly renders after relaunch 1`] = `
   action="#"
   className="reviews__form form"
   method="post"
+  onChange={[MockFunction]}
+  onSubmit={[Function]}
 >
   <label
     className="reviews__label form__label"
@@ -20,7 +22,7 @@ exports[`Reviews Form correctly renders after relaunch 1`] = `
       id="5-stars"
       name="rating"
       type="radio"
-      value="5"
+      value={5}
     />
     <label
       className="reviews__rating-label form__rating-label"
@@ -42,7 +44,7 @@ exports[`Reviews Form correctly renders after relaunch 1`] = `
       id="4-stars"
       name="rating"
       type="radio"
-      value="4"
+      value={4}
     />
     <label
       className="reviews__rating-label form__rating-label"
@@ -64,7 +66,7 @@ exports[`Reviews Form correctly renders after relaunch 1`] = `
       id="3-stars"
       name="rating"
       type="radio"
-      value="3"
+      value={3}
     />
     <label
       className="reviews__rating-label form__rating-label"
@@ -86,7 +88,7 @@ exports[`Reviews Form correctly renders after relaunch 1`] = `
       id="2-stars"
       name="rating"
       type="radio"
-      value="2"
+      value={2}
     />
     <label
       className="reviews__rating-label form__rating-label"
@@ -105,14 +107,14 @@ exports[`Reviews Form correctly renders after relaunch 1`] = `
     </label>
     <input
       className="form__rating-input visually-hidden"
-      id="1-star"
+      id="1-stars"
       name="rating"
       type="radio"
-      value="1"
+      value={1}
     />
     <label
       className="reviews__rating-label form__rating-label"
-      htmlFor="1-star"
+      htmlFor="1-stars"
       title="terribly"
     >
       <svg
@@ -128,8 +130,9 @@ exports[`Reviews Form correctly renders after relaunch 1`] = `
   </div>
   <textarea
     className="reviews__textarea form__textarea"
-    id="review"
-    name="review"
+    id="comment"
+    minLength={50}
+    name="comment"
     placeholder="Tell how was your stay, what you like and what can be improved"
   />
   <div
@@ -148,13 +151,14 @@ exports[`Reviews Form correctly renders after relaunch 1`] = `
       <b
         className="reviews__text-amount"
       >
-        50 characters
+        50
+         characters
       </b>
       .
     </p>
     <button
       className="reviews__submit form__submit button"
-      disabled={false}
+      disabled={true}
       type="submit"
     >
       Submit

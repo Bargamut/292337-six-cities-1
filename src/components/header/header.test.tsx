@@ -9,24 +9,18 @@ const mock = {
     id: 1,
     email: `test@email.ru`,
     name: `Name Surname`,
-    avatarUrl: ``,
+    avatarUrl: `/4.jpg`,
     isPro: false
-  },
-  onClickSignIn: jest.fn()
+  }
 };
 
 describe(`SignIn renders`, () => {
   it(`SignIn correctly renders without authorization required`, () => {
-    const {
-      onClickSignIn
-    } = mock;
-
     const header = renderer.create(
       <Router>
         <Header
-          isAuthorizationRequired={true}
+          isLoggedIn={false}
           user={{}}
-          onClickSignIn={onClickSignIn}
         />
       </Router>
     ).toJSON();
@@ -35,17 +29,13 @@ describe(`SignIn renders`, () => {
   });
 
   it(`SignIn correctly renders with authorization required`, () => {
-    const {
-      user,
-      onClickSignIn
-    } = mock;
+    const {user} = mock;
 
     const header = renderer.create(
       <Router>
         <Header
-          isAuthorizationRequired={false}
+          isLoggedIn={true}
           user={user}
-          onClickSignIn={onClickSignIn}
         />
       </Router>
     ).toJSON();

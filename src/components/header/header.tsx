@@ -5,12 +5,11 @@ import {Link} from 'react-router-dom';
 const BASE_URL = `https://es31-server.appspot.com/six-cities`;
 
 interface Props {
-  isAuthorizationRequired: boolean,
-  user: User,
-  onClickSignIn: (evt: React.MouseEvent) => void
+  isLoggedIn: boolean,
+  user: User
 };
 
-const Header:React.FunctionComponent<Props> = ({isAuthorizationRequired, user, onClickSignIn}) => {
+const Header:React.FunctionComponent<Props> = ({isLoggedIn, user}) => {
   return (
     <header className="header">
       <div className="container">
@@ -24,22 +23,24 @@ const Header:React.FunctionComponent<Props> = ({isAuthorizationRequired, user, o
           <nav className="header__nav">
             <ul className="header__nav-list">
               <li className="header__nav-item user">
-                {isAuthorizationRequired
+                {!isLoggedIn
                   ? (
-                    <a
+                    <Link
+                      to="/login"
                       className="header__nav-link header__nav-link--profile"
-                      href="#"
-                      onClick={onClickSignIn}
                     >
                       <div className="header__avatar-wrapper user__avatar-wrapper" />
                       <span className="header__user-name user__name">Sign In</span>
-                    </a>
+                    </Link>
                   )
                   : (
-                    <a className="header__nav-link header__nav-link--profile" href="#">
+                    <Link
+                      to="/favorites"
+                      className="header__nav-link header__nav-link--profile"
+                    >
                       <div className="header__avatar-wrapper user__avatar-wrapper" style={{backgroundImage: `url(${BASE_URL}${user.avatarUrl})`}}/>
                       <span className="header__user-name user__name">{user.email}</span>
-                    </a>
+                    </Link>
                   )
                 }
               </li>

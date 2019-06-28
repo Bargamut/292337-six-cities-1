@@ -12,7 +12,7 @@ export const configureAPI = (onLoginFail: () => void) => {
   };
 
   const onFail = (err) => {
-    if ([400, 403].indexOf(err.response.status) > -1) {
+    if ([403].indexOf(err.response.status) > -1) {
       onLoginFail();
 
       return;

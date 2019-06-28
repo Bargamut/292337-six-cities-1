@@ -40,14 +40,15 @@ const mocks = {
   }
 };
 
-it(`Property correctly renders after relaunch`, () => {
+it(`Property correctly renders after relaunch NO logged in`, () => {
   const {offer} = mocks;
 
   const property = renderer.create(<Property
     offer={offer}
     nearOffers={[]}
-    comments={[]}
+    reviews={[]}
     loadComments={jest.fn()}
+    isLoggedIn={false}
   />).toJSON();
 
   expect(property).toMatchSnapshot();

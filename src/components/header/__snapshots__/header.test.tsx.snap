@@ -38,13 +38,14 @@ exports[`SignIn renders SignIn correctly renders with authorization required 1`]
           >
             <a
               className="header__nav-link header__nav-link--profile"
-              href="#"
+              href="/favorites"
+              onClick={[Function]}
             >
               <div
                 className="header__avatar-wrapper user__avatar-wrapper"
                 style={
                   Object {
-                    "backgroundImage": "url(https://es31-server.appspot.com/six-cities)",
+                    "backgroundImage": "url(https://es31-server.appspot.com/six-cities/4.jpg)",
                   }
                 }
               />
@@ -100,8 +101,8 @@ exports[`SignIn renders SignIn correctly renders without authorization required 
           >
             <a
               className="header__nav-link header__nav-link--profile"
-              href="#"
-              onClick={[MockFunction]}
+              href="/login"
+              onClick={[Function]}
             >
               <div
                 className="header__avatar-wrapper user__avatar-wrapper"
