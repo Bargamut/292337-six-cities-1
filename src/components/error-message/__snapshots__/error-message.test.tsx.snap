@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error Mesage renders correctly 1`] = `
+<span
+  className="error error__validation"
+>
+  Ошибка!
+</span>
+`;

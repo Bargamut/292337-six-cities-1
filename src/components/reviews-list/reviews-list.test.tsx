@@ -29,14 +29,16 @@ const mocks = {
   }]
 };
 
-it(`Property correctly renders after relaunch`, () => {
+it(`Reviews List correctly renders after relaunch`, () => {
   const {comments} = mocks;
 
-  const property = renderer.create(
+  const reviewsList = renderer.create(
     <ReviewsList
-      comments={comments}
+      id={0}
+      isLoggedIn={false}
+      reviews={comments}
     />
   ).toJSON();
 
-  expect(property).toMatchSnapshot();
+  expect(reviewsList).toMatchSnapshot();
 });

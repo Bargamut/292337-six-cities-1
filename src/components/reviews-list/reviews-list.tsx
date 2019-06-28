@@ -10,11 +10,12 @@ const ReviewsFormWrapped = withForm(ReviewsForm);
 
 interface Props {
   id: number
-  comments: ReviewItem[]
+  reviews: ReviewItem[],
+  isLoggedIn: boolean
 }
 
 const ReviewsList = (props: Props) => {
-  const {id, comments} = props;
+  const {id, reviews, isLoggedIn} = props;
 
   return (
     <section className="property__reviews reviews">
@@ -22,19 +23,19 @@ const ReviewsList = (props: Props) => {
         Reviews &middot;
         <span className="reviews__amount">
           {
-            comments && comments.length
-              ? comments.length
+            reviews && reviews.length
+              ? reviews.length
               : 0
           }
         </span>
       </h2>
 
       <ul className="reviews__list">
-        {comments.map((comment) => {
+        {reviews.map((review) => {
           return (
             <ReviewsItem
-              key={`review-item-${comment.id}`}
-              item={comment}
+              key={`review-item-${review.id}`}
+              item={review}
             />
           );
         })}

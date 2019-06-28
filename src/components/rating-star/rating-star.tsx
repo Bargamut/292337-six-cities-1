@@ -1,12 +1,15 @@
 import * as React from 'react';
 
+import ErrorMessage from '../error-message/error-message';
+
 interface Props {
 	title: string,
-	value: number
+  value: number,
+  error?: string
 }
 
 const RatingStar = (props: Props) => {
-  const {title, value} = props;
+  const {title, value, error} = props;
 
   return (
 		<React.Fragment>
@@ -16,6 +19,8 @@ const RatingStar = (props: Props) => {
 					<use xlinkHref="#icon-star"></use>
 				</svg>
 			</label>
+
+      {error ? <ErrorMessage error={error} /> : null}
 		</React.Fragment>
   );
 };

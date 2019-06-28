@@ -10,11 +10,14 @@ import ReviewsList from '../reviews-list/reviews-list';
 import PlacesList from '../places-list/places-list';
 import CitiesMap from '../cities-map/cities-map';
 
+import {checkAuthorization} from '../../reducer/user/selectors';
+
 interface Props {
   offer: Offer,
   nearOffers: Offer[],
-  comments: ReviewItem[],
+  reviews: ReviewItem[],
   history?: any[],
+  isLoggedIn: boolean,
   loadComments: () => ReviewItem[]
 }
 
@@ -27,7 +30,8 @@ class Property extends React.PureComponent<Props> {
     const {
       offer,
       nearOffers,
-      comments
+      reviews,
+      isLoggedIn
     } = this.props;
 
     if (!offer) {
@@ -129,7 +133,8 @@ class Property extends React.PureComponent<Props> {
 
               <ReviewsList
                 id={offer.id}
-                comments={comments}
+                reviews={reviews}
+                isLoggedIn={isLoggedIn}
               />
             </div>
           </div>
@@ -167,7 +172,8 @@ const mapStateToProps = (state, ownProps) => {
     nearOffers: getSelectedPlaces(state)
       .filter((offer) => parseInt(offer.id) !== id)
       .slice(0, 3),
-    comments: getComments(state)
+    reviews: getComments(state),
+    isLoggedIn: checkAuthorization(state)
   });
 };
 
