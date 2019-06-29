@@ -64,13 +64,14 @@ exports[`Property correctly renders after relaunch NO logged in 1`] = `
             Beautiful & luxurious apartment at great location
           </h1>
           <button
-            className="property__bookmark-button button"
+            className="property__bookmark-button  button"
+            onClick={[Function]}
             type="button"
           >
             <svg
-              className="property__bookmark-icon"
-              height="33"
-              width="31"
+              className="place-card__bookmark-icon"
+              height={33}
+              width={31}
             >
               <use
                 xlinkHref="#icon-bookmark"

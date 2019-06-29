@@ -1,8 +1,15 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import axiosMock from 'axios';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import reducer from '../../reducer/reducer';
 import {MemoryRouter as Router} from 'react-router-dom';
 
 import MainPage from './main';
+
+const store = createStore(reducer, applyMiddleware(thunk.withExtraArgument(axiosMock)));
 
 const mock = {
   city: `Amsterdam`,
@@ -49,14 +56,16 @@ it(`MainPage correctly renders after relaunch`, () => {
   const {city, cities, places} = mock;
 
   const mainPage = renderer.create(
-    <Router>
-      <MainPage
-        city={city}
-        cities={cities}
-        citiesPlaces={places}
-        onChangeCity={jest.fn()}
-      />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <MainPage
+          city={city}
+          cities={cities}
+          citiesPlaces={places}
+          onChangeCity={jest.fn()}
+        />
+      </Router>
+    </Provider>
   ).toJSON();
 
   expect(mainPage).toMatchSnapshot();

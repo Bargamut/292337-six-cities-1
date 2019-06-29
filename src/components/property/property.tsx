@@ -76,7 +76,7 @@ class Property extends React.PureComponent<Props> {
                   iconWidth={31}
                   iconHeight={33}
                   className="property"
-                  caption="To bookmark"
+                  caption="To bookmarks"
                 />
               </div>
 

@@ -1,7 +1,15 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import axiosMock from 'axios';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import reducer from '../../reducer/reducer';
+import {MemoryRouter as Router} from 'react-router-dom';
 
 import {Property} from './property';
+
+const store = createStore(reducer, applyMiddleware(thunk.withExtraArgument(axiosMock)));
 
 const mocks = {
   offer: {
@@ -43,13 +51,17 @@ const mocks = {
 it(`Property correctly renders after relaunch NO logged in`, () => {
   const {offer} = mocks;
 
-  const property = renderer.create(<Property
-    offer={offer}
-    nearOffers={[]}
-    reviews={[]}
-    loadComments={jest.fn()}
-    isLoggedIn={false}
-  />).toJSON();
+  const property = renderer.create(
+    <Provider store={store}>
+      <Property
+        offer={offer}
+        nearOffers={[]}
+        reviews={[]}
+        loadComments={jest.fn()}
+        isLoggedIn={false}
+      />
+    </Provider>
+  ).toJSON();
 
   expect(property).toMatchSnapshot();
 });
