@@ -5,7 +5,7 @@ import PlaceCard from '../place-card/place-card';
 import { Offer } from '../../types';
 
 const CLASS_NAMES = {
-  main: `favorites__places`,
+  main: `favorites__card`,
   imgWrapper: `favorites__image-wrapper`,
   cardInfo: `favorites__card-info`
 };
@@ -25,7 +25,7 @@ const FavoritesList:React.FunctionComponent<Props> = (props) => {
     <ul className="favorites__list">
       {Object.entries(items).map(([cityName, places], i) => {
         return (
-          <li key={`favorite-location-${i}`} className="favorites__locations-places">
+          <li key={`favorite-location-${i}`} className="favorites__locations-items">
             <div className="favorites__locations locations locations--current">
               <div className="locations__item">
                 <a className="locations__item-link" href="#">
@@ -43,6 +43,8 @@ const FavoritesList:React.FunctionComponent<Props> = (props) => {
                       place={place}
                       classNames={CLASS_NAMES}
                       onClickImage={linkTo}
+                      previewWidth={150}
+                      previewHeight={110}
                     />
                   );
                 }) : null

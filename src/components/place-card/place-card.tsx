@@ -10,7 +10,9 @@ interface Props {
   onClickImage?: (place: Offer) => void,
   classNames?: {
     [key: string]: string
-  }
+  },
+  previewWidth?: number,
+  previewHeight?: number
 };
 
 const PlaceCard = (props: Props) => {
@@ -18,7 +20,9 @@ const PlaceCard = (props: Props) => {
     place,
     current,
     onClickImage,
-    classNames
+    classNames,
+    previewWidth,
+    previewHeight
   } = props;
 
   const {
@@ -54,7 +58,13 @@ const PlaceCard = (props: Props) => {
 
       <div className={`${cardClassNames.imgWrapper} place-card__image-wrapper`}>
         <a href="#" onClick={handleClickImage}>
-          <img className="place-card__image" src={place.previewImage} width="260" height="200" alt="Place image" />
+          <img
+						className="place-card__image"
+            src={place.previewImage}
+            width={previewWidth || 260}
+            height={previewHeight || 200}
+            alt="Place image"
+          />
         </a>
       </div>
 

@@ -25,7 +25,7 @@ const FavoritesPage:React.FunctionComponent<Props> = (props) => {
   }, {});
 
   return (
-    <main className={`page__main page__main--favorites ${hasFavorites ? `page__main--favorites-empty` : ``}`}>
+    <main className={`page__main page__main--favorites ${!hasFavorites ? `page__main--favorites-empty` : ``}`}>
       <div className="page__favorites-container container">
         <section className={`favorites ${hasFavorites ? `favorites--empty` : ``}`}>
           {hasFavorites
