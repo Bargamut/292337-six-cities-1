@@ -77,7 +77,7 @@ const reducer = function (state = initialState, action) {
 
     case ActionType.UPDATE_OFFER:
       return Object.assign({}, state, {
-        offers: updateOfferData(state.offers, action.payload)
+        citiesPlaces: updateOfferData(state.citiesPlaces, action.payload)
       });
   }
 

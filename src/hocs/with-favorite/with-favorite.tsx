@@ -1,7 +1,9 @@
 import * as React from 'react';
+import history from '../../history';
 import { configureAPI } from '../../api';
 import { AxiosResponse } from 'axios';
 import { connect } from 'react-redux';
+import { compose } from 'recompose';
 
 import { checkAuthorization } from '../../reducer/user/selectors';
 import { ActionCreator } from '../../reducer/data/data';
@@ -10,24 +12,23 @@ interface Props {
   id: number,
   isFavorite: boolean,
   isLoggedIn: boolean,
-  history: any[],
-  onChangeFavorite: (id: number, isFavorite: boolean) => void
+  onFavoriteChange: (id: number, isFavorite: boolean) => void
 }
 
-const withFavorites = (Component) => {
+const withFavorite = (Component) => {
   const WithFavorite = (props: Props) => {
-    const {id, isLoggedIn, isFavorite, history, onChangeFavorite} = props;
+    const {id, isLoggedIn, isFavorite, onFavoriteChange} = props;
 
     const _handleFavoriteClick = () => {
       return !isLoggedIn
         ? history.push(`/login`)
-        : onChangeFavorite(id, !isFavorite)
+        : onFavoriteChange(id, !isFavorite)
     }
 
     return (
       <Component
         {...props}
-        onFavoritesClick={_handleFavoriteClick}
+        onFavoriteClick={_handleFavoriteClick}
       />
     );
   }
@@ -40,14 +41,17 @@ const mapStateToProps = (state: object) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onChangeFavorite: (id: number, isFavorite: boolean) => {
+  onFavoriteChange: (id: number, isFavorite: boolean) => {
     configureAPI(dispatch)
-      .post(`/favorites/${id}`, isFavorite)
+      .post(`/favorite/${id}/${isFavorite ? 1 : 0}`)
       .then((response: AxiosResponse) => {
         dispatch(ActionCreator.updateOffer(response.data));
       })
   }
 });
 
-export {withFavorites}
-export default connect(mapDispatchToProps, mapStateToProps)(withFavorites);
+export {withFavorite}
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withFavorite
+);

@@ -2,6 +2,8 @@ import * as React from 'react';
 import {Offer} from '../../types';
 import {Link} from 'react-router-dom';
 
+import Bookmark from '../bookmark/bookmark';
+
 interface Props {
   place: Offer,
   current?: number,
@@ -55,13 +57,7 @@ const PlaceCard = (props: Props) => {
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
 
-          <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
-            <svg className="place-card__bookmark-icon" width="18" height="19">
-              <use xlinkHref="#icon-bookmark-active"></use>
-            </svg>
-
-            <span className="visually-hidden">In bookmarks</span>
-          </button>
+          <Bookmark id={place.id} isFavorite={place.isFavorite} />
         </div>
 
         <div className="place-card__rating rating">
