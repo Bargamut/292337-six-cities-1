@@ -2,7 +2,7 @@
 
 exports[`FavoritesPage correctly renders after relaunch 1`] = `
 <main
-  className="page__main page__main--favorites page__main--favorites-empty"
+  className="page__main page__main--favorites "
 >
   <div
     className="page__favorites-container container"
@@ -19,7 +19,7 @@ exports[`FavoritesPage correctly renders after relaunch 1`] = `
         className="favorites__list"
       >
         <li
-          className="favorites__locations-places"
+          className="favorites__locations-items"
         >
           <div
             className="favorites__locations locations locations--current"
@@ -41,7 +41,7 @@ exports[`FavoritesPage correctly renders after relaunch 1`] = `
             className="favorites__places"
           >
             <article
-              className="favorites__places place-card"
+              className="favorites__card place-card"
             >
               <div
                 className="place-card__mark"
@@ -60,9 +60,9 @@ exports[`FavoritesPage correctly renders after relaunch 1`] = `
                   <img
                     alt="Place image"
                     className="place-card__image"
-                    height="200"
+                    height={110}
                     src=""
-                    width="260"
+                    width={150}
                   />
                 </a>
               </div>
@@ -146,7 +146,7 @@ exports[`FavoritesPage correctly renders after relaunch 1`] = `
               </div>
             </article>
             <article
-              className="favorites__places place-card"
+              className="favorites__card place-card"
             >
               <div
                 className="place-card__mark"
@@ -165,9 +165,9 @@ exports[`FavoritesPage correctly renders after relaunch 1`] = `
                   <img
                     alt="Place image"
                     className="place-card__image"
-                    height="200"
+                    height={110}
                     src=""
-                    width="260"
+                    width={150}
                   />
                 </a>
               </div>
@@ -253,7 +253,7 @@ exports[`FavoritesPage correctly renders after relaunch 1`] = `
           </div>
         </li>
         <li
-          className="favorites__locations-places"
+          className="favorites__locations-items"
         >
           <div
             className="favorites__locations locations locations--current"
@@ -275,7 +275,7 @@ exports[`FavoritesPage correctly renders after relaunch 1`] = `
             className="favorites__places"
           >
             <article
-              className="favorites__places place-card"
+              className="favorites__card place-card"
             >
               
               <div
@@ -288,9 +288,9 @@ exports[`FavoritesPage correctly renders after relaunch 1`] = `
                   <img
                     alt="Place image"
                     className="place-card__image"
-                    height="200"
+                    height={110}
                     src=""
-                    width="260"
+                    width={150}
                   />
                 </a>
               </div>
@@ -376,7 +376,7 @@ exports[`FavoritesPage correctly renders after relaunch 1`] = `
           </div>
         </li>
         <li
-          className="favorites__locations-places"
+          className="favorites__locations-items"
         >
           <div
             className="favorites__locations locations locations--current"
@@ -398,7 +398,7 @@ exports[`FavoritesPage correctly renders after relaunch 1`] = `
             className="favorites__places"
           >
             <article
-              className="favorites__places place-card"
+              className="favorites__card place-card"
             >
               
               <div
@@ -411,9 +411,9 @@ exports[`FavoritesPage correctly renders after relaunch 1`] = `
                   <img
                     alt="Place image"
                     className="place-card__image"
-                    height="200"
+                    height={110}
                     src=""
-                    width="260"
+                    width={150}
                   />
                 </a>
               </div>
@@ -499,7 +499,7 @@ exports[`FavoritesPage correctly renders after relaunch 1`] = `
           </div>
         </li>
         <li
-          className="favorites__locations-places"
+          className="favorites__locations-items"
         >
           <div
             className="favorites__locations locations locations--current"
@@ -521,7 +521,7 @@ exports[`FavoritesPage correctly renders after relaunch 1`] = `
             className="favorites__places"
           >
             <article
-              className="favorites__places place-card"
+              className="favorites__card place-card"
             >
               <div
                 className="place-card__mark"
@@ -540,9 +540,9 @@ exports[`FavoritesPage correctly renders after relaunch 1`] = `
                   <img
                     alt="Place image"
                     className="place-card__image"
-                    height="200"
+                    height={110}
                     src=""
-                    width="260"
+                    width={150}
                   />
                 </a>
               </div>
