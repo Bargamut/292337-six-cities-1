@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { getFavoritePlaces } from '../../reducer/data/selectors';
 
 import FavoritesList from '../favorites-list/favorites-list';
+import Footer from '../footer/footer';
 
 interface Props {
   favoritePlaces: Offer[]
@@ -25,26 +26,30 @@ const FavoritesPage:React.FunctionComponent<Props> = (props) => {
   }, {});
 
   return (
-    <main className={`page__main page__main--favorites ${!hasFavorites ? `page__main--favorites-empty` : ``}`}>
-      <div className="page__favorites-container container">
-        <section className={`favorites ${hasFavorites ? `favorites--empty` : ``}`}>
-          {hasFavorites
-            ? <h1 className="favorites__title">Saved listing</h1>
-            : <h1 className="visually-hidden">Favorites (empty)</h1>
-          }
+    <React.Fragment>
+      <main className={`page__main page__main--favorites ${!hasFavorites ? `page__main--favorites-empty` : ``}`}>
+        <div className="page__favorites-container container">
+          <section className={`favorites ${!hasFavorites ? `favorites--empty` : ``}`}>
+            {hasFavorites
+              ? <h1 className="favorites__title">Saved listing</h1>
+              : <h1 className="visually-hidden">Favorites (empty)</h1>
+            }
 
-          {hasFavorites
-            ? <FavoritesList items={groupedFavorites} />
-            : (
-              <div className="favorites__status-wrapper">
-                <b className="favorites__status">Nothing yet saved.</b>
-                <p className="favorites__status-description">Save properties to narrow down search or plan yor future trips.</p>
-              </div>
-            )
-          }
-        </section>
-      </div>
-    </main>
+            {hasFavorites
+              ? <FavoritesList items={groupedFavorites} />
+              : (
+                <div className="favorites__status-wrapper">
+                  <b className="favorites__status">Nothing yet saved.</b>
+                  <p className="favorites__status-description">Save properties to narrow down search or plan yor future trips.</p>
+                </div>
+              )
+            }
+          </section>
+        </div>
+      </main>
+
+      <Footer />
+    </React.Fragment>
   );
 };
 
