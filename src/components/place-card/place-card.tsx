@@ -7,15 +7,22 @@ import Bookmark from '../bookmark/bookmark';
 interface Props {
   place: Offer,
   current?: number,
-  onClickImage: (place: Offer) => void,
-  className?: string
+  onClickImage?: (place: Offer) => void,
+  classNames?: {
+    [key: string]: string
+  },
+  previewWidth?: number,
+  previewHeight?: number
 };
 
 const PlaceCard = (props: Props) => {
   const {
     place,
     current,
-    onClickImage
+    onClickImage,
+    classNames,
+    previewWidth,
+    previewHeight
   } = props;
 
   const {
@@ -25,10 +32,14 @@ const PlaceCard = (props: Props) => {
     rating
   } = place;
 
-  let className = props.className || 'cities__place-card';
+  const cardClassNames = {
+    main: classNames && classNames.main ? classNames.main : 'cities__place-card',
+    imgWrapper: classNames && classNames.imgWrapper ? classNames.imgWrapper : `cities__image-wrapper`,
+    cardInfo: classNames && classNames.cardInfo ? classNames.cardInfo : ``
+  };
 
   if (current >= 0) {
-    className = `${className} ${className}--active`;
+    cardClassNames.main = `${cardClassNames.main} ${cardClassNames.main}--active`;
   }
 
   const handleClickImage = (evt) => {
@@ -38,19 +49,26 @@ const PlaceCard = (props: Props) => {
   };
 
   return (
-    <article className={`${className} place-card`}>
+    <article className={`${cardClassNames.main} place-card`}>
       {place.isPremium ? (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       ) : ``}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+
+      <div className={`${cardClassNames.imgWrapper} place-card__image-wrapper`}>
         <a href="#" onClick={handleClickImage}>
-          <img className="place-card__image" src={place.previewImage} width="260" height="200" alt="Place image" />
+          <img
+						className="place-card__image"
+            src={place.previewImage}
+            width={previewWidth || 260}
+            height={previewHeight || 200}
+            alt="Place image"
+          />
         </a>
       </div>
 
-      <div className="place-card__info">
+      <div className={`${cardClassNames.cardInfo} place-card__info`}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{price}</b>

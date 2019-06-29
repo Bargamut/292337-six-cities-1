@@ -24,8 +24,10 @@ const withGuardRoute = (Component, accessLevel) => {
   };
 };
 
-const mapStateToProps = (state: object) => {
-  isLoggedIn: checkAuthorization(state)
+const mapStateToProps = (state: object, ownProps: Props) => {
+  return Object.assign({}, ownProps, {
+    isLoggedIn: checkAuthorization(state)
+  });
 };
 
 export {withGuardRoute};

@@ -1,8 +1,15 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import axiosMock from 'axios';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import reducer from '../../reducer/reducer';
 import {MemoryRouter as Router} from 'react-router-dom';
 
 import PlacesList from './places-list';
+
+const store = createStore(reducer, applyMiddleware(thunk.withExtraArgument(axiosMock)));
 
 const mock = {
   citiesPlaces: [
@@ -183,12 +190,14 @@ it(`Places List correctly renders`, () => {
   const {citiesPlaces} = mock;
 
   const placesList = renderer.create(
-    <Router>
-      <PlacesList
-        citiesPlaces={citiesPlaces}
-        onClickImageItem={jest.fn()}
-      />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <PlacesList
+          citiesPlaces={citiesPlaces}
+          onClickImageItem={jest.fn()}
+        />
+      </Router>
+    </Provider>
   );
 
   expect(placesList).toMatchSnapshot();

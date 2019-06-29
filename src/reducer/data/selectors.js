@@ -32,3 +32,8 @@ export const getOfferById = (id, state) => {
 };
 
 export const getComments = (state) => normalizeKeys(state[NAME_SPACE].comments);
+
+export const getFavoritePlaces = createSelector(
+    getPlaces,
+    (places) => places.filter((place) => place.isFavorite)
+);

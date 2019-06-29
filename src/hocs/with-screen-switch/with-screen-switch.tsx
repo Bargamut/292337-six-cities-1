@@ -21,7 +21,7 @@ import Favorites from '../../components/favorites-page/favorites-page';
 import SignIn from '../../components/sign-in/sign-in';
 import MainPage from '../../components/main/main';
 import Property from '../../components/property/property';
-import { withGuardRoute } from '../with-guard-route/with-guard-route';
+import withGuardRoute from '../with-guard-route/with-guard-route';
 
 const SignInWrapped = withAuthorization(SignIn);
 
