@@ -20,7 +20,8 @@ import App from './components/app/app';
 import SvgSprite from './components/svg-sprite/svg-sprite';
 import Header from './components/header/header';
 
-declare const __REDUX_DEVTOOLS_EXTENSION__: () => any;
+const composeEnhancers = window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] as typeof compose || compose;
+const isHaveReduxDevTools = composeEnhancers && process.env.NODE_ENV !== `production`;
 
 const HeaderWrapped = withUserNavigation(Header);
 
@@ -35,9 +36,7 @@ const init = () => {
       reducer,
       compose(
           applyMiddleware(thunk.withExtraArgument(api)),
-          __REDUX_DEVTOOLS_EXTENSION__
-            ? __REDUX_DEVTOOLS_EXTENSION__()
-            : (a) => a
+          isHaveReduxDevTools ? composeEnhancers() : (a) => a
       )
   );
 
