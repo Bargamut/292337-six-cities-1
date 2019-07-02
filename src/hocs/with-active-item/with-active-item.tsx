@@ -11,7 +11,7 @@ interface InjectedProps {
   onSetActiveItem: (current: itemType) => void
 }
 
-function withActiveItem <T extends InjectedProps>(WrappedComponent: React.ComponentType<T>) {
+function withActiveItem <T extends InjectedProps>(Component: React.ComponentType<T>) {
   return class WithActiveItem extends React.PureComponent<Subtract<T, InjectedProps>, State> {
     constructor(props) {
       super(props);
@@ -25,7 +25,7 @@ function withActiveItem <T extends InjectedProps>(WrappedComponent: React.Compon
 
     render() {
       return (
-        <WrappedComponent
+        <Component
           {...this.props as T}
           activeItem={this.state.activeItem}
           onSetActiveItem={this._setActiveItem} />

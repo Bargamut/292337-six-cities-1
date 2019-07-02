@@ -12,7 +12,7 @@ import {sortByOrder} from '../../helpers';
   onSetActiveItem: (current: number) => void
 }
 
-function withSorting <T extends InjectedProps>(WrappedComponent: React.ComponentType<T>, items) {
+function withSorting <T extends InjectedProps>(Component: React.ComponentType<T>, items) {
   return class WithSorting extends React.PureComponent<Subtract<T, InjectedProps>, State> {
     constructor(props) {
       super(props);
@@ -33,7 +33,7 @@ function withSorting <T extends InjectedProps>(WrappedComponent: React.Component
 
      render() {
       return (
-        <WrappedComponent
+        <Component
           {...this.props as T}
           citiesPlaces={this.state.list}
           onChangeOffersFilter={this._sortOffersByOrder} />
